@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.static(path.join(__dirname, '../../public')));
 
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, './views/pages'));
 app.engine('js', reactViews.createEngine({beautify: true}));
 app.set('view engine', 'js');
 

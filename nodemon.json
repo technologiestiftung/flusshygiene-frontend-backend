@@ -5,9 +5,9 @@
         ".git",
         "node_modules/**/node_modules"
     ],
-    "watch": ["./src", "./views"],
-    "exec": "./node_modules/.bin/tsc -p . && node -r ../dotenv/config dist/index.js",
-    "ext": "ts,json",
+    "watch": ["./src"],
+    "exec": "./node_modules/.bin/tsc -p . && node -r ../dotenv/config --inspect dist/index.js",
+    "ext": "ts,tsx,json",
     "restartable": "rs",
     "verbose": true,
     "env": {

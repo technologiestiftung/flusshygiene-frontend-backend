@@ -1,5 +1,7 @@
 import React from 'react';
-
+import {Footer} from '../components/footer';
+import {Head} from '../components/head';
+import {Header} from '../components/header';
 interface ISkeleton {
   title?: string;
   children?: React.ReactNode;
@@ -7,13 +9,13 @@ interface ISkeleton {
   scripts?: React.ReactNode;
 }
 
-export default (props: ISkeleton) => (
-  <html>
-  <head>
-    <title>{props.title}</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-  </head>
+export const Skeleton = (props: ISkeleton) => (
+  <html lang='de'>
+    <Head
+    title={props.title}
+    />
   <body>
+    <Header />
     <main>{props.children}</main>
     {props.styles}
     <script
@@ -27,11 +29,12 @@ export default (props: ISkeleton) => (
       }}
     />
     {props.scripts}
+    <Footer />
   </body>
 </html >
 
 );
-
+/*
 // class Skeleton extends React.Component<ISkeleton> {
 //   public render() {
 //     return (
@@ -59,3 +62,4 @@ export default (props: ISkeleton) => (
 // }
 
 // export = Skeleton;
+*/

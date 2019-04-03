@@ -19,19 +19,18 @@ const broadcast = (wss, data) => {
         }
     });
 };
-function default_1(server) {
-    const wss = new ws_1.default.Server({ server });
-    wss.on('connection', (client) => {
-        client.on('error', (error) => {
-            process.stderr.write(`Error in client:\n${client}\nerror:\n${error}\n`);
-        });
-        client.on('message', (data) => {
-            broadcast(wss, data);
-        });
-    });
-    return wss;
-}
-exports.default = default_1;
+// export default function(server: http.Server): WebSocket.Server {
+//   const wss = new WebSocket.Server({server});
+//   wss.on('connection', (client: WebSocket) => {
+//     client.on('error', (error: Error) => {
+//       process.stderr.write(`Error in client:\n${client}\nerror:\n${error}\n`);
+//     });
+//     client.on('message', (data: string|object) => {
+//       broadcast(wss, data);
+//     });
+//   });
+//   return wss;
+// }
 class WS {
     constructor(name) {
         this.name = name;

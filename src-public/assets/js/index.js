@@ -3,6 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("babel-polyfill"); // needed for ie11 should be the first things
+require("whatwg-fetch"); // needed for ie11 should be the first things
 const action_creators_1 = require("./redux-store/lib/action-creators");
 const store_1 = __importDefault(require("./redux-store/store"));
 //  ██████╗██╗     ██╗███████╗███╗   ██╗████████╗

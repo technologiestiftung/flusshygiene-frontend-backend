@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
     // app.use(bundler.middleware());
 }
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../public')));
-app.set('views', path_1.default.join(__dirname, './views'));
+app.set('views', path_1.default.join(__dirname, './views/pages'));
 app.engine('js', reactViews.createEngine({ beautify: true }));
 app.set('view engine', 'js');
 // app.get('/*', (request, response) => {

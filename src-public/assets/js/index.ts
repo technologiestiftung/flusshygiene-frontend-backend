@@ -1,3 +1,5 @@
+import 'babel-polyfill'; // needed for ie11 should be the first things
+import 'whatwg-fetch'; // needed for ie11 should be the first things
 import { triggerDefault } from './redux-store/lib/action-creators';
 import store from './redux-store/store';
 

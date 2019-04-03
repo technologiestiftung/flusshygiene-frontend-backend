@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "__tests__", ".vscode", "views"],
+  "exclude": ["node_modules", "__tests__", ".vscode"],
   "compilerOptions": {
 
     /* Basic Options */

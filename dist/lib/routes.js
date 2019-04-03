@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function index(request, response) {
     response.render('index', {
         foo: { bar: 'baz' },
-        title: 'title from route',
+        spots: ['foo', 'bah', 'baz'],
+        title: `title from route index ${__dirname}`,
         url: request.url,
     });
 }

@@ -1,0 +1,10 @@
+@import 'variables';
+
+body {
+  color: $foreground-color;
+
+  header {
+    background-color: $background-color;
+    color: black;
+  }
+}
