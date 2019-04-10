@@ -8,8 +8,8 @@ node_js:
 
 before_script:
   # running code climate
-  - sudo service postgresql stop
-  - docker-compose up -d postgres
+  # - sudo service postgresql stop
+  # - docker-compose up -d postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
