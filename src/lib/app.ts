@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 // import Bundler from 'parcel-bundler';
 import path from 'path';
-import * as routes from './routes';
+import router from './routes';
 
 // -------------------------------------------------
 
@@ -34,6 +34,6 @@ app.set('view engine', 'js');
 // app.get('/*', (request, response) => {
 //   response.send(`${request.url}`);
 // });
-app.get('/', routes.index);
+app.use(router);
 
 export = app;

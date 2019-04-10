@@ -8,6 +8,7 @@
     },
     "rules": {
         "quotemark":[true, "single"],
+        "no-console":false,
         "await-promise": true
     },
     "rulesDirectory": []

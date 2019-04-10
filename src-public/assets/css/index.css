@@ -3,3 +3,7 @@ body {
   body header {
     background-color: #f0f8ff;
     color: black; }
+  body #map {
+    background-color: #f0f8ff; }
+  body footer {
+    background-color: #f0f8ff; }

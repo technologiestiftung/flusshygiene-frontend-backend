@@ -6,50 +6,48 @@
 //   ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝
 
 import React from 'react';
-import {Item} from '../components/item';
-import {Skeleton} from '../layouts/skeleton';
 
-interface IIndex {
-  title?: string;
-  spots: string[];
-}
+import { IIndex } from '../../common/interfaces';
+import { Card } from '../components/bathingspot/card';
+import { Map } from '../components/map';
+import { Skeleton } from '../layouts/skeleton';
+
 const Styles = () => (
   <React.Fragment>
-    <link rel='stylesheet' type='text/css' href='assets/css/extra.css'/>
+    <link rel='stylesheet' type='text/css' href='assets/css/extra.css' />
   </React.Fragment>
 );
 
 const Scripts = () => (
   <React.Fragment>
-  <script src='assets/js/extra.js'></script>
+    <script src='assets/js/extra.js'></script>
   </React.Fragment>
 );
 // this is only for initial state.
 // does not work as a reacitve app
 // react is only for temaplting
-const state = {
-    count: 0,
-  };
+// const state = {
+//     count: 0,
+//   };
 
 const index = (props: IIndex) => (
-        <Skeleton
-      title={props.title}
-      styles={<Styles />}
-      scripts={<Scripts />}
-      >
-        <h1>{props.title}</h1>
-        <p>{state.count}</p>
-        <p>{props.spots}</p>
+  <Skeleton
+    title={props.title}
+    styles={<Styles />}
+    scripts={<Scripts />}>
+    <Map str={'This is the map component'} />
 
-        {
-          props.spots.map((str) => {
-          return <Item str={str} />;
+    <ul>
+      {
+        props.spots.map((obj, i) => {
+          return <Card str={obj.name} key={i} />;
         })
-        }
+      }
+    </ul>
 
-        <div className='message'></div>
-        <button className='button'>press me</button>
-      </Skeleton>
+    {/* <div className='message'></div> */}
+    {/* <button className='button'>press me</button> */}
+  </Skeleton>
 );
 export default index;
 

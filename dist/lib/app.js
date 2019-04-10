@@ -17,7 +17,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 // import Bundler from 'parcel-bundler';
 const path_1 = __importDefault(require("path"));
-const routes = __importStar(require("./routes"));
+const routes_1 = __importDefault(require("./routes"));
 // -------------------------------------------------
 const app = express_1.default();
 app.use(cors_1.default());
@@ -40,5 +40,5 @@ app.set('view engine', 'js');
 // app.get('/*', (request, response) => {
 //   response.send(`${request.url}`);
 // });
-app.get('/', routes.index);
+app.use(routes_1.default);
 module.exports = app;
