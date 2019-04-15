@@ -1,15 +1,21 @@
 import React from 'react';
-import { IItem } from '../../../common/interfaces';
+import { ISpotCard } from '../../../common/interfaces';
 
-export const Card = (props: IItem) => (
-  <li>
-    <a href={`/bathingspots/${props.str}`}>
+export const Card = (props: ISpotCard) => (
+  <li className='list__item--bathingspots'>
+    <a href={`/bathingspots/${props.id}`}>
       <img src='' alt='' className='spot-image'/>
       <img src='' alt='' className='state-image' />
-      <div className='spot-title'>{props.str}</div>
+      <span className='spot-title'>{props.title}</span>
       {(() => {
-        if (props.hasOwnProperty('water')) {
-          return <div className='spot-water'>water name</div>;
+        if (props.hasPrediction === true) {
+          return <span className='asteriks'> * </span>;
+        }
+        return null;
+      })()}
+      {(() => {
+        if (props.hasOwnProperty('water') === true && props.water.length >= 0 && props.water !== props.title) {
+          return <span className='spot-water'>{props.water}</span>;
         }
         return null;
       })()

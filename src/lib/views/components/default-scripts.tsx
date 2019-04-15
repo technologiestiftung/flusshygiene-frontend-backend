@@ -2,7 +2,7 @@ import React from 'react';
 
 export const DefaultFooterScripts = () => (
   <React.Fragment>
-  <script src='assets/js/index.js'></script>
+  <script src='/assets/js/index.js'></script>
   </React.Fragment>
 );
 

@@ -35,12 +35,21 @@ const index = (props: IIndex) => (
     title={props.title}
     styles={<Styles />}
     scripts={<Scripts />}>
-    <Map str={'This is the map component'} />
 
-    <ul>
+    <Map str={'This is the map component'} />
+    <h2>Übersicht Badegewässer</h2>
+    <p>Bei den mit <span className='asteriks'>*</span> ausgezeichneten
+    Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.</p>
+    <ul className='list'>
       {
         props.spots.map((obj, i) => {
-          return <Card str={obj.name} key={i} />;
+          return <Card
+          title={obj.name}
+          water={obj.water}
+          id={obj.id}
+          image={obj.image}
+          hasPrediction={obj.hasPrediction}
+          key={i} />;
         })
       }
     </ul>
