@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "testWithCoverage": "jest --coverage --setupFiles ../dotenv/config",
-    "build:scss": "node-sass --include-path src-public/assets/scss-partials src-public/assets/scss/index.scss src-public/assets/css/index.css",
+    "build:scss": "node-sass --include-path src-public/assets/scss-partials --include-path node_modules/bulma src-public/assets/scss/index.scss src-public/assets/css/index.css",
     "build:css": "postcss --config postcss.config.js < src-public/assets/css/index.css > public/assets/css/index.min.css",
     "watch:scss": "watch 'npm run build:scss && npm run build:css' src-public/assets/scss src-public/assets/scss-partials --filter build-tools/watch-scss-filter.js",
     "watch:backend": "nodemon",
@@ -68,6 +68,7 @@
   "license": "MIT",
   "dependencies": {
     "@tsb/flusshygiene-utils": "^0.5.2",
+    "bulma": "^0.7.4",
     "cors": "^2.8.5",
     "errorhandler": "^1.5.0",
     "express": "^4.16.4",
