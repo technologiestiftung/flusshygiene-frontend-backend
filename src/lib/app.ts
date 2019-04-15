@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 // import Bundler from 'parcel-bundler';
 import path from 'path';
-import router from './routes';
+import router from './router';
 
 // -------------------------------------------------
 

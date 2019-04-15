@@ -26,6 +26,14 @@ export interface IItem {
   str: string;
 }
 
+export interface ISpotCard {
+  title: string;
+  water: string;
+  id: number;
+  image: string;
+  hasPrediction: boolean;
+
+}
 export interface IHead {
   title?: string;
 
