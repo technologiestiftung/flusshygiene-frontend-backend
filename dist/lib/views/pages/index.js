@@ -25,8 +25,13 @@ const Scripts = () => (react_1.default.createElement(react_1.default.Fragment, n
 //   };
 const index = (props) => (react_1.default.createElement(skeleton_1.Skeleton, { title: props.title, styles: react_1.default.createElement(Styles, null), scripts: react_1.default.createElement(Scripts, null) },
     react_1.default.createElement(map_1.Map, { str: 'This is the map component' }),
-    react_1.default.createElement("ul", null, props.spots.map((obj, i) => {
-        return react_1.default.createElement(card_1.Card, { str: obj.name, key: i });
+    react_1.default.createElement("h2", null, "\u00DCbersicht Badegew\u00E4sser"),
+    react_1.default.createElement("p", null,
+        "Bei den mit ",
+        react_1.default.createElement("span", { className: 'asteriks' }, "*"),
+        " ausgezeichneten Badestellen wird die Bewertung durch ein Vorhersagemodel unterst\u00FCtzt."),
+    react_1.default.createElement("ul", { className: 'list' }, props.spots.map((obj, i) => {
+        return react_1.default.createElement(card_1.Card, { title: obj.name, water: obj.water, id: obj.id, image: obj.image, hasPrediction: obj.hasPrediction, key: i });
     }))));
 exports.default = index;
 // export class Index extends React.Component<IIndex> {
