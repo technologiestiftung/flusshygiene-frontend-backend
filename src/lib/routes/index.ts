@@ -2,12 +2,14 @@ import got from 'got';
 import { IObject } from '../common/interfaces';
 import { AsyncRoute } from '../common/types';
 import { apiUrlsGen } from '../common/urls/index';
+
 const apiurls = apiUrlsGen();
 const gotOpts: IObject = { baseUrl: apiurls.apiPath };
 
-const routeErrorHandler: (error: Error) => void = (error) => {
+const routeErrorHandler: (route: string, error: Error) => void = (route, error) => {
   if (process.env.NODE_ENV === 'development') {
     console.trace(error);
+    console.error('Error on route: ', route);
     console.error('Error: name', error.name);
     console.error('Error: message', error.message);
     console.error('Error: stack', error.stack);
@@ -26,12 +28,12 @@ export const index: AsyncRoute = async (request, response) => {
       url: request.url,
     });
   } catch (error) {
-    routeErrorHandler(error);
+    routeErrorHandler('index', error);
   }
 };
 
 export const bathingspot: AsyncRoute = async (request, response) => {
-  console.log(request.params);
+  // console.log(request.params);
   try {
     const result = await got(`bathingspots/${request.params.spotId}`, gotOpts);
     // console.log(JSON.parse(result.body));
@@ -40,7 +42,23 @@ export const bathingspot: AsyncRoute = async (request, response) => {
       spot: JSON.parse(result.body)[0],
     });
   } catch (error) {
-    routeErrorHandler(error);
+    routeErrorHandler(`bathingspot/${request.params.spotId}`, error);
   }
 
+};
+
+export const info: AsyncRoute = async (_request, response) => {
+  try {
+    response.render('info');
+  } catch (error) {
+    routeErrorHandler('info', error);
+  }
+};
+
+export const questionnaire: AsyncRoute = async (_request, response) => {
+  try {
+    response.render('questionnaire');
+  } catch (error) {
+    routeErrorHandler('questionnaire', error);
+  }
 };

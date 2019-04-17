@@ -1,7 +1,16 @@
 import Router from 'express-promise-router';
+import { RouteNames, RouteParams } from './common/enums/index';
 const router = Router();
-import {bathingspot, index} from './routes/index';
+import {
+  bathingspot,
+  index,
+  info,
+  questionnaire,
+} from './routes/index';
 
-router.get('/', index);
-router.get('/bathingspots/:spotId([0-9]+)', bathingspot);
+router.get(`/${RouteNames.index}`, index);
+router.get(`/${RouteNames.bathingspot}/${RouteParams.bathingspotId}`, bathingspot);
+router.get(`/${RouteNames.info}`, info);
+router.get(`/${RouteNames.questionnaire}`, questionnaire);
+
 export default router;
