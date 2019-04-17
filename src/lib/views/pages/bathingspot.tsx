@@ -1,6 +1,7 @@
 import React from 'react';
 
 // import { WaterqualityStateText } from '../../common/enums';
+import { RouteNames } from '../../common/enums';
 import { IBathingspot } from '../../common/interfaces';
 import { SpotBodyAddonList } from '../components/bathingspot/spot-body-addon-list';
 import { SpotBodyFigure } from '../components/bathingspot/spot-body-figure';
@@ -39,6 +40,7 @@ const bathingspot = (props: IBathingspotProps) => {
     disabilityAccessBathrooms,
     bathroomsMobile,
     dogban,
+    hasPrediction,
 
   } = props.spot;
   const str = JSON.stringify(props.spot);
@@ -56,32 +58,50 @@ const bathingspot = (props: IBathingspotProps) => {
         />
 
         <SpotBodyLocation
-        nameLong={nameLong}
-        street={street}
-        postalCode={postalCode}
-        city={city}
-        website={website}
-        longitude={longitude}
-        latitude={latitude}
+          nameLong={nameLong}
+          street={street}
+          postalCode={postalCode}
+          city={city}
+          website={website}
+          longitude={longitude}
+          latitude={latitude}
         />
-        <Measurement measurements={measurements}>
-        <MeasurementTable measurements={measurements} />
-        <div className='bathingspot__body-addon'>
+
+        <Measurement
+        measurements={measurements}
+        hasPrediction={hasPrediction}
+        >
+          <MeasurementTable measurements={measurements} />
+          {(() => {
+            if (hasPrediction === true) {
+              return (
+                <div className='bathingspot__body-prediction'>
+                  <p>
+                    <img src='https://via.placeholder.com/32' alt='prediction icon' />
+                  {/*tslint:disable-next-line: max-line-length*/}
+                    <span className='asteriks'>*</span> Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href={`/${RouteNames.info}`}>Erfahren Sie mehr&nbsp;&raquo;</a>
+                  </p>
+                </div>
+              );
+            }
+            return null;
+          })()}
+          <div className='bathingspot__body-addon'>
             <h3>Weitere Angaben zur Badesstelle</h3>
             <SpotBodyAddonList
-            cyanoPossible={cyanoPossible}
-            lifeguard={lifeguard}
-            disabilityAccess={disabilityAccess}
-            hasDisabilityAccesableEntrence={hasDisabilityAccesableEntrence}
-            restaurant={restaurant}
-            snack={snack}
-            parkingSpots={parkingSpots}
-            bathrooms={bathrooms}
-            disabilityAccessBathrooms={disabilityAccessBathrooms}
-            bathroomsMobile={bathroomsMobile}
-            dogban={dogban}
+              cyanoPossible={cyanoPossible}
+              lifeguard={lifeguard}
+              disabilityAccess={disabilityAccess}
+              hasDisabilityAccesableEntrence={hasDisabilityAccesableEntrence}
+              restaurant={restaurant}
+              snack={snack}
+              parkingSpots={parkingSpots}
+              bathrooms={bathrooms}
+              disabilityAccessBathrooms={disabilityAccessBathrooms}
+              bathroomsMobile={bathroomsMobile}
+              dogban={dogban}
             />
-        </div>
+          </div>
         </Measurement>
       </div>
 

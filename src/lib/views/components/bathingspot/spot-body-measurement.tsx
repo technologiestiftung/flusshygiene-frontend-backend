@@ -4,13 +4,19 @@ import { measurementSort } from '../../../common/utils';
 
 interface IMeasurement {
   measurements: IObject[];
+  hasPrediction: boolean;
   children?: React.ReactNode;
 
 }
 export const Measurement = (props: IMeasurement) => {
   return (
     <div className='bathingspot__body-measurement'>
-      <h3>Wasserqualität</h3>
+      <h3>Wasserqualität {(() => {
+      if (props.hasPrediction === true) {
+        return (<span className='asteriks'>*</span>);
+      }
+      return null;
+      })()}</h3>
       {(() => {
         const sortedMeasurment = props.measurements.sort(measurementSort);
         const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

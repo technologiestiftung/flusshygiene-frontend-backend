@@ -1,9 +1,10 @@
 import React from 'react';
+import { RouteNames } from '../../../common/enums';
 import { ISpotCard } from '../../../common/interfaces';
 
 export const Card = (props: ISpotCard) => (
   <li className='list__item--bathingspots'>
-    <a href={`/bathingspots/${props.id}`}>
+    <a href={`/${RouteNames.bathingspot}/${props.id}`}>
       <img src='' alt='' className='spot-image'/>
       <img src='' alt='' className='state-image' />
       <span className='spot-title'>{props.title}</span>

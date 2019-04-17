@@ -18,3 +18,14 @@ export const WaterqualityStateText = {
   15: 'Badeverbot',
   16: 'Badeverbot',
 };
+
+export enum RouteNames {
+  bathingspot = 'badestellen',
+  index = '',
+  info = 'info',
+  questionnaire = 'umfrage',
+}
+
+export enum RouteParams {
+  bathingspotId = ':spotId([0-9]+)',
+}
