@@ -3,7 +3,7 @@ import { RouteNames } from '../../../common/enums';
 import { ISpotCard } from '../../../common/interfaces';
 
 export const Card = (props: ISpotCard) => (
-  <li className='list__item--bathingspots'>
+  <li className='index__bathingspot-list-item'>
     <a href={`/${RouteNames.bathingspot}/${props.id}`}>
       <img src='' alt='' className='spot-image'/>
       <img src='' alt='' className='state-image' />
