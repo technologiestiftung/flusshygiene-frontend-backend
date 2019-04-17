@@ -4,9 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const utils_1 = require("../../common/utils");
 const spot_body_addon_list_1 = require("../components/bathingspot/spot-body-addon-list");
 const spot_body_figure_1 = require("../components/bathingspot/spot-body-figure");
+const spot_body_location_1 = require("../components/bathingspot/spot-body-location");
+const spot_body_measurement_1 = require("../components/bathingspot/spot-body-measurement");
 const spot_body_measurement_table_1 = require("../components/bathingspot/spot-body-measurement-table");
 const spot_header_1 = require("../components/bathingspot/spot-header");
 const map_1 = require("../components/map");
@@ -19,40 +20,8 @@ const bathingspot = (props) => {
         react_1.default.createElement(spot_header_1.SpotHeader, { nameLong: nameLong, water: water, district: district }),
         react_1.default.createElement("div", { className: 'bathingspot__body' },
             react_1.default.createElement(spot_body_figure_1.SpotBodyFigure, { image: image, nameLong: nameLong, name: name, imageAuthor: undefined }),
-            react_1.default.createElement("div", { className: 'bathingspot__body-location' },
-                react_1.default.createElement("h3", null, "Anschrift"),
-                react_1.default.createElement("p", null, nameLong),
-                react_1.default.createElement("p", null, street),
-                react_1.default.createElement("p", null,
-                    postalCode,
-                    " ",
-                    city),
-                (() => {
-                    if (website.length > 0) {
-                        // const reg = /^(http|https?)\:\/\//g;
-                        return react_1.default.createElement("p", null,
-                            react_1.default.createElement("a", { href: `${website}` }, website.replace(/^https?\:\/\//g, '').replace(/\/$/, '')));
-                    }
-                    return null;
-                })(),
-                react_1.default.createElement("p", null,
-                    react_1.default.createElement("a", { href: `https://maps.google.com/maps?daddr=${longitude},${latitude}` }, "Route Berechnen"))),
-            react_1.default.createElement("div", { className: 'bathingspot__body-measurement' },
-                react_1.default.createElement("h3", null, "Wasserqualit\u00E4t"),
-                (() => {
-                    const sortedMeasurment = measurements.sort(utils_1.measurementSort);
-                    //   (a, b) => {
-                    //   return (new Date(a.date) as unknown as number) - (new Date(b.date) as unknown as number);
-                    // }
-                    // );
-                    const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    return (react_1.default.createElement("div", null,
-                        react_1.default.createElement("p", null, `wasserqualitaet: (NOT YET PARSED TO TEXT) ${sortedMeasurment[0].wasserqualitaetTxt}`),
-                        react_1.default.createElement("p", null,
-                            "(Letzte Messung ",
-                            new Date(sortedMeasurment[0].date).toLocaleDateString('de-DE', dateOpts),
-                            ")")));
-                })(),
+            react_1.default.createElement(spot_body_location_1.SpotBodyLocation, { nameLong: nameLong, street: street, postalCode: postalCode, city: city, website: website, longitude: longitude, latitude: latitude }),
+            react_1.default.createElement(spot_body_measurement_1.Measurement, { measurements: measurements },
                 react_1.default.createElement(spot_body_measurement_table_1.MeasurementTable, { measurements: measurements }),
                 react_1.default.createElement("div", { className: 'bathingspot__body-addon' },
                     react_1.default.createElement("h3", null, "Weitere Angaben zur Badesstelle"),
