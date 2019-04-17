@@ -7,9 +7,10 @@ const got_1 = __importDefault(require("got"));
 const index_1 = require("../common/urls/index");
 const apiurls = index_1.apiUrlsGen();
 const gotOpts = { baseUrl: apiurls.apiPath };
-const routeErrorHandler = (error) => {
+const routeErrorHandler = (route, error) => {
     if (process.env.NODE_ENV === 'development') {
         console.trace(error);
+        console.error('Error on route: ', route);
         console.error('Error: name', error.name);
         console.error('Error: message', error.message);
         console.error('Error: stack', error.stack);
@@ -29,11 +30,11 @@ exports.index = async (request, response) => {
         });
     }
     catch (error) {
-        routeErrorHandler(error);
+        routeErrorHandler('index', error);
     }
 };
 exports.bathingspot = async (request, response) => {
-    console.log(request.params);
+    // console.log(request.params);
     try {
         const result = await got_1.default(`bathingspots/${request.params.spotId}`, gotOpts);
         // console.log(JSON.parse(result.body));
@@ -42,6 +43,22 @@ exports.bathingspot = async (request, response) => {
         });
     }
     catch (error) {
-        routeErrorHandler(error);
+        routeErrorHandler(`bathingspot/${request.params.spotId}`, error);
+    }
+};
+exports.info = async (_request, response) => {
+    try {
+        response.render('info');
+    }
+    catch (error) {
+        routeErrorHandler('info', error);
+    }
+};
+exports.questionnaire = async (_request, response) => {
+    try {
+        response.render('questionnaire');
+    }
+    catch (error) {
+        routeErrorHandler('questionnaire', error);
     }
 };

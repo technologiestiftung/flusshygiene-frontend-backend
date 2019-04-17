@@ -20,3 +20,14 @@ exports.WaterqualityStateText = {
     15: 'Badeverbot',
     16: 'Badeverbot',
 };
+var RouteNames;
+(function (RouteNames) {
+    RouteNames["bathingspot"] = "badestellen";
+    RouteNames["index"] = "";
+    RouteNames["info"] = "info";
+    RouteNames["questionnaire"] = "umfrage";
+})(RouteNames = exports.RouteNames || (exports.RouteNames = {}));
+var RouteParams;
+(function (RouteParams) {
+    RouteParams["bathingspotId"] = ":spotId([0-9]+)";
+})(RouteParams = exports.RouteParams || (exports.RouteParams = {}));

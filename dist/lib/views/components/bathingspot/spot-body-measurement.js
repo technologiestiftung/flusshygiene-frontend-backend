@@ -7,7 +7,14 @@ const react_1 = __importDefault(require("react"));
 const utils_1 = require("../../../common/utils");
 exports.Measurement = (props) => {
     return (react_1.default.createElement("div", { className: 'bathingspot__body-measurement' },
-        react_1.default.createElement("h3", null, "Wasserqualit\u00E4t"),
+        react_1.default.createElement("h3", null,
+            "Wasserqualit\u00E4t ",
+            (() => {
+                if (props.hasPrediction === true) {
+                    return (react_1.default.createElement("span", { className: 'asteriks' }, "*"));
+                }
+                return null;
+            })()),
         (() => {
             const sortedMeasurment = props.measurements.sort(utils_1.measurementSort);
             const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
