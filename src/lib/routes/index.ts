@@ -1,5 +1,5 @@
 import got from 'got';
-import { IObject } from '../common/interfaces';
+import { IObject, IQuestionFile } from '../common/interfaces';
 import { AsyncRoute } from '../common/types';
 import { apiUrlsGen } from '../common/urls/index';
 
@@ -60,5 +60,23 @@ export const questionnaire: AsyncRoute = async (_request, response) => {
     response.render('questionnaire');
   } catch (error) {
     routeErrorHandler('questionnaire', error);
+  }
+};
+
+export const question: AsyncRoute = async (request, response) => {
+  const q = request
+    .app
+    .locals
+    .questions
+    .filter((ele: IQuestionFile) => ele.id === parseInt(request.params.qId, 10));
+  // console.log('in route', q[0].data);
+  try {
+    response.render('question', {
+      data: q[0].data,
+    });
+    // response.send(`<h1>Hello Question ${request.params.qId}</h1>${JSON.stringify(q[0])}`);
+  } catch (error) {
+    routeErrorHandler(`question/${request.params.qId}`, error);
+
   }
 };

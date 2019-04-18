@@ -22,7 +22,7 @@ export const Head = (props: IHead) => (
       sizes='256x256' href='/assets/images/android-chrome-256x256.png' />
     <link rel='icon' type='image/png'
       sizes='16x16' href='/assets/images/favicon-16x16.png' />
-    <link rel='manifest' href='site.webmanifest' />
+    <link rel='manifest' href='/site.webmanifest' />
     <link rel='mask-icon' href='/assets/images/safari-pinned-tab.svg' color='#253276' />
     <meta name='apple-mobile-web-app-title' content='Berliner Badestellen' />
     <meta name='application-name' content='Berliner Badestellen' />

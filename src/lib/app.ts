@@ -4,9 +4,10 @@ import express from 'express';
 import * as reactViews from 'express-react-views';
 import helmet from 'helmet';
 import morgan from 'morgan';
-// import Bundler from 'parcel-bundler';
 import path from 'path';
+import { IQuestionFile } from './common/interfaces';
 import router from './router';
+import { setupQuestions } from './setup';
 
 // -------------------------------------------------
 
@@ -28,9 +29,18 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, '../../public')));
 
 app.set('views', path.join(__dirname, './views/pages'));
-app.engine('js', reactViews.createEngine({beautify: true}));
+app.engine('js', reactViews.createEngine({ beautify: true }));
 app.set('view engine', 'js');
 
+const pQuestions = setupQuestions();
+pQuestions.then((files: IQuestionFile[] | undefined) => {
+  app.locals.questions = files;
+  process.stdout.write('\nQuestion file import ready\n');
+}).catch((error) => {
+  if (error) {
+    console.error(error);
+  }
+});
 // app.get('/*', (request, response) => {
 //   response.send(`${request.url}`);
 // });

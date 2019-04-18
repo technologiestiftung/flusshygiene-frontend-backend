@@ -23,9 +23,10 @@ export enum RouteNames {
   bathingspot = 'badestellen',
   index = '',
   info = 'info',
-  questionnaire = 'umfrage',
+  questionnaire = 'standortbewertung',
 }
 
 export enum RouteParams {
   bathingspotId = ':spotId([0-9]+)',
+  questionId = ':qId([0-9]+)',
 }

@@ -1,3 +1,8 @@
+/**
+ * @property {string} apiMount The mount point for the postgres api e.g. /api/v1/
+ * @property {string} apiPath The path to call e.g. bathingspot/ID
+ * @property {string} baseUrl The baseurl e.g. http://localhost:5004 in developement
+ */
 export interface IApiUrlObject {
   apiMount: string;
   apiPath: string;
@@ -6,9 +11,34 @@ export interface IApiUrlObject {
 
 /**
  * Interface of the simple literal object with any string keys.
+ * @property {key: string} Takes any kind of property
  */
 export interface IObject {
   [key: string]: any;
+}
+
+// ███████╗███████╗████████╗██╗   ██╗██████╗
+// ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗
+// ███████╗█████╗     ██║   ██║   ██║██████╔╝
+// ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝
+// ███████║███████╗   ██║   ╚██████╔╝██║
+// ╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+/**
+ * @property { string} filename The original file name
+ * @property { string} id the id added in form of 01.1.2
+ * @property { number} weight the weight of the question for the analysis
+ * @property { string} dataStr the content of the file (these are text files)
+ * @property { string} parentFolder The absolut file syste, path to the parent folder
+ */
+export interface IQuestionFile {
+  filename: string;
+  questionId: string;
+  weight: number;
+  dataStr: string;
+  parentFolder: string;
+  data: IObject | undefined;
+  id: number|undefined;
 }
 
 // ██╗   ██╗██╗███████╗██╗    ██╗███████╗

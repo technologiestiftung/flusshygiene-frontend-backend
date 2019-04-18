@@ -43,7 +43,7 @@ const bathingspot = (props: IBathingspotProps) => {
     hasPrediction,
 
   } = props.spot;
-  const str = JSON.stringify(props.spot);
+  // const str = JSON.stringify(props.spot);
 
   return (
     <Skeleton title={nameLong} >
@@ -110,7 +110,7 @@ const bathingspot = (props: IBathingspotProps) => {
           __html: `
         // some script
         document.addEventListener('DOMContentLoaded',function() {
-          console.log(JSON.parse('${str}'))
+          console.log(JSON.parse('${JSON.stringify(props.spot)}'))
         });
         `,
         }}
