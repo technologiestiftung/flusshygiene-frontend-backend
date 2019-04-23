@@ -3,7 +3,6 @@
 @import 'bulma';
 @import 'bulma-css-burger';
 @import 'type-scale';
-@import 'lists';
 
 html,
 body {
@@ -48,10 +47,35 @@ span.asteriks {
   font-weight: 700;
 }
 
-// #navbar-toggle-cbox:checked ~ .navbar-menu {
-//   display: block;
-// }
+.questions__body {
+  .questions__body-general-info {
+    font-weight: 600;
+  }
 
-// #navbar-toggle-cbox {
-//   display: none;
-// }
+  .questions__body-progress {
+    progress {
+      height: 0.2rem;
+    }
+  }
+
+  .questions__body-nav {
+    height: 2em;
+
+    button {
+      max-height: 100%;
+    }
+  }
+
+  h2.questions__body-question {
+    font-style: italic;
+  }
+
+  &-question {
+    font-weight: 600;
+  }
+
+  @import 'form';
+}
+
+@import 'icons';
+@import 'lists';

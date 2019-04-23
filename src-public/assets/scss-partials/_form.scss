@@ -1,0 +1,18 @@
+form {
+  &.questions__form {
+    width: 100%;
+    float: 'left';
+
+    .column {
+      .control {
+        .field {
+          label {
+            input {
+              margin-right: 2em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
