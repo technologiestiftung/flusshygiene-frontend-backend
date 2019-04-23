@@ -10,7 +10,7 @@ thank you @TinyJSDeveloper
 export const Navigation = () => (
   <nav className='navbar' role='navigation' aria-label='main navigation'>
     <div className='navbar-brand'>
-      <a className='navbar-item' href={RouteNames.index}>
+      <a className='navbar-item' href={`/${RouteNames.index}`}>
         <div>Flusshygiene/Badegewässer Logo</div>
       </a>
     </div>
@@ -25,9 +25,9 @@ export const Navigation = () => (
 
     <div className='navbar-menu'>
       <div className='navbar-start'>
-        <a href={RouteNames.index} className='navbar-item'>Home</a>
-        <a href={RouteNames.questionnaire} className='navbar-item'>Standortbewertung</a>
-        <a href={RouteNames.info} className='navbar-item'>Vorhersage Modell</a>
+        <a href={`/${RouteNames.index}`} className='navbar-item'>Home</a>
+        <a href={`/${RouteNames.questionnaire}`} className='navbar-item'>Standortbewertung</a>
+        <a href={`/${RouteNames.info}`} className='navbar-item'>Vorhersage Modell</a>
       </div>
     </div>
   </nav>

@@ -7,7 +7,8 @@
 
 import React from 'react';
 
-import { Button } from '../components/button-cta';
+import { RouteNames } from '../../common/enums';
+import { Button } from '../components/button';
 import {QuestIntro} from '../components/questionnaire/quest-intro';
 import { Skeleton } from '../layouts/skeleton';
 interface IQuestionnaire {
@@ -17,8 +18,10 @@ interface IQuestionnaire {
 const questionnaire = (props: IQuestionnaire) => (
   <Skeleton title={props.title}>
     <QuestIntro />
-    <Button text={'Bewertung beginnen…'} />
+    <Button
+    text={'Bewertung beginnen…'}
+    url={`/${RouteNames.questionnaire}/0`}
+    />
   </Skeleton>
 );
 export default questionnaire;
-
