@@ -25,11 +25,11 @@ export interface IObject {
 // ╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝
 
 /**
- * @property { string} filename The original file name
- * @property { string} id the id added in form of 01.1.2
- * @property { number} weight the weight of the question for the analysis
- * @property { string} dataStr the content of the file (these are text files)
- * @property { string} parentFolder The absolut file syste, path to the parent folder
+ * @property {string} filename The original file name
+ * @property {string} id the id added in form of 01.1.2
+ * @property {number} weight the weight of the question for the analysis
+ * @property {string} dataStr the content of the file (these are text files)
+ * @property {string} parentFolder The absolut file syste, path to the parent folder
  */
 export interface IQuestionFile {
   filename: string;
