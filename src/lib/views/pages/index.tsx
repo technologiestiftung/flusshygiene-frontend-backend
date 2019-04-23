@@ -37,23 +37,24 @@ const index = (props: IIndex) => (
     scripts={<Scripts />}>
 
     <Map str={'This is the map component'} />
-    <h2>Übersicht Badegewässer</h2>
-    <p>Bei den mit <span className='asteriks'>*</span> ausgezeichneten
+    <div className='index section'>
+      <h1>Übersicht Badegewässer</h1>
+      <p>Bei den mit <span className='asteriks'>*</span> ausgezeichneten
     Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.</p>
-    <ul className='index__bathingspot-list'>
-      {
-        props.spots.map((obj, i) => {
-          return <Card
-          title={obj.name}
-          water={obj.water}
-          id={obj.id}
-          image={obj.image}
-          hasPrediction={obj.hasPrediction}
-          key={i} />;
-        })
-      }
-    </ul>
-
+      <ul className='index__bathingspot-list'>
+        {
+          props.spots.map((obj, i) => {
+            return <Card
+              title={obj.name}
+              water={obj.water}
+              id={obj.id}
+              image={obj.image}
+              hasPrediction={obj.hasPrediction}
+              key={i} />;
+          })
+        }
+      </ul>
+    </div>
     {/* <div className='message'></div> */}
     {/* <button className='button'>press me</button> */}
   </Skeleton>
