@@ -48,6 +48,11 @@ export interface IQuestionFile {
 //  ╚████╔╝ ██║███████╗╚███╔███╔╝███████║
 //   ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝
 
+/**
+ * interface for the index page
+ * @property {string} title optional
+ * @property {IObject} spots an array of bathingspots comming from the api
+ */
 export interface IIndex {
   title?: string;
   spots: IObject[];
