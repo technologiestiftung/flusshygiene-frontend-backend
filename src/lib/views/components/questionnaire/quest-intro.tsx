@@ -2,7 +2,7 @@
 
 import React from 'react';
 export const QuestIntro = () => (
-  <div className='questionnaire__intro-text'>
+  <section className='questionnaire__intro-text section'>
     <p><strong>Einleitung</strong></p>
     <p>Willkommen auf der Webplattform des <em>Tools zur</em> <em>Anfangsbewertung von Standorten zur Einrichtung von Flussbadestellen</em>. Mit diesem Tool können Sie anhand von Fragen, die bei der Einrichtung einer neuen Flussbadestelle zu beachten sind, Ihren gewünschten Standort auf seine Eignung überprüfen. Hierzu werden Sie durch thematisch sortierte Multiple-Choice-Fragen geleitet. </p>
     <p>Auf Grundlage Ihrer Antworten erhalten Sie dann</p>
@@ -32,5 +32,5 @@ export const QuestIntro = () => (
       <li>Wird der Standort bereits von anderen Nutzergruppen genutzt (Angler, Sportvereine usw.)? (Frage xxx)</li>
       <li>Gibt es Anwohner in Hördistanz zur Badestelle? (Frage xxx)</li>
     </ul>
-  </div>
+  </section>
 );
