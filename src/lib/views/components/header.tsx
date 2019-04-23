@@ -2,8 +2,8 @@ import React from 'react';
 import { Navigation } from './navigation';
 
 export const Header = () => (
-  <header>
+  <header className='section'>
     <Navigation />
-    <p>head comopnent</p>
+    <p>head component</p>
   </header>
 );

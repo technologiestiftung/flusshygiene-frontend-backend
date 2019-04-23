@@ -47,7 +47,7 @@ const bathingspot = (props: IBathingspotProps) => {
     <Skeleton title={nameLong} >
       <Map str='Maps' />
       <SpotHeader nameLong={nameLong} water={water} district={district} />
-      <div className='bathingspot__body'>
+      <div className='bathingspot__body section'>
         <SpotBodyFigure
           image={image}
           nameLong={nameLong}
@@ -84,7 +84,7 @@ const bathingspot = (props: IBathingspotProps) => {
             }
             return null;
           })()}
-          <div className='bathingspot__body-addon'>
+          <div className='bathingspot__body-addon section'>
             <h3>Weitere Angaben zur Badesstelle</h3>
             <SpotBodyAddonList
               cyanoPossible={cyanoPossible}

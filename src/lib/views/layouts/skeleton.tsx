@@ -11,7 +11,7 @@ export const Skeleton = (props: ISkeleton) => (
     />
   <body>
     <Header />
-    <main>{props.children}</main>
+    <main  className='section'>{props.children}</main>
     {props.styles}
     <script
       dangerouslySetInnerHTML={{
