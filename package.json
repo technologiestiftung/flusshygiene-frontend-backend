@@ -10,8 +10,8 @@
     "build:css": "postcss --config postcss.config.js < src-public/assets/css/index.css > public/assets/css/index.min.css",
     "watch:scss": "watch 'npm run build:scss && npm run build:css' src-public/assets/scss src-public/assets/scss-partials --filter build-tools/watch-scss-filter.js",
     "watch:backend": "nodemon",
-    "watch:js": "parcel watch src-public/assets/js/**/*  --out-dir public/assets/js/ --public-url /assets/js",
-    "build:js": "parcel build src-public/assets/js/*  --out-dir public/assets/js/ --public-url /assets/js",
+    "watch:js": "parcel watch src-public/assets/js/index.ts  --out-dir public/assets/js/ --public-url /assets/js",
+    "build:js": "parcel build src-public/assets/js/index.ts  --out-dir public/assets/js/ --public-url /assets/js",
     "dev": "npm-run-all --parallel watch:*",
     "build": "tsc -p .",
     "start": "node dist/index.js"
