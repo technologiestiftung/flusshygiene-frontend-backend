@@ -1,0 +1,34 @@
+@import 'mixins';
+
+$number: 32;
+$size: '32px';
+
+span {
+  &.icon__traffic-light {
+    min-width: $size;
+    min-height: $size;
+    height: $size;
+    width: $size;
+    display: inline-block;
+    border-radius: $size/2;
+    @include placeholderBackgroundImage($number);
+
+    &--red {
+      // background-color: red;
+      @include placeholderBackgroundImage($number + '/ff0000');
+
+    }
+
+    &--green {
+      // background-color: green;
+      @include placeholderBackgroundImage($number + '/008000');
+
+    }
+
+    &--orange {
+      // background-color: orange;
+      @include placeholderBackgroundImage($number + '/ffa500');
+
+    }
+  }
+}
