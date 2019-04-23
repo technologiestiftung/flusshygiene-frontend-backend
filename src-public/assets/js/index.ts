@@ -12,6 +12,8 @@ import store from './redux-store/store';
 
 const ws: WebSocket = new WebSocket(`ws://${location.hostname}:${process.env.PARCEL_WS_PORT}`);
 
+
+
 function clickHandle(event: Event) {
 
    ws.send(JSON.stringify(store.getState()));
