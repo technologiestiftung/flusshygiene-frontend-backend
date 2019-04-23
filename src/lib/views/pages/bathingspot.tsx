@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import { WaterqualityStateText } from '../../common/enums';
 import { RouteNames } from '../../common/enums';
 import { IBathingspot } from '../../common/interfaces';
 import { SpotBodyAddonList } from '../components/bathingspot/spot-body-addon-list';
@@ -43,7 +42,6 @@ const bathingspot = (props: IBathingspotProps) => {
     hasPrediction,
 
   } = props.spot;
-  // const str = JSON.stringify(props.spot);
 
   return (
     <Skeleton title={nameLong} >
@@ -68,8 +66,8 @@ const bathingspot = (props: IBathingspotProps) => {
         />
 
         <Measurement
-        measurements={measurements}
-        hasPrediction={hasPrediction}
+          measurements={measurements}
+          hasPrediction={hasPrediction}
         >
           <MeasurementTable measurements={measurements} />
           {(() => {
@@ -78,7 +76,7 @@ const bathingspot = (props: IBathingspotProps) => {
                 <div className='bathingspot__body-prediction'>
                   <p>
                     <img src='https://via.placeholder.com/32' alt='prediction icon' />
-                  {/*tslint:disable-next-line: max-line-length*/}
+                    {/*tslint:disable-next-line: max-line-length*/}
                     <span className='asteriks'>*</span> Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href={`/${RouteNames.info}`}>Erfahren Sie mehr&nbsp;&raquo;</a>
                   </p>
                 </div>
