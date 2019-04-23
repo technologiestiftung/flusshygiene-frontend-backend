@@ -73,6 +73,8 @@ export const question: AsyncRoute = async (request, response) => {
   try {
     response.render('question', {
       data: q[0].data,
+      lastId: request.app.locals.questions.length - 1,
+      qId: q[0].id,
     });
     // response.send(`<h1>Hello Question ${request.params.qId}</h1>${JSON.stringify(q[0])}`);
   } catch (error) {
