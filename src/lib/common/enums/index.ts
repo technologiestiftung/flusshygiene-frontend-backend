@@ -31,9 +31,16 @@ export enum RouteNames {
   index = '',
   info = 'info',
   questionnaire = 'standortbewertung',
+  report = 'standortbewertung/auswertung',
 }
 
 export enum RouteParams {
   bathingspotId = ':spotId([0-9]+)',
   questionId = ':qId([0-9]+)',
+}
+
+export enum TrafficLightColorNames {
+  red = 'rot',
+  green = 'grün',
+  orange = 'orange',
 }
