@@ -1,4 +1,3 @@
-import { isFlowBaseAnnotation } from '@babel/types';
 import React from 'react';
 import { RouteNames } from '../../../common/enums';
 import { Button } from '../button';
