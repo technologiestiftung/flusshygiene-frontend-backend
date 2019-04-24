@@ -41,6 +41,20 @@ export const setupQuestions: () => Promise<IQuestionFile[] | undefined> = async 
       file.dataStr = fs.readFileSync(`${file.parentFolder}/${file.filename}`, 'utf8');
       file.data = JSON.parse(file.dataStr);
     }
+    /**
+     * Don't want to work with a 0 based index. Easier for routes.
+     */
+    const emptyelement: IQuestionFile = {
+      data: undefined,
+      dataStr: '',
+      filename: '',
+      id: undefined,
+      parentFolder: '',
+      questionId: '',
+      weight: 0,
+
+    };
+    files.unshift(emptyelement);
     return files;
   } catch (error) {
     if (process.env.NODE_ENV === 'develpoment') {

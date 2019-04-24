@@ -1,3 +1,4 @@
+import { IObject } from './index';
 /**
  * @property {string} apiMount The mount point for the postgres api e.g. /api/v1/
  * @property {string} apiPath The path to call e.g. bathingspot/ID
@@ -26,10 +27,12 @@ export interface IObject {
 
 /**
  * @property {string} filename The original file name
- * @property {string} id the id added in form of 01.1.2
- * @property {number} weight the weight of the question for the analysis
- * @property {string} dataStr the content of the file (these are text files)
+ * @property {number|undefined} id A unique id for that question
+ * @property {string} questionId The id added in form of 01.1.2
+ * @property {number} weight The weight of the question for the analysis
+ * @property {string} dataStr The content of the file (these are text files)
  * @property {string} parentFolder The absolut file syste, path to the parent folder
+ * @property {IObject|undefined} data The actual data
  */
 export interface IQuestionFile {
   filename: string;
@@ -38,7 +41,7 @@ export interface IQuestionFile {
   dataStr: string;
   parentFolder: string;
   data: IObject | undefined;
-  id: number|undefined;
+  id: number | undefined;
 }
 
 // ██╗   ██╗██╗███████╗██╗    ██╗███████╗

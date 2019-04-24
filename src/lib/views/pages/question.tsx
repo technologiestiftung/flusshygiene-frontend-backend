@@ -39,12 +39,14 @@ const questionnaire = (props: IQuestion) => {
   interface IAnswer {
     text: string;
     colorText: string;
+    additionalText: string;
   }
 
   const answers: IAnswer[] = [];
   for (let i = 1; i < data.length; i++) {
     if (data[i][6] !== null) {
       const datum: IAnswer = {
+        additionalText: data[i][7],
         colorText: data[i][9],
         text: data[i][6],
       };
@@ -64,21 +66,21 @@ const questionnaire = (props: IQuestion) => {
           <div className='column'>
             <QuestNav
               next={props.qId === props.lastId ? undefined : props.qId + 1}
-              previous={props.qId - 1 < 0 ? undefined : props.qId - 1}
+              previous={props.qId - 1 === 0 ? undefined : props.qId - 1}
             />
           </div>
         </div>
         <div className='questions__body-progress'>
           <div className='column'>
             <progress className='progress'
-              value={`${props.qId + 1}`}
-              max={`${props.lastId + 1}`}
-            >{`${props.qId + 1} von ${props.lastId + 1}`}</progress>
+              value={`${props.qId}`}
+              max={`${props.lastId}`}
+            >{`${props.qId} von ${props.lastId}`}</progress>
           </div>
         </div>
-        <h2 className='questions__body-question-head columns'>Frage:</h2>
-        <div className='questions__body-question columns'>
-          <div className='column'>
+        <h2 className='questions__body-question-head'>Frage:</h2>
+        <div className='questions__body-question'>
+          <div className=''>
             <p>
               {data[1][4]}
             </p>
@@ -100,18 +102,43 @@ const questionnaire = (props: IQuestion) => {
           </div> */}
         </div>
         <hr />
-        <form className='questions__form columns'>
-          <div className='column'>
+        <form className='questions__form'>
+          <div className=''>
             <div className='control'>
               {answers.map((answer: IAnswer, i: number) => {
+                let messageModifier = '';
+                if (answer.colorText === TrafficLightColorNames.red) {
+                  messageModifier = 'is-danger';
+                } else if (answer.colorText === TrafficLightColorNames.orange) {
+                  messageModifier = 'is-warning';
+
+                } else if (answer.colorText === TrafficLightColorNames.green) {
+                  messageModifier = 'is-success';
+                } else {
+                  messageModifier = 'is-dark';
+                }
                 return (
-                  <div className='field is-fullwidth'>
-                    <QuestTrafficLightIcon
-                      colorText={answer.colorText} />
-                    <label htmlFor={`answer_${i}`} className='radio' key={i} >
-                      <input type='radio' className='is-fullwidth' id={`answer_${i}`} name='answer' />
+                  <div key={i} className='field is-fullwidth is-vcentered '>
+                    <input type='radio' className='is-fullwidth' id={`answer--${i}`} name='answer' required />
+                    <label htmlFor={`answer--${i}`} className='radio' key={i} >
                       {answer.text}
                     </label>
+                    <div className={`is-info columns is-mobile is-vcentered answer__add--${i}`}>
+                      {/* <QuestTrafficLightIcon  colorText={answer.colorText} /> */}
+
+                      <div className='column'>
+                        <div className={`message ${messageModifier}`}>
+                          {/* <div className='message-header'>
+                          <p>{answer.colorText}</p>
+                          </div> */}
+                          <div className='message-body'>
+                            <p>
+                              {answer.additionalText}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
@@ -121,27 +148,30 @@ const questionnaire = (props: IQuestion) => {
             </div>
           </div>
         </form>
+        {/* <div className='questions__body-additional-info-answer columns'>
+          {answers.map((answer: IAnswer, i: number) => {
+            return (
+              <p key={i} className={`column is-full-width answer__additional-text--${i}`}>{answer.additionalText}</p>
+            );
+          })}
+        </div> */}
         <hr />
-        <p className='questions__body-additional-info columns'>
-          {data[1][5]}
-        </p>
+        <div className='columns'>
+
+          <div className='column'>
+            <div className='message  is-info is-small'>
+              {/* <div className='message-header'>
+                <p>Zusatz-Informationen zur Frage</p>
+              </div> */}
+              <div className='message-body'>
+                <p className='questions__body-additional-info-question'>
+                  {data[1][5]}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            {(() => {
-              return data[0].map((heading: string, i: number) => (<th>{i}-{heading}</th>));
-            })()}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {(() => {
-              return data[1].map((ele: string) => (<td>{ele}</td>));
-            })()}
-          </tr>
-        </tbody>
-      </table>
       {/* <script
         dangerouslySetInnerHTML={{
           __html: `

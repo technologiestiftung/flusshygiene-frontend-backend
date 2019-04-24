@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ws.onmessage = (message) => {
          // tslint:disable-next-line:no-console
          console.log(message);
-         const target = document.querySelector('.message');
+         const target = document.querySelector('.message-foo');
          if ( target !== null) {
             target.innerHTML = message.data;
          }

@@ -6,19 +6,25 @@ interface IQuestTrafficLightIcon {
 }
 export const QuestTrafficLightIcon = (props: IQuestTrafficLightIcon) => {
   const defaultClassName = 'icon__traffic-light';
-  if (props.colorText === TrafficLightColorNames.green) {
-    return (
-      <span className={`${defaultClassName} ${defaultClassName}--green`}></span>
-    );
-  } else if (props.colorText === TrafficLightColorNames.orange) {
-    return (
-      <span className={`${defaultClassName} ${defaultClassName}--orange`}></span>
-    );
-  } else if (props.colorText === TrafficLightColorNames.red) {
-    return (
-      <span className={`${defaultClassName} ${defaultClassName}--red`}></span>
-    );
-  } else {
-    return (<span className={`${defaultClassName}`}></span>);
-  }
+
+  return (<div className={'icon__traffic-light-container column is-1'}>{
+    (() => {
+      if (props.colorText === TrafficLightColorNames.green) {
+        return (
+          <span className={`${defaultClassName} ${defaultClassName}--green`}></span>
+        );
+      } else if (props.colorText === TrafficLightColorNames.orange) {
+        return (
+          <span className={`${defaultClassName} ${defaultClassName}--orange`}></span>
+        );
+      } else if (props.colorText === TrafficLightColorNames.red) {
+        return (
+          <span className={`${defaultClassName} ${defaultClassName}--red`}></span>
+        );
+      } else {
+        return (<span className={`${defaultClassName}`}></span>);
+      }
+    })()
+
+  }</div>);
 };

@@ -10216,7 +10216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ws.onmessage = function (message) {
       // tslint:disable-next-line:no-console
       console.log(message);
-      var target = document.querySelector('.message');
+      var target = document.querySelector('.message-foo');
 
       if (target !== null) {
         target.innerHTML = message.data;
@@ -10252,7 +10252,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59665" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52838" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

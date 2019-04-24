@@ -63,6 +63,14 @@ export const questionnaire: AsyncRoute = async (_request, response) => {
   }
 };
 
+/**
+ * An async route for the questionnaire questions.
+ * The questions content are loaded on startup into the app.locals.questions Array.
+ * It only passes the the question defined the `:qId` paramters to the route.
+ *
+ * @param {e.Request} request the default express request object
+ * @param {e.Response} response  the default express response object
+ */
 export const question: AsyncRoute = async (request, response) => {
   const q = request
     .app

@@ -44,6 +44,13 @@ pQuestions.then((files: IQuestionFile[] | undefined) => {
 // app.get('/*', (request, response) => {
 //   response.send(`${request.url}`);
 // });
-app.use(router);
 
+app.use(router);
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+  // console.log(typeof err);
+  // if (err) {
+  res.status(404).send(`Sorry 404 on ${req.url}`);
+  // } else {
+  // }
+});
 export = app;

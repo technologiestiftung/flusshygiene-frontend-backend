@@ -3,16 +3,27 @@ form {
     width: 100%;
     float: 'left';
 
-    .column {
-      .control {
-        .field {
-          label {
-            input {
-              margin-right: 2em;
-            }
-          }
+
+    .control {
+      .field {
+        input {
+          margin-right: 2em;
+        }
+
+        label {
+          margin-bottom: 2em;
         }
       }
     }
+  }
+}
+
+@for $i from 0 through 10 {
+  .answer__add--#{$i} {
+    display: none;
+  }
+
+  #answer--#{$i}:checked~.answer__add--#{$i} {
+    display: flex;
   }
 }
