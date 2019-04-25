@@ -14,6 +14,7 @@ import { setupQuestions } from './setup';
 const app = express();
 app.use(cors());
 app.use(helmet());
+app.use(express.urlencoded());
 app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());

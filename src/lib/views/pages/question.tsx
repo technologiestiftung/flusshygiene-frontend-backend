@@ -9,8 +9,7 @@ import React from 'react';
 
 import { TrafficLightColorNames } from '../../common/enums';
 import { IObject } from '../../common/interfaces';
-import { QuestNav } from '../components/questionnaire/quest-nav';
-import { QuestTrafficLightIcon } from '../components/questionnaire/quest-traffic-light';
+import { QuestFormPagination } from '../components/questionnaire/quest-pagination';
 import { Skeleton } from '../layouts/skeleton';
 
 interface IQuestion {
@@ -18,10 +17,13 @@ interface IQuestion {
   data: IObject;
   qId: number;
   lastId: number;
+  questionId: string;
 }
 
 const questionnaire = (props: IQuestion) => {
-  const { data } = props;
+  const { data, questionId } = props;
+  console.log('qid', props.qId);
+  console.log('last id', props.lastId);
   // const weight: number | null = data[1][0];
   // const heading1: string | null = data[1][1];
   // const adminInfo: string | null = data[1][2];
@@ -54,9 +56,19 @@ const questionnaire = (props: IQuestion) => {
     }
   }
   // console.log(answers);
+
+  const FormScript = () => (
+    <React.Fragment>
+      <script src='/assets/js/questionnaire-form.js'></script>
+    </React.Fragment>
+  );
+
   return (
 
-    <Skeleton title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}>
+    <Skeleton
+    title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}
+    scripts={<FormScript />}
+    >
       <div className='questions__body section'>
         <h1>{data[1][1]}</h1>
         <p className='questions__body-general-info'>
@@ -64,10 +76,10 @@ const questionnaire = (props: IQuestion) => {
         </p>
         <div className='questions__body-nav columns'>
           <div className='column'>
-            <QuestNav
+            {/* <QuestNav
               next={props.qId === props.lastId ? undefined : props.qId + 1}
               previous={props.qId - 1 === 0 ? undefined : props.qId - 1}
-            />
+            /> */}
           </div>
         </div>
         <div className='questions__body-progress'>
@@ -102,51 +114,67 @@ const questionnaire = (props: IQuestion) => {
           </div> */}
         </div>
         <hr />
-        <form className='questions__form'>
-          <div className=''>
-            <div className='control'>
-              {answers.map((answer: IAnswer, i: number) => {
-                let messageModifier = '';
-                if (answer.colorText === TrafficLightColorNames.red) {
-                  messageModifier = 'is-danger';
-                } else if (answer.colorText === TrafficLightColorNames.orange) {
-                  messageModifier = 'is-warning';
+        <form id='the-form' method='post'
+        className='questions__form'>
+        <input type='hidden' name='targeturl' value='' />
+          <div className='control'>
+            {answers.map((answer: IAnswer, i: number) => {
+              let messageModifier = '';
+              if (answer.colorText === TrafficLightColorNames.red) {
+                messageModifier = 'is-danger';
+              } else if (answer.colorText === TrafficLightColorNames.orange) {
+                messageModifier = 'is-warning';
 
-                } else if (answer.colorText === TrafficLightColorNames.green) {
-                  messageModifier = 'is-success';
-                } else {
-                  messageModifier = 'is-dark';
-                }
-                return (
-                  <div key={i} className='field is-fullwidth is-vcentered '>
-                    <input type='radio' className='is-fullwidth' id={`answer--${i}`} name='answer' required />
-                    <label htmlFor={`answer--${i}`} className='radio' key={i} >
-                      {answer.text}
-                    </label>
-                    <div className={`is-info columns is-mobile is-vcentered answer__add--${i}`}>
-                      {/* <QuestTrafficLightIcon  colorText={answer.colorText} /> */}
+              } else if (answer.colorText === TrafficLightColorNames.green) {
+                messageModifier = 'is-success';
+              } else {
+                messageModifier = 'is-dark';
+              }
+              const value: {qId: number, questionId: string} = {qId: i, questionId};
+              return (
+                <div key={i} className='field'>
+                  <input
 
-                      <div className='column'>
-                        <div className={`message ${messageModifier}`}>
-                          {/* <div className='message-header'>
+                  type='radio'
+                  className=''
+                  id={`answer--${i}`}
+                  name='answer'
+                  value={JSON.stringify(value)}
+                  required
+
+                  />
+                  <label htmlFor={`answer--${i}`} className='radio' key={i} >
+                    {answer.text}
+                  </label>
+                  {(() => {
+                    return <br />;
+                  })()}
+                  <div className={`answer__add--${i}`}>
+                    <div className={`message ${messageModifier}`}>
+                      {/* <div className='message-header'>
                           <p>{answer.colorText}</p>
                           </div> */}
-                          <div className='message-body'>
-                            <p>
-                              {answer.additionalText}
-                            </p>
-                          </div>
-                        </div>
+                      <div className='message-body'>
+                        {/* <p> */}
+                        {answer.additionalText}
+                        {/* </p> */}
                       </div>
                     </div>
                   </div>
-                );
-              })}
-              {(() => {
-                return <br />;
-              })()}
-            </div>
+                </div>
+              );
+            })}
+
           </div>
+        <hr />
+        <div className='columns'>
+          <div className='column is-is-fullwidth'>
+            <QuestFormPagination
+            qId= {props.qId}
+            lastId={props.lastId}
+            />
+          </div>
+        </div>
         </form>
         {/* <div className='questions__body-additional-info-answer columns'>
           {answers.map((answer: IAnswer, i: number) => {
@@ -155,9 +183,7 @@ const questionnaire = (props: IQuestion) => {
             );
           })}
         </div> */}
-        <hr />
         <div className='columns'>
-
           <div className='column'>
             <div className='message  is-info is-small'>
               {/* <div className='message-header'>
@@ -177,7 +203,10 @@ const questionnaire = (props: IQuestion) => {
           __html: `
           // some script
           document.addEventListener('DOMContentLoaded',function() {
-            console.log(JSON.parse('${JSON.stringify(props.data)}'))
+            const pagiantionLinks = document.querySelectorAll(
+              'a.pagination-link, a.pagination-next, a.pagination-previous'
+              );
+            console.log('hello form', pagiantionLinks);
           });
           `,
         }}

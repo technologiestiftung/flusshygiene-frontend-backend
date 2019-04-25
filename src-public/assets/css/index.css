@@ -7151,7 +7151,7 @@ span.asteriks {
   .questions__body form.questions__form .control .field input {
     margin-right: 2em; }
   .questions__body form.questions__form .control .field label {
-    margin-bottom: 2em; }
+    display: inline; }
 
 .questions__body .answer__add--0 {
   display: none; }
@@ -7237,34 +7237,35 @@ span.asteriks {
     .icon__traffic-light-container span.icon__traffic-light--orange {
       background: url("https://via.placeholder.com/16/ffa500") no-repeat top left; }
 
-ul {
-  list-style-type: disc;
-  padding-left: 1em; }
-  ul.index__bathingspot-list {
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    list-style-type: disc; }
-    ul.index__bathingspot-list li.index__bathingspot-list-item {
-      list-style: none;
-      line-height: 2em; }
-      ul.index__bathingspot-list li.index__bathingspot-list-item a {
-        text-decoration: none;
-        width: auto;
-        display: block;
-        color: #000; }
-        ul.index__bathingspot-list li.index__bathingspot-list-item a:hover {
-          background-color: rgba(37, 15, 118, 0.5); }
-        ul.index__bathingspot-list li.index__bathingspot-list-item a span.spot-title {
-          padding-left: 1em;
-          font-weight: 700; }
-        ul.index__bathingspot-list li.index__bathingspot-list-item a span.spot-water {
-          padding-left: 1em; }
-      ul.index__bathingspot-list li.index__bathingspot-list-item:nth-child(odd) {
-        background-color: rgba(0, 0, 0, 0.05); }
+ul.index__bathingspot-list {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  list-style-type: disc; }
+  ul.index__bathingspot-list li.index__bathingspot-list-item {
+    list-style: none;
+    line-height: 2em; }
+    ul.index__bathingspot-list li.index__bathingspot-list-item a {
+      text-decoration: none;
+      width: auto;
+      display: block;
+      color: #000; }
+      ul.index__bathingspot-list li.index__bathingspot-list-item a:hover {
+        background-color: rgba(37, 15, 118, 0.5); }
+      ul.index__bathingspot-list li.index__bathingspot-list-item a span.spot-title {
+        padding-left: 1em;
+        font-weight: 700; }
+      ul.index__bathingspot-list li.index__bathingspot-list-item a span.spot-water {
+        padding-left: 1em; }
+    ul.index__bathingspot-list li.index__bathingspot-list-item:nth-child(odd) {
+      background-color: rgba(0, 0, 0, 0.05); }
 
 .bathingspot__body-addon ul {
   list-style: none; }
   .bathingspot__body-addon ul li {
     list-style: none; }
+
+.questions__form * .message {
+  width: 100%;
+  max-width: 100% !important; }

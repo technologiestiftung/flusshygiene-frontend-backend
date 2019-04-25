@@ -15,13 +15,25 @@ export const setupQuestions: () => Promise<IQuestionFile[] | undefined> = async 
     const dataFiles = await readDirAsync(dataPath, 'utf8');
     const filteredFileNames = dataFiles.filter((file) => path.extname(file) === '.json');
     // need to pad the names with only one digit in numbering
+    // const emptyelement: IQuestionFile = {
+    //   data: undefined,
+    //   dataStr: '',
+    //   filename: '',
+    //   id: undefined,
+    //   parentFolder: '',
+    //   questionId: '',
+    //   weight: 0,
+
+    // };
+
     const files: IQuestionFile[] = [];
+    // files.push(emptyelement);
     filteredFileNames.forEach((ele: string) => {
       const file: IQuestionFile = {
         data: undefined,
         dataStr: '',
         filename: ele,
-        id: undefined,
+        id: 0,
         parentFolder: dataPath,
         questionId: '',
         weight: 0,
@@ -35,26 +47,18 @@ export const setupQuestions: () => Promise<IQuestionFile[] | undefined> = async 
       if (a.questionId > b.questionId) { return 1; }
       return 0;
     });
-    let id = 0;
+    let id = 1;
     for (const file of files) {
+
       file.id = id++;
+
       file.dataStr = fs.readFileSync(`${file.parentFolder}/${file.filename}`, 'utf8');
       file.data = JSON.parse(file.dataStr);
     }
     /**
      * Don't want to work with a 0 based index. Easier for routes.
      */
-    const emptyelement: IQuestionFile = {
-      data: undefined,
-      dataStr: '',
-      filename: '',
-      id: undefined,
-      parentFolder: '',
-      questionId: '',
-      weight: 0,
 
-    };
-    files.unshift(emptyelement);
     return files;
   } catch (error) {
     if (process.env.NODE_ENV === 'develpoment') {

@@ -8637,7 +8637,7 @@ if (!self.fetch) {
   self.Request = Request;
   self.Response = Response;
 }
-},{}],"lib/action-types.ts":[function(require,module,exports) {
+},{}],"redux-store/lib/action-types.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8677,7 +8677,7 @@ exports.postData = function (body) {
     body: body
   };
 };
-},{"./action-types":"lib/action-types.ts"}],"../../../../node_modules/lodash.throttle/index.js":[function(require,module,exports) {
+},{"./action-types":"redux-store/lib/action-types.ts"}],"../../../node_modules/lodash.throttle/index.js":[function(require,module,exports) {
 var global = arguments[3];
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -9119,7 +9119,7 @@ function toNumber(value) {
 
 module.exports = throttle;
 
-},{}],"../../../../node_modules/symbol-observable/es/ponyfill.js":[function(require,module,exports) {
+},{}],"../../../node_modules/symbol-observable/es/ponyfill.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9146,7 +9146,7 @@ function symbolObservablePonyfill(root) {
 }
 
 ;
-},{}],"../../../../node_modules/symbol-observable/es/index.js":[function(require,module,exports) {
+},{}],"../../../node_modules/symbol-observable/es/index.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -9177,7 +9177,7 @@ if (typeof self !== 'undefined') {
 var result = (0, _ponyfill.default)(root);
 var _default = result;
 exports.default = _default;
-},{"./ponyfill.js":"../../../../node_modules/symbol-observable/es/ponyfill.js"}],"../../../../node_modules/redux/es/redux.js":[function(require,module,exports) {
+},{"./ponyfill.js":"../../../node_modules/symbol-observable/es/ponyfill.js"}],"../../../node_modules/redux/es/redux.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9830,7 +9830,7 @@ function isCrushed() {}
 if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
   warning('You are currently using minified code outside of NODE_ENV === "production". ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or setting mode to production in webpack (https://webpack.js.org/concepts/mode/) ' + 'to ensure you have the correct code for your production build.');
 }
-},{"symbol-observable":"../../../../node_modules/symbol-observable/es/index.js"}],"lib/local-storage.ts":[function(require,module,exports) {
+},{"symbol-observable":"../../../node_modules/symbol-observable/es/index.js"}],"redux-store/lib/local-storage.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9860,7 +9860,7 @@ exports.saveState = function (state) {
     console.error(err);
   }
 };
-},{}],"lib/ajax-request.ts":[function(require,module,exports) {
+},{}],"redux-store/lib/ajax-request.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9936,7 +9936,7 @@ var request = function request(next) {
 };
 
 exports.default = request;
-},{}],"lib/middleware.ts":[function(require,module,exports) {
+},{}],"redux-store/lib/middleware.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -9983,7 +9983,7 @@ var middleware = function middleware(store) {
 };
 
 exports.default = middleware;
-},{"./action-types":"lib/action-types.ts","./ajax-request":"lib/ajax-request.ts"}],"lib/reducers/default.ts":[function(require,module,exports) {
+},{"./action-types":"redux-store/lib/action-types.ts","./ajax-request":"redux-store/lib/ajax-request.ts"}],"redux-store/lib/reducers/default.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10006,7 +10006,7 @@ var def = function def() {
 };
 
 exports.default = def;
-},{"./../action-types":"lib/action-types.ts"}],"lib/reducers/error.ts":[function(require,module,exports) {
+},{"./../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/error.ts":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -10045,7 +10045,7 @@ var errors = function errors() {
 };
 
 exports.default = errors;
-},{"../action-types":"lib/action-types.ts"}],"lib/reducers/get-data.ts":[function(require,module,exports) {
+},{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/get-data.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10068,7 +10068,7 @@ var data = function data() {
 };
 
 exports.default = data;
-},{"../action-types":"lib/action-types.ts"}],"lib/reducers/post-data-response.ts":[function(require,module,exports) {
+},{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/post-data-response.ts":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -10099,7 +10099,7 @@ var responses = function responses() {
 };
 
 exports.default = responses;
-},{"../action-types":"lib/action-types.ts"}],"lib/root-reducer.ts":[function(require,module,exports) {
+},{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/root-reducer.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -10129,7 +10129,7 @@ var reducers = redux_1.combineReducers({
   responses: post_data_response_1.default
 });
 exports.default = reducers;
-},{"redux":"../../../../node_modules/redux/es/redux.js","./reducers/default":"lib/reducers/default.ts","./reducers/error":"lib/reducers/error.ts","./reducers/get-data":"lib/reducers/get-data.ts","./reducers/post-data-response":"lib/reducers/post-data-response.ts"}],"store.ts":[function(require,module,exports) {
+},{"redux":"../../../node_modules/redux/es/redux.js","./reducers/default":"redux-store/lib/reducers/default.ts","./reducers/error":"redux-store/lib/reducers/error.ts","./reducers/get-data":"redux-store/lib/reducers/get-data.ts","./reducers/post-data-response":"redux-store/lib/reducers/post-data-response.ts"}],"redux-store/store.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -10160,7 +10160,7 @@ store.subscribe(lodash_throttle_1.default(function () {
   local_storage_1.saveState(store.getState());
 }, 1000));
 exports.default = store;
-},{"lodash.throttle":"../../../../node_modules/lodash.throttle/index.js","redux":"../../../../node_modules/redux/es/redux.js","./lib/local-storage":"lib/local-storage.ts","./lib/middleware":"lib/middleware.ts","./lib/root-reducer":"lib/root-reducer.ts"}],"index.ts":[function(require,module,exports) {
+},{"lodash.throttle":"../../../node_modules/lodash.throttle/index.js","redux":"../../../node_modules/redux/es/redux.js","./lib/local-storage":"redux-store/lib/local-storage.ts","./lib/middleware":"redux-store/lib/middleware.ts","./lib/root-reducer":"redux-store/lib/root-reducer.ts"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -10224,7 +10224,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 });
-},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","whatwg-fetch":"../../../node_modules/whatwg-fetch/fetch.js","./redux-store/lib/action-creators":"redux-store/lib/action-creators.ts","./redux-store/store":"store.ts"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","whatwg-fetch":"../../../node_modules/whatwg-fetch/fetch.js","./redux-store/lib/action-creators":"redux-store/lib/action-creators.ts","./redux-store/store":"redux-store/store.ts"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -10252,7 +10252,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52838" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

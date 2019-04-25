@@ -79,3 +79,11 @@ span.asteriks {
 
 @import 'icons';
 @import 'lists';
+
+// bulma
+// overwrites
+
+.questions__form * .message {
+  width: 100%;
+  max-width: 100% !important;
+}

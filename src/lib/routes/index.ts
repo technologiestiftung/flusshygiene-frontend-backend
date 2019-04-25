@@ -72,7 +72,7 @@ export const questionnaire: AsyncRoute = async (_request, response) => {
  * @param {e.Response} response  the default express response object
  */
 export const question: AsyncRoute = async (request, response) => {
-  const q = request
+  const q: IQuestionFile[] = request
     .app
     .locals
     .questions
@@ -83,6 +83,7 @@ export const question: AsyncRoute = async (request, response) => {
       data: q[0].data,
       lastId: request.app.locals.questions.length - 1,
       qId: q[0].id,
+      questionId: q[0].questionId,
     });
     // response.send(`<h1>Hello Question ${request.params.qId}</h1>${JSON.stringify(q[0])}`);
   } catch (error) {
