@@ -8,12 +8,12 @@
 import React from 'react';
 
 import { TrafficLightColorNames } from '../../common/enums';
-import { IObject } from '../../common/interfaces';
+import { IAnswerFormData, IObject } from '../../common/interfaces';
 import { QuestFormPagination } from '../components/questionnaire/quest-pagination';
 import { Skeleton } from '../layouts/skeleton';
 
 interface IQuestion {
-  [key: string]: any;
+  previousAnswer: IAnswerFormData | undefined;
   data: IObject;
   qId: number;
   lastId: number;
@@ -66,8 +66,8 @@ const questionnaire = (props: IQuestion) => {
   return (
 
     <Skeleton
-    title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}
-    scripts={<FormScript />}
+      title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}
+      scripts={<FormScript />}
     >
       <div className='questions__body section'>
         <h1>{data[1][1]}</h1>
@@ -115,8 +115,8 @@ const questionnaire = (props: IQuestion) => {
         </div>
         <hr />
         <form id='the-form' method='post'
-        className='questions__form'>
-        <input type='hidden' name='targeturl' value='' />
+          className='questions__form'>
+          <input type='hidden' name='targeturl' value='' />
           <div className='control'>
             {answers.map((answer: IAnswer, i: number) => {
               let messageModifier = '';
@@ -130,17 +130,31 @@ const questionnaire = (props: IQuestion) => {
               } else {
                 messageModifier = 'is-dark';
               }
-              const value: {qId: number, questionId: string} = {qId: i, questionId};
+              const value: IAnswerFormData = {
+                aId: i,
+                qId: props.qId,
+                questionId,
+              };
               return (
                 <div key={i} className='field'>
                   <input
+                    defaultChecked={(() => {
+                      console.log(props.previousAnswer);
+                      if (props.previousAnswer === undefined) {
+                        return false;
+                      } else if (props.previousAnswer.aId === i) {
+                        return true;
+                      } else {
+                        return false;
+                      }
 
-                  type='radio'
-                  className=''
-                  id={`answer--${i}`}
-                  name='answer'
-                  value={JSON.stringify(value)}
-                  required
+                    })()}
+                    type='radio'
+                    className=''
+                    id={`answer--${i}`}
+                    name='answer'
+                    value={JSON.stringify(value)}
+                    required
 
                   />
                   <label htmlFor={`answer--${i}`} className='radio' key={i} >
@@ -166,15 +180,15 @@ const questionnaire = (props: IQuestion) => {
             })}
 
           </div>
-        <hr />
-        <div className='columns'>
-          <div className='column is-is-fullwidth'>
-            <QuestFormPagination
-            qId= {props.qId}
-            lastId={props.lastId}
-            />
+          <hr />
+          <div className='columns'>
+            <div className='column is-is-fullwidth'>
+              <QuestFormPagination
+                qId={props.qId}
+                lastId={props.lastId}
+              />
+            </div>
           </div>
-        </div>
         </form>
         {/* <div className='questions__body-additional-info-answer columns'>
           {answers.map((answer: IAnswer, i: number) => {

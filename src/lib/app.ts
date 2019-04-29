@@ -2,6 +2,7 @@ import cors from 'cors';
 import errorHandler from 'errorhandler';
 import express from 'express';
 import * as reactViews from 'express-react-views';
+import session from 'express-session';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
@@ -14,6 +15,12 @@ import { setupQuestions } from './setup';
 const app = express();
 app.use(cors());
 app.use(helmet());
+app.use(session(
+  {
+    name: process.env.FRONTEND_EXPRESS_SESSION_NAME || 'monky buisness',
+    secret: process.env.FRONTEND_EXPRESS_SESSION_SECRET || 'coding monkey',
+},
+));
 app.use(express.urlencoded());
 app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'development') {
