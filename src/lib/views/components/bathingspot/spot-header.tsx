@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface ISpotHeader {
-  nameLong: string;
-  district: string;
-  water?: string;
-}
+import { ISpotHeader } from '../../../common/interfaces';
 
 export const SpotHeader = (props: ISpotHeader) => (
   <div className='bathingspot__header'>

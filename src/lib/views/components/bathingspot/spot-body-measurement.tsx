@@ -1,13 +1,7 @@
 import React from 'react';
-import { IObject } from '../../../common/interfaces';
+import { IMeasurement } from '../../../common/interfaces';
 import { measurementSort } from '../../../common/utils';
 
-interface IMeasurement {
-  measurements: IObject[];
-  hasPrediction: boolean;
-  children?: React.ReactNode;
-
-}
 export const Measurement = (props: IMeasurement) => {
   return (
     <div className='bathingspot__body-measurement'>

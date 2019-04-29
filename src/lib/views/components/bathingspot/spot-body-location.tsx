@@ -1,16 +1,6 @@
 import React from 'react';
+import { ISpotBodyLocation } from '../../../common/interfaces';
 
-interface ISpotBodyLocation {
-  children?: React.ReactNode;
-  nameLong: string;
-  street: string;
-  postalCode: string;
-  city: string;
-  website: string;
-  longitude: number;
-  latitude: number;
-
-}
 export const SpotBodyLocation = (props: ISpotBodyLocation) => {
   return (
     <div className='bathingspot__body-location'>

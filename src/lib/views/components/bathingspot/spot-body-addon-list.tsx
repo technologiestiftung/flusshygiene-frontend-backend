@@ -1,5 +1,5 @@
 import React from 'react';
-import { IObject } from '../../../common/interfaces';
+import { IObject, ISpotBodyAddonList } from '../../../common/interfaces';
 import { SpotBodyAddonListItem } from './spot-body-addon-list-item';
 
 /*
@@ -17,20 +17,6 @@ wc  mobile = bathroomsMobile
 hundeverbot   = dogban
 
 */
-interface ISpotBodyAddonList {
-  [key: string]: any;
-  cyanoPossible: boolean;
-  lifeguard: boolean;
-  disabilityAccess: boolean;
-  hasDisabilityAccesableEntrence: boolean;
-  restaurant: boolean;
-  snack: boolean;
-  parkingSpots: boolean;
-  bathrooms: boolean;
-  disabilityAccessBathrooms: boolean;
-  bathroomsMobile: boolean;
-  dogban: boolean;
-}
 
 const data: IObject = {
   bathrooms: {

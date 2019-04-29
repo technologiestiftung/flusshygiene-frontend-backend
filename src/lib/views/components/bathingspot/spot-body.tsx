@@ -1,9 +1,6 @@
 import React from 'react';
+import { ISpotBody } from '../../../common/interfaces';
 
-interface ISpotBody {
-  children?: React.ReactNode;
-
-}
 export const SpotBody = (props: ISpotBody) => {
   return (
     <div>{props.children}</div>

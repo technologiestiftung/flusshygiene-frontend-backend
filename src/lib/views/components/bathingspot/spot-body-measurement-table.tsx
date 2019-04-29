@@ -1,10 +1,8 @@
 import React from 'react';
-import { IObject } from '../../../common/interfaces';
+import { IMeasurementable } from '../../../common/interfaces';
 import { measurementSort } from '../../../common/utils';
 import {MeasurementTableRow} from './spot-body-measurement-table-row';
-interface IMeasurementable {
-  measurements: IObject[];
-}
+
 export const MeasurementTable = (props: IMeasurementable) => {
   const sortedMeasurement = props.measurements.sort(measurementSort);
   return (
