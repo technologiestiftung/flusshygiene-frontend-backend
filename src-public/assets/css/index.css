@@ -7131,6 +7131,9 @@ span.asteriks {
 .questions__body .questions__body-general-info {
   font-weight: 600; }
 
+.questions__body .questions__body-progress .questions__body-button-toreport-container {
+  padding-bottom: 2em; }
+
 .questions__body .questions__body-progress progress {
   height: 0.2rem; }
 
@@ -7236,6 +7239,31 @@ span.asteriks {
       background: url("https://via.placeholder.com/16/008000") no-repeat top left; }
     .icon__traffic-light-container span.icon__traffic-light--orange {
       background: url("https://via.placeholder.com/16/ffa500") no-repeat top left; }
+
+ul.report__list li.report__list-item a {
+  color: #000; }
+
+ul.report__list li.report__list-item .report__list-item-question,
+ul.report__list li.report__list-item .report__list-item-answer {
+  padding-left: 1em;
+  padding-right: 1em; }
+
+ul.report__list li.report__list-item:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05); }
+
+ul.report__list li.report__list-item .report__list-item-question {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: 600; }
+
+ul.report__list li.report__list-item .report__list-item-answer {
+  padding-bottom: 1em; }
+
+ul.report__list li.report__list-item:hover {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+ul.report__list li.report__list-item:nth-child(odd):hover {
+  background-color: rgba(0, 0, 0, 0.1); }
 
 ul.index__bathingspot-list {
   padding: 0;

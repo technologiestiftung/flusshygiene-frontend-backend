@@ -1,4 +1,4 @@
-import { IObject } from './index';
+import { ButtonPropsType } from '../enums';
 /**
  * @property {string} apiMount The mount point for the postgres api e.g. /api/v1/
  * @property {string} apiPath The path to call e.g. bathingspot/ID
@@ -39,7 +39,7 @@ export interface IObject {
 
 /**
  * @property {string} filename The original file name
- * @property {number|undefined} id A unique id for that question
+ * @property {number|undefined} qId A unique id for that question
  * @property {string} questionId The id added in form of 01.1.2
  * @property {number} weight The weight of the question for the analysis
  * @property {string} dataStr The content of the file (these are text files)
@@ -53,7 +53,7 @@ export interface IQuestionFile {
   dataStr: string;
   parentFolder: string;
   data: IObject | undefined;
-  id: number | undefined;
+  qId: number | undefined;
 }
 
 // ██╗   ██╗██╗███████╗██╗    ██╗███████╗
@@ -71,6 +71,7 @@ export interface IQuestionFile {
 export interface IIndex {
   title?: string;
   spots: IObject[];
+  url: string;
 }
 export interface IItem {
   str: string;
@@ -150,4 +151,43 @@ export interface IBathingspot {
   measurements: IObject[];
   rawModelData: IObject[];
   region: IObject;
+}
+export interface IBathingspotProps {
+  spot: IBathingspot;
+}
+export interface IReport {
+  title: string;
+  questions: IQuestionFile[];
+  answers: IAnswerFormData[] | undefined;
+}
+
+export interface IAnswer {
+  text: string;
+  colorText: string;
+  additionalText: string;
+}
+export interface IQuestion {
+  previousAnswer: IAnswerFormData | undefined;
+  data: IObject;
+  qId: number;
+  lastId: number;
+  questionId: string;
+}
+
+/**
+ * Interface for the class Button props
+ * @property text: string;
+ * @property url?: string;
+ * @property type?: enum ButtonPropsType; button, submit, reset or undefined
+ * @property disabled?: boolean;
+ */
+export interface IButtonProps {
+  /**
+   * the text for the button
+   */
+  text: string;
+  url?: string;
+  type?: ButtonPropsType;
+  disabled?: boolean;
+  additionalClassNames?: string;
 }

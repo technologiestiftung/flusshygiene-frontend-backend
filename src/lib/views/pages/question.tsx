@@ -7,18 +7,11 @@
 
 import React from 'react';
 
-import { TrafficLightColorNames } from '../../common/enums';
-import { IAnswerFormData, IObject } from '../../common/interfaces';
+import { RouteNames, TrafficLightColorNames } from '../../common/enums';
+import { IAnswer, IAnswerFormData, IQuestion } from '../../common/interfaces';
+import { Button } from '../components/button';
 import { QuestFormPagination } from '../components/questionnaire/quest-pagination';
 import { Skeleton } from '../layouts/skeleton';
-
-interface IQuestion {
-  previousAnswer: IAnswerFormData | undefined;
-  data: IObject;
-  qId: number;
-  lastId: number;
-  questionId: string;
-}
 
 const questionnaire = (props: IQuestion) => {
   const { data, questionId } = props;
@@ -37,12 +30,6 @@ const questionnaire = (props: IQuestion) => {
   // const umsetzungswahrscheinlichkeit: string | null = data[1][10];
   // const infrastrukturOderVerhandlung: string | null = data[1][11];
   // console.log('data in question', data);
-
-  interface IAnswer {
-    text: string;
-    colorText: string;
-    additionalText: string;
-  }
 
   const answers: IAnswer[] = [];
   for (let i = 1; i < data.length; i++) {
@@ -83,6 +70,13 @@ const questionnaire = (props: IQuestion) => {
           </div>
         </div>
         <div className='questions__body-progress'>
+        <div className='column questions__body-button-toreport-container'>
+          <Button
+          url={`/${RouteNames.report}`}
+          text='Zur Auswertung'
+          additionalClassNames='is-pulled-right is-small questions__body-button-toreport'
+          />
+          </div>
           <div className='column'>
             <progress className='progress'
               value={`${props.qId}`}

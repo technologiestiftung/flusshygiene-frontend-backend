@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const form: HTMLFormElement = document.querySelector('form#the-form');
   const pagiantionLinks: NodeList = document.querySelectorAll(
-    'a.pagination-link, a.pagination-next, a.pagination-previous',
+    'a.pagination-link, a.pagination-next, a.pagination-previous, button.questions__body-button-toreport > a',
   );
   // logger.info('foo', 'bah', 'baz');
   if (form !== undefined) {

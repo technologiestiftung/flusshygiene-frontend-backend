@@ -43,21 +43,14 @@ export const sessionAnswerGet: SessionAnswerGetFunc = (
   answers: IAnswerFormData[]|undefined,
 ): IAnswerFormData | undefined => {
   if (answers === undefined) {
-    console.log('answers is undefined');
     return undefined;
   }
-  console.log('answers is defined');
   const answer = answers.filter((ele) => {
-    console.log('answer filter ele.qid', typeof ele.qId);
-    console.log('answer filter qId', typeof qId);
-    console.log('answer filter ele.qid',  ele.qId);
-    console.log('answer filter qId',  qId);
     if (ele.qId === qId) {
       return true;
    }
     return false;
   });
-  console.log(answer);
   if (answer.length === 0) {
     return undefined;
   }

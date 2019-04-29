@@ -53,6 +53,10 @@ span.asteriks {
   }
 
   .questions__body-progress {
+    .questions__body-button-toreport-container {
+      padding-bottom: 2em;
+    }
+
     progress {
       height: 0.2rem;
     }
@@ -77,6 +81,7 @@ span.asteriks {
   @import 'form';
 }
 
+@import 'report';
 @import 'icons';
 @import 'lists';
 

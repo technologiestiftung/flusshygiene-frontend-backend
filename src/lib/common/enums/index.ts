@@ -44,3 +44,14 @@ export enum TrafficLightColorNames {
   green = 'grün',
   orange = 'orange',
 }
+
+/**
+ * @property button = 'button',
+ * @property submit = 'submit',
+ * @property reset = 'reset',
+ */
+export enum ButtonPropsType {
+  button = 'button',
+  submit = 'submit',
+  reset = 'reset',
+}

@@ -11,8 +11,6 @@ export const QuestFormPagination = (props: IQuestFormPagiantion) => {
   return (
     <nav className='pagination is-small' role='navigation' aria-label='pagination'>
       {(() => {
-        // const next: number | undefined = props.qId === props.lastId ? undefined : props.qId + 1;
-
         const previous: number | undefined = props.qId - 1 === 0 ? undefined : props.qId - 1;
         const disabled: boolean = previous === undefined ? true : false;
         if (disabled === true) {
@@ -27,12 +25,10 @@ export const QuestFormPagination = (props: IQuestFormPagiantion) => {
       })()}
       {(() => {
         const next: number | undefined = props.qId === props.lastId + 1 ? undefined : props.qId + 1;
-
-        // const previous: number | undefined = props.qId - 1 === 0 ? undefined : props.qId - 1;
         const disabled: boolean = next === undefined ? true : false;
         if (disabled === true) {
           return (
-            <a className='pagination-next' >Zur Auswertung</a>);
+            <a className='pagination-next' href={`/${RouteNames.report}`}>Zur Auswertung</a>);
         } else {
           return (
             <a className='pagination-next'

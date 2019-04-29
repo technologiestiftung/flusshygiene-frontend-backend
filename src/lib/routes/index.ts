@@ -1,6 +1,6 @@
 import got from 'got';
 import url from 'url';
-import { IAnswerFormData, IObject, IQuestionFile } from '../common/interfaces';
+import { IAnswerFormData, IBathingspotProps, IIndex, IObject, IQuestion, IQuestionFile, IReport } from '../common/interfaces';
 import { AsyncRoute } from '../common/types';
 import { apiUrlsGen } from '../common/urls/index';
 import { sessionAnswerGet, sessionAnswerSet } from '../sessions';
@@ -29,11 +29,12 @@ export const index: AsyncRoute = async (request, response) => {
     // }
 
     const result = await got('bathingspots', gotOpts);
-    response.render('index', {
+    const data: IIndex = {
       spots: JSON.parse(result.body),
       title: `title from route index ${__dirname}`,
       url: request.url,
-    });
+    };
+    response.render('index', data);
   } catch (error) {
     routeErrorHandler('index', error);
   }
@@ -48,9 +49,10 @@ export const bathingspot: AsyncRoute = async (request, response) => {
     //   console.log(request.session.name);
     //   // request.session.name = 'my session';
     // }
-    response.render('bathingspot', {
+    const data: IBathingspotProps = {
       spot: JSON.parse(result.body)[0],
-    });
+    };
+    response.render('bathingspot', data);
   } catch (error) {
     routeErrorHandler(`bathingspot/${request.params.spotId}`, error);
   }
@@ -86,22 +88,23 @@ export const question: AsyncRoute = async (request, response) => {
     .app
     .locals
     .questions
-    .filter((ele: IQuestionFile) => ele.id === parseInt(request.params.qId, 10));
-  // console.log('in route', q[0].data);
+    .filter((ele: IQuestionFile) => ele.qId === parseInt(request.params.qId, 10));
   try {
+    if (q[0].qId === undefined) {
+      throw new Error('there is no question for this route');
+    }
     let answer: IAnswerFormData | undefined;
     if (request.session !== undefined) {
-
       answer = sessionAnswerGet(parseInt(request.params.qId, 10), request.session.answers);
     }
-    response.render('question', {
-      data: q[0].data,
+    const data: IQuestion = {
+      data: (q[0].data !== undefined) ? q[0].data : [],
       lastId: request.app.locals.questions.length - 1,
       previousAnswer: answer,
-      qId: q[0].id,
+      qId: q[0].qId,
       questionId: q[0].questionId,
-    });
-    // response.send(`<h1>Hello Question ${request.params.qId}</h1>${JSON.stringify(q[0])}`);
+    };
+    response.render('question', data);
   } catch (error) {
     routeErrorHandler(`question/${request.params.qId}`, error);
 
@@ -115,7 +118,6 @@ export const question: AsyncRoute = async (request, response) => {
  */
 export const questionPostHandle: AsyncRoute = async (request, response) => {
   // console.log('POST from FORM called');
-  console.log(request.body);
   if (request.body.answer !== undefined) {
     const answerData: IAnswerFormData = JSON.parse(request.body.answer);
     if (request.session !== undefined) {
@@ -123,11 +125,24 @@ export const questionPostHandle: AsyncRoute = async (request, response) => {
     }
   }
   const targeturl = url.parse(request.body.targeturl);
-  console.log(targeturl);
   if (targeturl.host !== null) {
     response.redirect(targeturl.href!);
   } else {
     response.redirect(request.url);
+
+  }
+};
+
+export const report: AsyncRoute = async (request, response) => {
+  try {
+    const data: IReport = {
+      answers: (request.session !== undefined) ? request.session.answers : undefined,
+      questions: request.app.locals.questions,
+      title: 'Auswertung',
+    };
+    response.render('questionaire-report', data);
+  } catch (error) {
+    routeErrorHandler(`report`, error);
 
   }
 };

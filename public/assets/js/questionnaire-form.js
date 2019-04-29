@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var form = document.querySelector('form#the-form');
-  var pagiantionLinks = document.querySelectorAll('a.pagination-link, a.pagination-next, a.pagination-previous'); // logger.info('foo', 'bah', 'baz');
+  var pagiantionLinks = document.querySelectorAll('a.pagination-link, a.pagination-next, a.pagination-previous, button.questions__body-button-toreport > a'); // logger.info('foo', 'bah', 'baz');
 
   if (form !== undefined) {
     Array.from(pagiantionLinks).forEach(function (ele) {
@@ -185,7 +185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65155" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

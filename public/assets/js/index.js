@@ -8640,9 +8640,7 @@ if (!self.fetch) {
 },{}],"redux-store/lib/action-types.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.DEFAULT = 'DEFAULT';
 exports.GET_DATA = 'GET_DATA';
 exports.GET_DATA_RECEIVED = 'GET_DATA_RECEIVED';
@@ -8653,9 +8651,7 @@ exports.POST_DATA_ERROR = 'POST_DATA_ERROR';
 },{}],"redux-store/lib/action-creators.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("./action-types");
 
@@ -9833,9 +9829,7 @@ if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCr
 },{"symbol-observable":"../../../node_modules/symbol-observable/es/index.js"}],"redux-store/lib/local-storage.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 exports.loadState = function () {
   try {
@@ -9863,9 +9857,7 @@ exports.saveState = function (state) {
 },{}],"redux-store/lib/ajax-request.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 var defaultOptions = {
   method: 'GET',
   url: '',
@@ -9882,7 +9874,7 @@ var request = function request(next) {
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        var responseText;
+        var responseText = void 0;
 
         try {
           responseText = JSON.parse(xhr.responseText);
@@ -9903,7 +9895,7 @@ var request = function request(next) {
           // lands on neverland…
           return next({
             body: responseText,
-            type: "".concat(option.type, "_RECEIVED")
+            type: option.type + "_RECEIVED"
           });
         } else {
           // we count any other status then 200 as error
@@ -9915,7 +9907,7 @@ var request = function request(next) {
               message: responseText,
               status: xhr.status
             },
-            type: "".concat(option.type, "_ERROR")
+            type: option.type + "_ERROR"
           });
         }
       }
@@ -9935,7 +9927,7 @@ var request = function request(next) {
   };
 };
 
-exports.default = request;
+exports["default"] = request;
 },{}],"redux-store/lib/middleware.ts":[function(require,module,exports) {
 "use strict";
 
@@ -9945,9 +9937,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("./action-types");
 
@@ -9957,7 +9947,7 @@ var middleware = function middleware(store) {
   return function (next) {
     return function (action) {
       next(action);
-      var req = ajax_request_1.default(next);
+      var req = ajax_request_1["default"](next);
 
       switch (action.type) {
         case action_types_1.GET_DATA:
@@ -9971,7 +9961,7 @@ var middleware = function middleware(store) {
             async: true,
             body: action.body,
             method: 'POST',
-            url: "".concat(location.hostname, ":").concat("3004")
+            url: location.hostname + ":" + "3004"
           });
           break;
 
@@ -9982,19 +9972,18 @@ var middleware = function middleware(store) {
   };
 };
 
-exports.default = middleware;
+exports["default"] = middleware;
 },{"./action-types":"redux-store/lib/action-types.ts","./ajax-request":"redux-store/lib/ajax-request.ts"}],"redux-store/lib/reducers/default.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("./../action-types");
 
-var def = function def() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+var def = function def(state, action) {
+  if (state === void 0) {
+    state = 0;
+  }
 
   switch (action.type) {
     case action_types_1.DEFAULT:
@@ -10005,21 +9994,11 @@ var def = function def() {
   }
 };
 
-exports.default = def;
+exports["default"] = def;
 },{"./../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/error.ts":[function(require,module,exports) {
 "use strict";
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("../action-types");
 /**
@@ -10030,33 +10009,33 @@ var action_types_1 = require("../action-types");
  */
 
 
-var errors = function errors() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+var errors = function errors(state, action) {
+  if (state === void 0) {
+    state = [];
+  }
 
   switch (action.type) {
     case action_types_1.GET_DATA_ERROR:
     case action_types_1.POST_DATA_ERROR:
-      return [action.error].concat(_toConsumableArray(state));
+      return [action.error].concat(state);
 
     default:
       return state;
   }
 };
 
-exports.default = errors;
+exports["default"] = errors;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/get-data.ts":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("../action-types");
 
-var data = function data() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+var data = function data(state, action) {
+  if (state === void 0) {
+    state = [];
+  }
 
   switch (action.type) {
     case action_types_1.GET_DATA_RECEIVED:
@@ -10067,38 +10046,29 @@ var data = function data() {
   }
 };
 
-exports.default = data;
+exports["default"] = data;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/post-data-response.ts":[function(require,module,exports) {
 "use strict";
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var action_types_1 = require("../action-types");
 
-var responses = function responses() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+var responses = function responses(state, action) {
+  if (state === void 0) {
+    state = [];
+  }
 
   switch (action.type) {
     case action_types_1.POST_DATA_RECEIVED:
-      return [action.body].concat(_toConsumableArray(state));
+      return [action.body].concat(state);
 
     default:
       return state;
   }
 };
 
-exports.default = responses;
+exports["default"] = responses;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/root-reducer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10108,9 +10078,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var redux_1 = require("redux");
 
@@ -10123,12 +10091,12 @@ var get_data_1 = __importDefault(require("./reducers/get-data"));
 var post_data_response_1 = __importDefault(require("./reducers/post-data-response"));
 
 var reducers = redux_1.combineReducers({
-  data: get_data_1.default,
-  def: default_1.default,
-  errors: error_1.default,
-  responses: post_data_response_1.default
+  data: get_data_1["default"],
+  def: default_1["default"],
+  errors: error_1["default"],
+  responses: post_data_response_1["default"]
 });
-exports.default = reducers;
+exports["default"] = reducers;
 },{"redux":"../../../node_modules/redux/es/redux.js","./reducers/default":"redux-store/lib/reducers/default.ts","./reducers/error":"redux-store/lib/reducers/error.ts","./reducers/get-data":"redux-store/lib/reducers/get-data.ts","./reducers/post-data-response":"redux-store/lib/reducers/post-data-response.ts"}],"redux-store/store.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10138,9 +10106,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var lodash_throttle_1 = __importDefault(require("lodash.throttle"));
 
@@ -10155,11 +10121,11 @@ var root_reducer_1 = __importDefault(require("./lib/root-reducer")); // @ts-igno
 
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux_1.compose;
 var persistedState = local_storage_1.loadState();
-var store = redux_1.createStore(root_reducer_1.default, persistedState, composeEnhancers(redux_1.applyMiddleware(middleware_1.default)));
-store.subscribe(lodash_throttle_1.default(function () {
+var store = redux_1.createStore(root_reducer_1["default"], persistedState, composeEnhancers(redux_1.applyMiddleware(middleware_1["default"])));
+store.subscribe(lodash_throttle_1["default"](function () {
   local_storage_1.saveState(store.getState());
 }, 1000));
-exports.default = store;
+exports["default"] = store;
 },{"lodash.throttle":"../../../node_modules/lodash.throttle/index.js","redux":"../../../node_modules/redux/es/redux.js","./lib/local-storage":"redux-store/lib/local-storage.ts","./lib/middleware":"redux-store/lib/middleware.ts","./lib/root-reducer":"redux-store/lib/root-reducer.ts"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10169,9 +10135,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 require("babel-polyfill"); // needed for ie11 should be the first things
 
@@ -10189,11 +10153,11 @@ var store_1 = __importDefault(require("./redux-store/store")); //  ████�
 //  ╚═════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝
 
 
-var ws = new WebSocket("ws://".concat(location.hostname, ":").concat("3004"));
+var ws = new WebSocket("ws://" + location.hostname + ":" + "3004");
 
 function clickHandle(event) {
-  ws.send(JSON.stringify(store_1.default.getState()));
-  store_1.default.dispatch(action_creators_1.triggerDefault()); // tslint:disable-next-line:no-console
+  ws.send(JSON.stringify(store_1["default"].getState()));
+  store_1["default"].dispatch(action_creators_1.triggerDefault()); // tslint:disable-next-line:no-console
   // console.log(store.getState());
 
   event.preventDefault();
@@ -10252,7 +10216,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65155" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

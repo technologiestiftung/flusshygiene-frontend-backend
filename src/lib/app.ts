@@ -18,10 +18,12 @@ app.use(helmet());
 app.use(session(
   {
     name: process.env.FRONTEND_EXPRESS_SESSION_NAME || 'monky buisness',
+    resave: true,
+    saveUninitialized: false,
     secret: process.env.FRONTEND_EXPRESS_SESSION_SECRET || 'coding monkey',
 },
 ));
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());

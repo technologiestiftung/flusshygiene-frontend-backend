@@ -33,8 +33,8 @@ export const setupQuestions: () => Promise<IQuestionFile[] | undefined> = async 
         data: undefined,
         dataStr: '',
         filename: ele,
-        id: 0,
         parentFolder: dataPath,
+        qId: 0,
         questionId: '',
         weight: 0,
       };
@@ -50,7 +50,7 @@ export const setupQuestions: () => Promise<IQuestionFile[] | undefined> = async 
     let id = 1;
     for (const file of files) {
 
-      file.id = id++;
+      file.qId = id++;
 
       file.dataStr = fs.readFileSync(`${file.parentFolder}/${file.filename}`, 'utf8');
       file.data = JSON.parse(file.dataStr);

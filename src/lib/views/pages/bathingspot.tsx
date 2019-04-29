@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { RouteNames } from '../../common/enums';
-import { IBathingspot } from '../../common/interfaces';
+import { IBathingspotProps } from '../../common/interfaces';
 import { SpotBodyAddonList } from '../components/bathingspot/spot-body-addon-list';
 import { SpotBodyFigure } from '../components/bathingspot/spot-body-figure';
 import { SpotBodyLocation } from '../components/bathingspot/spot-body-location';
@@ -10,9 +10,7 @@ import { MeasurementTable } from '../components/bathingspot/spot-body-measuremen
 import { SpotHeader } from '../components/bathingspot/spot-header';
 import { Map } from '../components/map';
 import { Skeleton } from '../layouts/skeleton';
-interface IBathingspotProps {
-  spot: IBathingspot;
-}
+
 const bathingspot = (props: IBathingspotProps) => {
 
   const {
