@@ -6,10 +6,10 @@ export const Measurement = (props: IMeasurement) => {
   return (
     <div className='bathingspot__body-measurement'>
       <h3>Wasserqualität {(() => {
-      if (props.hasPrediction === true) {
-        return (<span className='asteriks'>*</span>);
-      }
-      return null;
+        if (props.hasPrediction === true) {
+          return (<span className='asteriks'>*</span>);
+        }
+        return null;
       })()}</h3>
       {(() => {
         const sortedMeasurment = props.measurements.sort(measurementSort);

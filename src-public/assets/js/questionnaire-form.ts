@@ -1,5 +1,5 @@
 const logger = {
-  info : (...args) => {
+  info: (...args: any[]) => {
     if (process.env.NODE_ENV === 'development') {
       console.info(args);
     }
@@ -14,21 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const pagiantionLinks: NodeList = document.querySelectorAll(
     'a.pagination-link, a.pagination-next, a.pagination-previous, button.questions__body-button-toreport > a',
   );
-  // logger.info('foo', 'bah', 'baz');
   if (form !== undefined) {
     Array.from(pagiantionLinks).forEach((ele: HTMLAnchorElement) => {
       ele.addEventListener('click', (_event) => {
         event.preventDefault();
-        // console.log(form['answer--1'].value);
         form.targeturl.value = ele.href;
-        // console.log(form.checkValidity());
-        // if (form.checkValidity() === true) {
-
         form.submit();
-        // } else {
-          // alert('show modal');
-        // }
-        // window.location.href = ele.href;
+
       });
     });
   }
