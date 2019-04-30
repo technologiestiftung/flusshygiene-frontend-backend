@@ -34,13 +34,13 @@ export const sessionAnswerSet = (
 type SessionAnswerGetFunc = (qId: number, answers: IAnswerFormData[]) => IAnswerFormData | undefined;
 
 /**
- * @param {number} qId The qId to get
- * @param {IAnswerFormData[]} answers The answers to filter
+ * @param qId The qId to get
+ * @param  answers The answers to filter
  * @returns {IAnswerFormData|undefined} The desired answer or undefined if it does not exist.
  */
 export const sessionAnswerGet: SessionAnswerGetFunc = (
   qId: number,
-  answers: IAnswerFormData[]|undefined,
+  answers: IAnswerFormData[] | undefined,
 ): IAnswerFormData | undefined => {
   if (answers === undefined) {
     return undefined;
@@ -48,7 +48,7 @@ export const sessionAnswerGet: SessionAnswerGetFunc = (
   const answer = answers.filter((ele) => {
     if (ele.qId === qId) {
       return true;
-   }
+    }
     return false;
   });
   if (answer.length === 0) {

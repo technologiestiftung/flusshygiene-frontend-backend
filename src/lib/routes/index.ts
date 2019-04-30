@@ -1,8 +1,17 @@
+import express = require('express');
 import got from 'got';
 import url from 'url';
-import { IAnswerFormData, IBathingspotProps, IIndex, IObject, IQuestion, IQuestionFile, IReport } from '../common/interfaces';
+import {
+  IAnswerFormData,
+  IBathingspotProps,
+  IIndex,
+  IObject,
+  IQuestion,
+  IQuestionFile,
+  IReport,
+} from '../common/interfaces';
 import { AsyncRoute } from '../common/types';
-import { apiUrlsGen } from '../common/urls/index';
+import { apiUrlsGen } from '../common/urls';
 import { sessionAnswerGet, sessionAnswerSet } from '../sessions';
 
 const apiurls = apiUrlsGen();
@@ -80,8 +89,8 @@ export const questionnaire: AsyncRoute = async (_request, response) => {
  * The questions content are loaded on startup into the app.locals.questions Array.
  * It only passes the the question defined the `:qId` paramters to the route.
  *
- * @param {e.Request} request the default express request object
- * @param {e.Response} response  the default express response object
+ * @param request the default express request object
+ * @param response  the default express response object
  */
 export const question: AsyncRoute = async (request, response) => {
   const q: IQuestionFile[] = request
@@ -113,8 +122,8 @@ export const question: AsyncRoute = async (request, response) => {
 
 /**
  * This async route takes care of recieving POST requests on the questionnaire route
- * @param {e.Request} request
- * @param {e.Response} response
+ * @param  request
+ * @param  response
  */
 export const questionPostHandle: AsyncRoute = async (request, response) => {
   // console.log('POST from FORM called');
@@ -146,3 +155,12 @@ export const report: AsyncRoute = async (request, response) => {
 
   }
 };
+
+export const user = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const { _raw, _json, ...userProfile } = req.user;
+  res.send({
+    title: 'Profile page',
+    userProfile: JSON.stringify(userProfile, null, 2),
+  });
+};
+

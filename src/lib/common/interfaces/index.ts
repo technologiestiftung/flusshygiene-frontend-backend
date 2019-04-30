@@ -249,6 +249,7 @@ export interface IButtonProps {
  * @property {boolean} dogban
  */
 export interface ISpotBodyAddonList {
+  [key: string]: any;
   cyanoPossible: boolean;
   lifeguard: boolean;
   disabilityAccess: boolean;
