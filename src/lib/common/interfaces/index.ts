@@ -158,6 +158,7 @@ export interface IUserProfile {
 export interface IUserProps extends IViewProps {
   title: string;
   userProfile: IUserProfile;
+  spots: IObject[];
 }
 export interface IBathingspot {
   id: number;

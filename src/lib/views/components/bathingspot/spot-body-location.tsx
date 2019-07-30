@@ -9,7 +9,7 @@ export const SpotBodyLocation = (props: ISpotBodyLocation) => {
           <p>{props.street}</p>
           <p>{props.postalCode} {props.city}</p>
           {(() => {
-            if (props.website.length > 0) {
+            if (props.website !== null && props.website.length > 0) {
               // const reg = /^(http|https?)\:\/\//g;
               return (<p>
                 <a href={`${props.website}`}>{props.website.replace(/^https?\:\/\//g, '').replace(/\/$/, '')}</a>
