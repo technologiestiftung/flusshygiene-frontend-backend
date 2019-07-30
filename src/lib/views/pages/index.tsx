@@ -42,6 +42,7 @@ const index = (props: IIndexProps) => (
       <h1>Übersicht Badegewässer</h1>
       <p>Bei den mit <span className='asteriks'>*</span> ausgezeichneten
     Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.</p>
+    {/* {console.log(props.spots)} */}
       <ul className='index__bathingspot-list'>
         {
           props.spots.map((obj, i) => {

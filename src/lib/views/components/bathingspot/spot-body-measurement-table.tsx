@@ -22,7 +22,13 @@ export const MeasurementTable = (props: IMeasurementable) => {
     />}
       {<MeasurementTableRow
       rowKey='Wassertemperatur'
-      rowValue={`${sortedMeasurement[0].tempTxt.replace('.', ',') } °C`}
+      rowValue={(()=>{
+        if(sortedMeasurement[0].tempTxt !== null){
+          return `${sortedMeasurement[0].tempTxt.replace('.', ',') } °C`;
+        }else{
+          return '';
+        }
+      })()}
     />}
       {<MeasurementTableRow
       rowKey='Coliforme Bakterien'

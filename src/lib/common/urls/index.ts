@@ -11,7 +11,7 @@ export const apiUrlsGen: TApiUrls = () => {
     baseUrl = HOST;
 
   }else{
-    baseUrl = process.env.NODE_ENV === 'development' ? `${HOST}:${PORT}` : HOST ;
+    baseUrl = process.env.NODE_ENV === 'development' ? `${HOST}` : HOST ;
 
   }
   const apiMount = APIMountPoints.v1;
