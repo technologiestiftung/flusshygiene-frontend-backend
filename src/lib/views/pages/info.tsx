@@ -1,15 +1,16 @@
 import React from 'react';
-import { IObject } from '../../common/interfaces';
+import { IViewProps } from '../../common/interfaces';
 import { Skeleton } from '../layouts/skeleton';
 
 // interface IInfo {
 //   [key:string]: any;
 // }
-const info = (_props: IObject) => {
+const info = (props: IViewProps) => {
 
   return (
     <Skeleton
       title={'Vorhersagemodell'}
+      isLoggedin={props.isLoggedin}
     >
       <div className='info'>
         <h1>Beschreibung Vorhersagemodell</h1>

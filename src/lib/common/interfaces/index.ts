@@ -1,4 +1,5 @@
 import { ButtonPropsType } from '../enums';
+import { IViewProps } from './index';
 /**
  * @property {string} apiMount The mount point for the postgres api e.g. /api/v1/
  * @property {string} apiPath The path to call e.g. bathingspot/ID
@@ -28,6 +29,23 @@ export interface IAnswerFormData {
  */
 export interface IObject {
   [key: string]: any;
+}
+
+//  █████╗ ██╗   ██╗████████╗██╗  ██╗
+// ██╔══██╗██║   ██║╚══██╔══╝██║  ██║
+// ███████║██║   ██║   ██║   ███████║
+// ██╔══██║██║   ██║   ██║   ██╔══██║
+// ██║  ██║╚██████╔╝   ██║   ██║  ██║
+// ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+
+
+export interface IDiskToken {
+  access_token?: string;
+  token_type?: string;
+  issance?: number;
+  expires_in?: number;
+  scope?: string;
+  filePath?: string;
 }
 
 // ███████╗███████╗████████╗██╗   ██╗██████╗
@@ -63,16 +81,22 @@ export interface IQuestionFile {
 //  ╚████╔╝ ██║███████╗╚███╔███╔╝███████║
 //   ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝
 
+export interface IViewProps {
+  isLoggedin: boolean;
+}
 /**
  * interface for the index page
  * @property {string} title optional
  * @property {IObject} spots an array of bathingspots comming from the api
  */
-export interface IIndex {
+export interface IIndexProps extends IViewProps {
   title?: string;
   spots: IObject[];
   url: string;
 }
+
+// export interface IHeaderProps extends IViewProps {
+// }
 
 /**
  * @property {string} str This is a generic item dev thing
@@ -106,19 +130,35 @@ export interface IHead {
 }
 
 /**
- *
- *   @property {string} [title]
- *   @property {React.ReactNode} [children]
- *   @property {React.ReactNode} [styles]
- *   @property {React.ReactNode} [scripts]
+ * @extends IViewProps
+ * @property {string} [title]
+ * @property {React.ReactNode} [children]
+ * @property {React.ReactNode} [styles]
+ * @property {React.ReactNode} [scripts]
  */
-export interface ISkeleton {
+export interface ISkeleton extends IViewProps {
   title?: string;
   children?: React.ReactNode;
   styles?: React.ReactNode;
   scripts?: React.ReactNode;
 }
 
+export interface IUserEmail {
+  value: string;
+}
+export interface IUserProfile {
+  displayName: string;
+  id: string;
+  user_id: string;
+  name: IObject;
+  emails: IUserEmail[];
+  picture: string;
+  nickname: string;
+}
+export interface IUserProps extends IViewProps {
+  title: string;
+  userProfile: IUserProfile;
+}
 export interface IBathingspot {
   id: number;
   createdAt: Date;
@@ -176,7 +216,7 @@ export interface IBathingspot {
 /**
  * @property {IBathingspot} spot
  */
-export interface IBathingspotProps {
+export interface IBathingspotProps extends IViewProps {
   spot: IBathingspot;
 }
 /**
@@ -184,7 +224,7 @@ export interface IBathingspotProps {
  * @property {IQuestionFile[]} questions
  * @property {IAnswerFormData[] | undefined} answers
  */
-export interface IReport {
+export interface IReport extends IViewProps {
   title: string;
   questions: IQuestionFile[];
   answers: IAnswerFormData[] | undefined;
@@ -209,7 +249,7 @@ export interface IAnswer {
  * @property {number} lastId
  * @property {string} questionId
  */
-export interface IQuestion {
+export interface IQuestion extends IViewProps {
   previousAnswer: IAnswerFormData | undefined;
   data: IObject;
   qId: number;
@@ -352,3 +392,5 @@ export interface ISpotHeader {
   district: string;
   water?: string;
 }
+
+

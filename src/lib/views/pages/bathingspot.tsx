@@ -42,7 +42,9 @@ const bathingspot = (props: IBathingspotProps) => {
   } = props.spot;
 
   return (
-    <Skeleton title={nameLong} >
+    <Skeleton title={nameLong}
+    isLoggedin={props.isLoggedin}
+    >
       <Map str='Maps' />
       <SpotHeader nameLong={nameLong} water={water} district={district} />
       <div className='bathingspot__body section'>

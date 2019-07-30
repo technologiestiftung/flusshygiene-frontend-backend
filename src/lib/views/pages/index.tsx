@@ -7,7 +7,7 @@
 
 import React from 'react';
 
-import { IIndex } from '../../common/interfaces';
+import { IIndexProps } from '../../common/interfaces';
 import { Card } from '../components/bathingspot/card';
 import { Map } from '../components/map';
 import { Skeleton } from '../layouts/skeleton';
@@ -30,9 +30,10 @@ const Scripts = () => (
 //     count: 0,
 //   };
 
-const index = (props: IIndex) => (
+const index = (props: IIndexProps) => (
   <Skeleton
     title={props.title}
+    isLoggedin={props.isLoggedin}
     styles={<Styles />}
     scripts={<Scripts />}>
 

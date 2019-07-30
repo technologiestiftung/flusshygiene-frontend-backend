@@ -8,7 +8,9 @@ import { Skeleton } from '../layouts/skeleton';
 const report = (props: IReport) => {
   return (
     <Skeleton
-      title={props.title}>
+      title={props.title}
+      isLoggedin={props.isLoggedin}
+      >
       <ul className='report__list'>
         {props.questions.map((ele: IQuestionFile, i: number) => {
           return (<li key={i} className='report__list-item'>
