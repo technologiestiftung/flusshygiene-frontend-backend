@@ -16,7 +16,10 @@ interface IQuestionnaire {
 }
 
 const questionnaire = (props: IQuestionnaire) => (
-  <Skeleton title={props.title}>
+  <Skeleton
+  title={props.title}
+  isLoggedin={props.isLoggedin}
+  >
     <QuestIntro />
     <Button
       additionalClassNames={'is-primary'}

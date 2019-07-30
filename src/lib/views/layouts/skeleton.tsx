@@ -10,7 +10,9 @@ export const Skeleton = (props: ISkeleton) => (
     title={props.title}
     />
   <body>
-    <Header />
+    <Header
+      isLoggedin={props.isLoggedin}
+    />
     <main  className='section'>{props.children}</main>
     {props.styles}
     <script

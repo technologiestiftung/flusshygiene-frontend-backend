@@ -7159,67 +7159,100 @@ span.asteriks {
 .questions__body .answer__add--0 {
   display: none; }
 
-.questions__body #answer--0:checked ~ .answer__add--0 {
+.questions__body #answer--0::hover ~ .answer__add--0 {
+  display: flex; }
+
+.questions__body #answer--0::checked ~ .answer__add--0 {
   display: flex; }
 
 .questions__body .answer__add--1 {
   display: none; }
 
-.questions__body #answer--1:checked ~ .answer__add--1 {
+.questions__body #answer--1::hover ~ .answer__add--1 {
+  display: flex; }
+
+.questions__body #answer--1::checked ~ .answer__add--1 {
   display: flex; }
 
 .questions__body .answer__add--2 {
   display: none; }
 
-.questions__body #answer--2:checked ~ .answer__add--2 {
+.questions__body #answer--2::hover ~ .answer__add--2 {
+  display: flex; }
+
+.questions__body #answer--2::checked ~ .answer__add--2 {
   display: flex; }
 
 .questions__body .answer__add--3 {
   display: none; }
 
-.questions__body #answer--3:checked ~ .answer__add--3 {
+.questions__body #answer--3::hover ~ .answer__add--3 {
+  display: flex; }
+
+.questions__body #answer--3::checked ~ .answer__add--3 {
   display: flex; }
 
 .questions__body .answer__add--4 {
   display: none; }
 
-.questions__body #answer--4:checked ~ .answer__add--4 {
+.questions__body #answer--4::hover ~ .answer__add--4 {
+  display: flex; }
+
+.questions__body #answer--4::checked ~ .answer__add--4 {
   display: flex; }
 
 .questions__body .answer__add--5 {
   display: none; }
 
-.questions__body #answer--5:checked ~ .answer__add--5 {
+.questions__body #answer--5::hover ~ .answer__add--5 {
+  display: flex; }
+
+.questions__body #answer--5::checked ~ .answer__add--5 {
   display: flex; }
 
 .questions__body .answer__add--6 {
   display: none; }
 
-.questions__body #answer--6:checked ~ .answer__add--6 {
+.questions__body #answer--6::hover ~ .answer__add--6 {
+  display: flex; }
+
+.questions__body #answer--6::checked ~ .answer__add--6 {
   display: flex; }
 
 .questions__body .answer__add--7 {
   display: none; }
 
-.questions__body #answer--7:checked ~ .answer__add--7 {
+.questions__body #answer--7::hover ~ .answer__add--7 {
+  display: flex; }
+
+.questions__body #answer--7::checked ~ .answer__add--7 {
   display: flex; }
 
 .questions__body .answer__add--8 {
   display: none; }
 
-.questions__body #answer--8:checked ~ .answer__add--8 {
+.questions__body #answer--8::hover ~ .answer__add--8 {
+  display: flex; }
+
+.questions__body #answer--8::checked ~ .answer__add--8 {
   display: flex; }
 
 .questions__body .answer__add--9 {
   display: none; }
 
-.questions__body #answer--9:checked ~ .answer__add--9 {
+.questions__body #answer--9::hover ~ .answer__add--9 {
+  display: flex; }
+
+.questions__body #answer--9::checked ~ .answer__add--9 {
   display: flex; }
 
 .questions__body .answer__add--10 {
   display: none; }
 
-.questions__body #answer--10:checked ~ .answer__add--10 {
+.questions__body #answer--10::hover ~ .answer__add--10 {
+  display: flex; }
+
+.questions__body #answer--10::checked ~ .answer__add--10 {
   display: flex; }
 
 .icon__traffic-light-container {

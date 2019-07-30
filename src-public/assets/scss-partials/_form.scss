@@ -24,7 +24,12 @@ form {
     display: none;
   }
 
-  #answer--#{$i}:checked~.answer__add--#{$i} {
+  #answer--#{$i}::hover~.answer__add--#{$i} {
     display: flex;
   }
+
+  #answer--#{$i}::checked~.answer__add--#{$i} {
+    display: flex;
+  }
+
 }

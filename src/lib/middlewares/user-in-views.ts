@@ -1,6 +1,5 @@
-import express from 'express';
 
-export const userInViews = () => (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  res.locals.user = req.user;
+export const userInViews = () => (req: any, res: any, next: any) => {
+  res.app.locals.user = req.user;
   next();
 };

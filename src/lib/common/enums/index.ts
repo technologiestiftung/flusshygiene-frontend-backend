@@ -32,6 +32,11 @@ export enum RouteNames {
   info = 'info',
   questionnaire = 'standortbewertung',
   report = 'standortbewertung/auswertung',
+  login = 'login',
+  logout = 'logout',
+  user = 'user',
+  passwordreset = 'user/password-reset',
+  callback = 'callback',
 }
 
 export enum RouteParams {
@@ -54,4 +59,13 @@ export enum ButtonPropsType {
   button = 'button',
   submit = 'submit',
   reset = 'reset',
+}
+
+export enum EnvSuffixes {
+  dev = 'DEV',
+  prod = 'PROD'
+}
+
+export enum APIMountPoints {
+  v1 = 'api/v1'
 }

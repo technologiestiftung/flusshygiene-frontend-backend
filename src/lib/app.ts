@@ -21,7 +21,7 @@ import { setupQuestions } from './setup';
 // console.log(process.env.AUTH0_DOMAIN);
 const strategy = new Auth0Strategy(
   {
-    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback',
+    callbackURL: process.env.AUTH0_CALLBACK_URL_DEV!,
     clientID: process.env.AUTH0_CLIENT_ID!,
     clientSecret: process.env.AUTH0_CLIENT_SECRET!,
     domain: process.env.AUTH0_DOMAIN!,

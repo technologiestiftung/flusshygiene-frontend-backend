@@ -4,6 +4,7 @@ import querystring from 'querystring';
 import util from 'util';
 import { RouteNames, RouteParams } from './common/enums/index';
 const router = Router();
+import got = require('got');
 import { secured } from './middlewares/secured';
 import {
   bathingspot,
@@ -13,8 +14,9 @@ import {
   questionnaire,
   questionPostHandle,
   report,
-  user,
-} from './routes/index';
+  userRoute,
+} from './routes';
+import { } from './routes/route-bathingspot';
 
 router.get(`/${RouteNames.index}`, index);
 router.get(`/${RouteNames.bathingspot}/${RouteParams.bathingspotId}`, bathingspot);
@@ -72,6 +74,28 @@ router.get('/logout', (req, res) => {
   res.redirect(logoutURL.href);
 });
 
-router.get('/user', secured(), user);
+router.get('/user', secured(), userRoute);
+
+router.get('/user/password-reset', secured(), async (request, response) => {
+  try {
+    const user = request.user;
+    const resetUrl = new URL(
+      util.format('https://%s/dbconnections/change_password', process.env.AUTH0_DOMAIN),
+    );
+    const body = {
+      client_id: process.env.AUTH0_CLIENT_ID,
+      connection: 'Username-Password-Authentication',
+      email: user.email,
+    };
+
+    const res = await got.post(resetUrl.href, {
+      body: JSON.stringify(body),
+    });
+    console.log(res);
+    response.redirect('/user');
+  } catch (error) {
+    throw error;
+  }
+});
 
 export default router;

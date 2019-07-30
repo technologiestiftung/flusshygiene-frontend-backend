@@ -54,6 +54,7 @@ const questionnaire = (props: IQuestion) => {
 
     <Skeleton
       title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}
+      isLoggedin={props.isLoggedin}
       scripts={<FormScript />}
     >
       <div className='questions__body section'>
@@ -91,21 +92,20 @@ const questionnaire = (props: IQuestion) => {
               {data[1][4]}
             </p>
           </div>
-          {/* <div className='column'>
-            {(() => {
-              const defaultClassName = 'questions__body-question-tlight';
-              if (data[1][9] === TrafficLightColorNames.green) {
-                return (<div className={`${defaultClassName}--green`}>{data[1][9]}</div>);
-              } else if (data[1][9] === TrafficLightColorNames.orange) {
-                return (<div className={`${defaultClassName}--orange`}>{data[1][9]}</div>);
-              } else if (data[1][9] === TrafficLightColorNames.red) {
-                return (<div className={`${defaultClassName}--red`}>{data[1][9]}</div>);
-              } else {
-                return (<div className={`${defaultClassName}`}>{data[1][9]}</div>);
-              }
-            })()
-            }
-          </div> */}
+          <div className='columns'>
+          <div className='column'>
+            <div className='message  is-info is-small'>
+              {/* <div className='message-header'>
+                <p>Zusatz-Informationen zur Frage</p>
+              </div> */}
+              <div className='message-body'>
+                <p className='questions__body-additional-info-question'>
+                  {data[1][5]}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
         <hr />
         <form id='the-form' method='post'
@@ -191,20 +191,6 @@ const questionnaire = (props: IQuestion) => {
             );
           })}
         </div> */}
-        <div className='columns'>
-          <div className='column'>
-            <div className='message  is-info is-small'>
-              {/* <div className='message-header'>
-                <p>Zusatz-Informationen zur Frage</p>
-              </div> */}
-              <div className='message-body'>
-                <p className='questions__body-additional-info-question'>
-                  {data[1][5]}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       {/* <script
         dangerouslySetInnerHTML={{
