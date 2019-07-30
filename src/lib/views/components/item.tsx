@@ -1,7 +1,6 @@
 import React from 'react';
-interface IItem {
-  str: string;
-}
+import { IItem } from '../../common/interfaces';
+
 export const Item = (props: IItem) => (
   <div>
     <p>{props.str}</p>

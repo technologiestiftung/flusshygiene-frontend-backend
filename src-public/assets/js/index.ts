@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
    // tslint:disable-next-line:no-console
    // console.log('embedded script frontend in index view bunded with parcel and reload foo');
 
-   const button = document.querySelector('.button');
-   if (button !== null) {
-      button.addEventListener('click', clickHandle);
-   }
+  //  const button = document.querySelector('.button');
+  //  if (button !== null) {
+  //     button.addEventListener('click', clickHandle);
+  //  }
    // tslint:disable-next-line:no-console
    if (ws !== null) {
       // console.log(ws);
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ws.onmessage = (message) => {
          // tslint:disable-next-line:no-console
          console.log(message);
-         const target = document.querySelector('.message');
+         const target = document.querySelector('.message-foo');
          if ( target !== null) {
             target.innerHTML = message.data;
          }

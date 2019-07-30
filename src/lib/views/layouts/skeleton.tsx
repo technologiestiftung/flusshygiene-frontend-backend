@@ -1,13 +1,8 @@
 import React from 'react';
+import { ISkeleton } from '../../common/interfaces';
 import {Footer} from '../components/footer';
 import {Head} from '../components/head';
 import {Header} from '../components/header';
-interface ISkeleton {
-  title?: string;
-  children?: React.ReactNode;
-  styles?: React.ReactNode;
-  scripts?: React.ReactNode;
-}
 
 export const Skeleton = (props: ISkeleton) => (
   <html lang='de'>
@@ -16,7 +11,7 @@ export const Skeleton = (props: ISkeleton) => (
     />
   <body>
     <Header />
-    <main>{props.children}</main>
+    <main  className='section'>{props.children}</main>
     {props.styles}
     <script
       dangerouslySetInnerHTML={{

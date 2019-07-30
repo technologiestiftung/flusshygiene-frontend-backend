@@ -6,4 +6,9 @@ module.exports = {
   "plugins": [
     "stylelint-scss",
   ],
+  "rules": {
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["function", "if", "each", "include", "mixin", "for"]
+    }]
+  }
 };
