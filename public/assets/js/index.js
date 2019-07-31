@@ -8640,7 +8640,9 @@ if (!self.fetch) {
 },{}],"redux-store/lib/action-types.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.DEFAULT = 'DEFAULT';
 exports.GET_DATA = 'GET_DATA';
 exports.GET_DATA_RECEIVED = 'GET_DATA_RECEIVED';
@@ -8651,7 +8653,9 @@ exports.POST_DATA_ERROR = 'POST_DATA_ERROR';
 },{}],"redux-store/lib/action-creators.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("./action-types");
 
@@ -9829,7 +9833,9 @@ if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCr
 },{"symbol-observable":"../../../node_modules/symbol-observable/es/index.js"}],"redux-store/lib/local-storage.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 exports.loadState = function () {
   try {
@@ -9857,7 +9863,9 @@ exports.saveState = function (state) {
 },{}],"redux-store/lib/ajax-request.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var defaultOptions = {
   method: 'GET',
   url: '',
@@ -9927,7 +9935,7 @@ var request = function request(next) {
   };
 };
 
-exports["default"] = request;
+exports.default = request;
 },{}],"redux-store/lib/middleware.ts":[function(require,module,exports) {
 "use strict";
 
@@ -9937,7 +9945,9 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("./action-types");
 
@@ -9947,7 +9957,7 @@ var middleware = function middleware(store) {
   return function (next) {
     return function (action) {
       next(action);
-      var req = ajax_request_1["default"](next);
+      var req = ajax_request_1.default(next);
 
       switch (action.type) {
         case action_types_1.GET_DATA:
@@ -9972,11 +9982,13 @@ var middleware = function middleware(store) {
   };
 };
 
-exports["default"] = middleware;
+exports.default = middleware;
 },{"./action-types":"redux-store/lib/action-types.ts","./ajax-request":"redux-store/lib/ajax-request.ts"}],"redux-store/lib/reducers/default.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("./../action-types");
 
@@ -9994,11 +10006,13 @@ var def = function def(state, action) {
   }
 };
 
-exports["default"] = def;
+exports.default = def;
 },{"./../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/error.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("../action-types");
 /**
@@ -10024,11 +10038,13 @@ var errors = function errors(state, action) {
   }
 };
 
-exports["default"] = errors;
+exports.default = errors;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/get-data.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("../action-types");
 
@@ -10046,11 +10062,13 @@ var data = function data(state, action) {
   }
 };
 
-exports["default"] = data;
+exports.default = data;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/reducers/post-data-response.ts":[function(require,module,exports) {
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var action_types_1 = require("../action-types");
 
@@ -10068,7 +10086,7 @@ var responses = function responses(state, action) {
   }
 };
 
-exports["default"] = responses;
+exports.default = responses;
 },{"../action-types":"redux-store/lib/action-types.ts"}],"redux-store/lib/root-reducer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10078,7 +10096,9 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var redux_1 = require("redux");
 
@@ -10091,12 +10111,12 @@ var get_data_1 = __importDefault(require("./reducers/get-data"));
 var post_data_response_1 = __importDefault(require("./reducers/post-data-response"));
 
 var reducers = redux_1.combineReducers({
-  data: get_data_1["default"],
-  def: default_1["default"],
-  errors: error_1["default"],
-  responses: post_data_response_1["default"]
+  data: get_data_1.default,
+  def: default_1.default,
+  errors: error_1.default,
+  responses: post_data_response_1.default
 });
-exports["default"] = reducers;
+exports.default = reducers;
 },{"redux":"../../../node_modules/redux/es/redux.js","./reducers/default":"redux-store/lib/reducers/default.ts","./reducers/error":"redux-store/lib/reducers/error.ts","./reducers/get-data":"redux-store/lib/reducers/get-data.ts","./reducers/post-data-response":"redux-store/lib/reducers/post-data-response.ts"}],"redux-store/store.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10106,7 +10126,9 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var lodash_throttle_1 = __importDefault(require("lodash.throttle"));
 
@@ -10121,11 +10143,11 @@ var root_reducer_1 = __importDefault(require("./lib/root-reducer")); // @ts-igno
 
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux_1.compose;
 var persistedState = local_storage_1.loadState();
-var store = redux_1.createStore(root_reducer_1["default"], persistedState, composeEnhancers(redux_1.applyMiddleware(middleware_1["default"])));
-store.subscribe(lodash_throttle_1["default"](function () {
+var store = redux_1.createStore(root_reducer_1.default, persistedState, composeEnhancers(redux_1.applyMiddleware(middleware_1.default)));
+store.subscribe(lodash_throttle_1.default(function () {
   local_storage_1.saveState(store.getState());
 }, 1000));
-exports["default"] = store;
+exports.default = store;
 },{"lodash.throttle":"../../../node_modules/lodash.throttle/index.js","redux":"../../../node_modules/redux/es/redux.js","./lib/local-storage":"redux-store/lib/local-storage.ts","./lib/middleware":"redux-store/lib/middleware.ts","./lib/root-reducer":"redux-store/lib/root-reducer.ts"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -10135,7 +10157,9 @@ var __importDefault = this && this.__importDefault || function (mod) {
   };
 };
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 require("babel-polyfill"); // needed for ie11 should be the first things
 
@@ -10156,8 +10180,8 @@ var store_1 = __importDefault(require("./redux-store/store")); //  ████�
 var ws = new WebSocket("ws://" + location.hostname + ":" + "3004");
 
 function clickHandle(event) {
-  ws.send(JSON.stringify(store_1["default"].getState()));
-  store_1["default"].dispatch(action_creators_1.triggerDefault()); // tslint:disable-next-line:no-console
+  ws.send(JSON.stringify(store_1.default.getState()));
+  store_1.default.dispatch(action_creators_1.triggerDefault()); // tslint:disable-next-line:no-console
   // console.log(store.getState());
 
   event.preventDefault();
@@ -10216,7 +10240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52226" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51686" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,8 +1,9 @@
 {
   "extends": "../../../tsconfig.json",
+  "allowUmdGlobalAccess": true,
   "compilerOptions": {
     "lib": ["dom","es2018"],
-    "target": "es3"
+    "target": "es5"
 
   }
 }
