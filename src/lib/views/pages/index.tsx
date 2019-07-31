@@ -15,12 +15,15 @@ import { Skeleton } from '../layouts/skeleton';
 const Styles = () => (
   <React.Fragment>
     <link rel='stylesheet' type='text/css' href='assets/css/extra.css' />
+    <link rel='stylesheet' type='text/css' href='assets/css/map.css' />
   </React.Fragment>
 );
 
 const Scripts = () => (
   <React.Fragment>
     <script src='assets/js/extra.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.2.0-beta.1/mapbox-gl.js'></script>
+    <script src='assets/js/map.js'></script>
   </React.Fragment>
 );
 // this is only for initial state.
@@ -36,7 +39,16 @@ const index = (props: IIndexProps) => (
     isLoggedin={props.isLoggedin}
     styles={<Styles />}
     scripts={<Scripts />}>
-
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+        window.mapData = ${JSON.stringify(props.spots)};
+        // document.addEventListener('DOMContentLoaded',function() {
+        //   console.log('index view');
+        // });
+        `,
+      }}
+    />
     <Map str={'This is the map component'} />
     <div className='index section'>
       <h1>Übersicht Badegewässer</h1>

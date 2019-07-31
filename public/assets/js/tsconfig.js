@@ -120,9 +120,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"tsconfig.json":[function(require,module,exports) {
 module.exports = {
   "extends": "../../../tsconfig.json",
+  "allowUmdGlobalAccess": true,
   "compilerOptions": {
     "lib": ["dom", "es2018"],
-    "target": "es3"
+    "target": "es5"
   }
 };
 },{}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -153,7 +154,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52226" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51686" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
