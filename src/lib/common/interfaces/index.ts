@@ -1,5 +1,6 @@
 import { ButtonPropsType } from '../enums';
 import { IViewProps } from './index';
+import { OutgoingHttpHeaders } from 'http';
 /**
  * @property {string} apiMount The mount point for the postgres api e.g. /api/v1/
  * @property {string} apiPath The path to call e.g. bathingspot/ID
@@ -39,6 +40,32 @@ export interface IObject {
 // ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝
 
 
+export interface IToken {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+}
+
+export interface ITokenRetrieveOptions {
+  tokenPath: string;
+  optsGetToken: ITokenRequestOpts;
+}
+/**
+ * @todo Fix the interface
+ */
+export interface ITokenRequestOpts {
+  url: string;
+  body: string;
+  headers: IObject;
+}
+
+export interface ITokenTestRequestOpts {
+  url: string;
+  headers: ITokenRequestHeaders
+}
+export interface ITokenRequestHeaders extends OutgoingHttpHeaders {
+  authorization: string;
+}
 export interface IDiskToken {
   access_token?: string;
   token_type?: string;

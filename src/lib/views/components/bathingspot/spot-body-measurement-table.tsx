@@ -1,6 +1,6 @@
 import React from 'react';
 import { IMeasurementable } from '../../../common/interfaces';
-import { measurementSort } from '../../../common/utils';
+import { measurementSort } from '../../../utils';
 import {MeasurementTableRow} from './spot-body-measurement-table-row';
 
 export const MeasurementTable = (props: IMeasurementable) => {

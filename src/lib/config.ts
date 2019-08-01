@@ -1,4 +1,4 @@
-import { EnvSuffixes, APIMountPoints } from './common/enums/index';
+import { EnvSuffixes, APIMountPoints } from './common/enums';
 // should read all the possible configs and export them
 // add additional logic for getting setup right between
 // 1. local machine cms with local api
@@ -17,3 +17,4 @@ export const ENV_SUFFIX = process.env.NODE_ENV === 'development' ? EnvSuffixes.d
 export const API_HOST = process.env[`POSTGRES_EXPRESS_API_HOST_${ENV_SUFFIX}`];
 export const API_MOUNT = APIMountPoints.v1;
 
+export const TOKEN_CRON_EXPRESSION = '0 0 12 * * 1';
