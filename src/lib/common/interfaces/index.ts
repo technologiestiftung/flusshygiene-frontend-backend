@@ -1,3 +1,4 @@
+import { isUserLoggedIn } from './../routes-commons';
 import { ButtonPropsType } from '../enums';
 import { IViewProps } from './index';
 import { OutgoingHttpHeaders } from 'http';
@@ -145,6 +146,7 @@ export interface ISpotCard {
   id: number;
   image: string;
   hasPrediction: boolean;
+  isUserLoggedIn?: boolean;
 
 }
 

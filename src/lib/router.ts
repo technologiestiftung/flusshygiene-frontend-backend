@@ -8,6 +8,7 @@ import got = require('got');
 import { secured } from './middlewares/secured';
 import {
   bathingspot,
+  bathingspotEditor,
   index,
   info,
   question,
@@ -25,6 +26,7 @@ router.get(`/${RouteNames.questionnaire}`, questionnaire);
 router.get(`/${RouteNames.questionnaire}/${RouteParams.questionId}`, question);
 router.post(`/${RouteNames.questionnaire}/${RouteParams.questionId}`, questionPostHandle);
 router.get(`/${RouteNames.report}`, report);
+router.get(`/${RouteNames.bathingspot}/${RouteParams.bathingspotId}/${RouteNames.editor}`, bathingspotEditor)
 
 // see https://auth0.com/docs/quickstart/webapp/nodejs
 // Perform the login, after login Auth0 will redirect to callback

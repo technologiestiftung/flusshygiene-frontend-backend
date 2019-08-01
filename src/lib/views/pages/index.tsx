@@ -64,6 +64,7 @@ const index = (props: IIndexProps) => (
               id={obj.id}
               image={obj.image}
               hasPrediction={obj.hasPrediction}
+              isUserLoggedIn={props.isLoggedin}
               key={i} />;
           })
         }

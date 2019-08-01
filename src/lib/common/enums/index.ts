@@ -1,3 +1,4 @@
+import { bathingspot } from './../../routes/route-bathingspot';
 export enum ApiURLS {
   getBathingspots = 'bathingspots',
 }
@@ -28,6 +29,7 @@ export const WaterqualityStateText = {
  */
 export enum RouteNames {
   bathingspot = 'badestellen',
+  editor = 'bearbeiten',
   index = '',
   info = 'info',
   questionnaire = 'standortbewertung',

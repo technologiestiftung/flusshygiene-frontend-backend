@@ -7321,6 +7321,8 @@ ul.index__bathingspot-list {
         padding-left: 1em; }
     ul.index__bathingspot-list li.index__bathingspot-list-item:nth-child(odd) {
       background-color: rgba(0, 0, 0, 0.05); }
+    ul.index__bathingspot-list li.index__bathingspot-list-item a.index__bathingspot-list-item-button {
+      display: inline; }
 
 .bathingspot__body-addon ul {
   list-style: none; }

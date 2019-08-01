@@ -3,9 +3,13 @@ import { RouteNames } from '../../../common/enums';
 import { ISpotCard } from '../../../common/interfaces';
 
 export const Card = (props: ISpotCard) => (
-  <li className='index__bathingspot-list-item'>
-    <a href={`/${RouteNames.bathingspot}/${props.id}`}>
-      <img src='' alt='' className='spot-image'/>
+  <li
+  data-spot-id={props.id}
+  id={props.id.toString()}
+  className='index__bathingspot-list-item'
+  >
+    <div>
+      <img src='' alt='' className='spot-image' />
       <img src='' alt='' className='state-image' />
       <span className='spot-title'>{props.title}</span>
       {(() => {
@@ -16,8 +20,8 @@ export const Card = (props: ISpotCard) => (
       })()}
       {(() => {
         if (props.hasOwnProperty('water') === true) {
-          if(props.water !== null){
-            if(props.water.length >= 0 && props.water !== props.title){
+          if (props.water !== null) {
+            if (props.water.length >= 0 && props.water !== props.title) {
               return <span className='spot-water'>{props.water}</span>;
             }
           }
@@ -25,6 +29,12 @@ export const Card = (props: ISpotCard) => (
         return null;
       })()
       }
-    </a>
+      <a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}`}>Detail</a>
+      {(() => {
+        if (props.isUserLoggedIn !== undefined && props.isUserLoggedIn === true) {
+          return (<a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}/${RouteNames.editor}`}>Edit</a>)
+        }
+      })()}
+    </div>
   </li>
 );

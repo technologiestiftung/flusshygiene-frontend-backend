@@ -32,6 +32,8 @@ const job = new CronJob(TOKEN_CRON_EXPRESSION, async () => {
 }, true);
 job.start();
 
+console.log(`Next token update is scheduled for ${job.nextDate()}`);
+
 
 const ENV_SUFFIX = process.env.NODE_ENV === 'production' ? 'PROD' : 'DEV';
 const PORT = process.env[`FRONTEND_EXPRESS_PORT_${ENV_SUFFIX}`] || 3004;
