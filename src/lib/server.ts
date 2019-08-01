@@ -7,9 +7,17 @@ import http from 'http';
 import app from './app';
 import { auth } from './auth';
 import { TOKEN_CRON_EXPRESSION } from './config';
+import { startup } from './utils';
 // import {WS} from './websocket';
 const CronJob = cron.CronJob;
 // const cronExpression = '0 0 12 * * 1';
+startup().then((token) => {
+  app.locals.token = token;
+}).catch(err => {
+  throw err;
+}).finally(()=>{
+  console.log('startup done');
+})
 const job = new CronJob(TOKEN_CRON_EXPRESSION, async () => {
   try {
     const token = await auth();
@@ -17,14 +25,14 @@ const job = new CronJob(TOKEN_CRON_EXPRESSION, async () => {
   } catch (error) {
     console.error('Cronjob faild to get a token inform ADMIN');
     console.error(error);
-
   }
   console.log(`cronjob ${new Date().toISOString()}`);
 }, () => {
   console.log('cronjob was stopped');
-
 }, true);
 job.start();
+
+
 const ENV_SUFFIX = process.env.NODE_ENV === 'production' ? 'PROD' : 'DEV';
 const PORT = process.env[`FRONTEND_EXPRESS_PORT_${ENV_SUFFIX}`] || 3004;
 // const log = devlogGen(PORT);
