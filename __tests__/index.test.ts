@@ -11,7 +11,7 @@ afterEach(() => {
   mockListen.mockReset();
 });
 describe.skip('testing if the server is running', () => {
-  test('server defaults', async () => {
+  test.skip('server defaults', async () => {
     require('../src/index');
     // tslint:disable-next-line:no-console
     // console.log(mockListen.mock.calls[0][1]);

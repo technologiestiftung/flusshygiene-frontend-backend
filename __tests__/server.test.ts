@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../src/lib/app';
 
 describe.skip('default testing for server', () => {
-  it('should response with 200 on /', async () => {
+  it.skip('should response with 200 on /', async () => {
     expect.assertions(2);
     const response = await request(app).get('/');
     expect(response.status).toBe(200);
