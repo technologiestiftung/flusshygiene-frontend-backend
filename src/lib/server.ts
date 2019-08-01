@@ -6,15 +6,24 @@ import http from 'http';
 // import WebSocket from 'ws';
 // import {auth} from './auth';
 import app from './app';
+import { auth } from './auth';
 // import {WS} from './websocket';
 const CronJob = cron.CronJob;
-const cronExpression = '0 * * * * *';
+const cronExpression = '0 0 12 * * *';
 const job = new CronJob(cronExpression, async () => {
-    console.log(`cronjob ${new Date().toISOString()}`);
-  }, ()=>{
-    console.log('cronjob was stopped');
+  try {
+    const token = await auth();
+    app.locals.token = token;
+  } catch (error) {
+    console.error('Cronjob faild to get a token inform ADMIN');
+    console.error(error);
 
-  } , true);
+  }
+  console.log(`cronjob ${new Date().toISOString()}`);
+}, () => {
+  console.log('cronjob was stopped');
+
+}, true);
 job.start();
 const ENV_SUFFIX = process.env.NODE_ENV === 'production' ? 'PROD' : 'DEV';
 const PORT = process.env[`FRONTEND_EXPRESS_PORT_${ENV_SUFFIX}`] || 3004;

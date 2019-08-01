@@ -1,4 +1,4 @@
-import { EnvSuffixes, APIMountPoints } from './common/enums/index';
+import { EnvSuffixes, APIMountPoints } from './common/enums';
 // should read all the possible configs and export them
 // add additional logic for getting setup right between
 // 1. local machine cms with local api

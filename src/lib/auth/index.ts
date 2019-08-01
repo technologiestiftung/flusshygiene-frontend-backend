@@ -1,10 +1,9 @@
-import { ITokenRetrieveOptions, ITokenRequestOpts } from './../common/interfaces/index';
-import { NODE_ENV } from './../config';
-import rq from 'request-promise-native';
-import got, { GotOptions } from 'got';
-import fs from 'fs';
+import { ITokenRetrieveOptions, ITokenRequestOpts, IToken } from './../common/interfaces';
+// import { NODE_ENV } from './../config';
+// import rq from 'request-promise-native';
+// import got, { GotOptions } from 'got';
+// import fs from 'fs';
 import path from 'path';
-import { IObject, IDiskToken } from '../common/interfaces';
 import { API_HOST, API_MOUNT } from '../config';
 import { makeTestRequest } from './make-test-request';
 import { removeToken } from './remove-token';
@@ -27,11 +26,12 @@ const tokenRetrievalOpts: ITokenRetrieveOptions = {
   optsGetToken,
 }
 
-export const auth: () => Promise<void> = async () => {
+export const auth: () => Promise<IToken|undefined> = async () => {
   try {
-    let tokenJson = await retrieveToken(tokenRetrievalOpts);
-    let tokenObj = JSON.parse(tokenJson);
+    let tokenJson: string = await retrieveToken(tokenRetrievalOpts);
+    let tokenObj: IToken = JSON.parse(tokenJson);
     let headers = buildTokenHeader(tokenObj);
+    console.log(`${API_HOST}/${API_MOUNT}`);
     const testReqOpts = {
       url: `${API_HOST}/${API_MOUNT}`,
       headers: headers
@@ -47,12 +47,15 @@ export const auth: () => Promise<void> = async () => {
       testReqOpts.headers = buildTokenHeader(tokenObj);
       testReqRes = await makeTestRequest(testReqOpts);
       if(testReqRes.statusCode !== 200){
-        console.error('still not working with newly rertieved token???');
+        console.error('still not working with newly retrieved token??? Send message to admin');
+        return undefined;
       }else{
         console.log(testReqRes.body);
+        return tokenObj;
       }
     }else{
       console.log(testReqRes.body);
+      return tokenObj;
     }
   } catch (error) {
     throw error;
