@@ -4,13 +4,13 @@ import cron from 'cron';
 import http from 'http';
 // import { OPEN } from 'ws';
 // import WebSocket from 'ws';
-// import {auth} from './auth';
 import app from './app';
 import { auth } from './auth';
+import { TOKEN_CRON_EXPRESSION } from './config';
 // import {WS} from './websocket';
 const CronJob = cron.CronJob;
-const cronExpression = '0 0 12 * * *';
-const job = new CronJob(cronExpression, async () => {
+// const cronExpression = '0 0 12 * * 1';
+const job = new CronJob(TOKEN_CRON_EXPRESSION, async () => {
   try {
     const token = await auth();
     app.locals.token = token;
