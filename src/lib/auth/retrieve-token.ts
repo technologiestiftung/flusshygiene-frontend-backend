@@ -1,7 +1,7 @@
 import {ITokenRetrieveOptions } from './../common/interfaces';
 import {readToken} from './read-token';
 import {checkFileExists} from './check-if-file-exists';
-import {getToken} from './request-token';
+import {requestToken} from './request-token';
 import {writeToken} from './write-token';
 
 
@@ -17,7 +17,7 @@ export const retrieveToken: (opts: ITokenRetrieveOptions) => Promise<string> = a
       console.log('token file does not exists');
       console.log('requesting new token');
       // get new one
-      let tokenJson = await getToken(opts.optsGetToken);
+      let tokenJson = await requestToken(opts.optsGetToken);
       console.log('writing new token to disk');
       await writeToken(opts.tokenPath, tokenJson);
       if (checkFileExists(opts.tokenPath) === true) {

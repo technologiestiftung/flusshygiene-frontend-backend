@@ -10,7 +10,7 @@ http.createServer(app).listen = mockListen;
 afterEach(() => {
   mockListen.mockReset();
 });
-describe('testing if the server is running', () => {
+describe.skip('testing if the server is running', () => {
   test('server defaults', async () => {
     require('../src/index');
     // tslint:disable-next-line:no-console
