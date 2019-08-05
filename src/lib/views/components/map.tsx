@@ -1,5 +1,5 @@
 import React from 'react';
-import { IItem } from '../../common/interfaces';
+import { IItem } from '../../common/interfaces/iviews';
 
 export const Map = (props: IItem) => (
   <section>

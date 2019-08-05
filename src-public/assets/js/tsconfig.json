@@ -4,6 +4,5 @@
   "compilerOptions": {
     "lib": ["dom","es2018"],
     "target": "es5"
-
   }
 }

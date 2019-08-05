@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMeasurementable } from '../../../common/interfaces';
+import { IMeasurementable } from '../../../common/interfaces/iviews';
 import { measurementSort } from '../../../utils';
 import {MeasurementTableRow} from './spot-body-measurement-table-row';
 
@@ -22,10 +22,10 @@ export const MeasurementTable = (props: IMeasurementable) => {
     />}
       {<MeasurementTableRow
       rowKey='Wassertemperatur'
-      rowValue={(()=>{
-        if(sortedMeasurement[0].tempTxt !== null){
+      rowValue={(() => {
+        if (sortedMeasurement[0].tempTxt !== null) {
           return `${sortedMeasurement[0].tempTxt.replace('.', ',') } °C`;
-        }else{
+        } else {
           return '';
         }
       })()}

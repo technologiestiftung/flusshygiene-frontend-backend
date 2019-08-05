@@ -1,18 +1,31 @@
 import React from 'react';
 
 import { RouteNames } from '../../common/enums';
-import { IBathingspotProps } from '../../common/interfaces';
+import { IBathingspotProps } from '../../common/interfaces/iviews';
 import { SpotBodyAddonList } from '../components/bathingspot/spot-body-addon-list';
 import { SpotBodyFigure } from '../components/bathingspot/spot-body-figure';
 import { SpotBodyLocation } from '../components/bathingspot/spot-body-location';
 import { Measurement } from '../components/bathingspot/spot-body-measurement';
 import { MeasurementTable } from '../components/bathingspot/spot-body-measurement-table';
+import { BathingspotEditor } from '../components/bathingspot/spot-editor';
 import { SpotHeader } from '../components/bathingspot/spot-header';
 import { Map } from '../components/map';
 import { Skeleton } from '../layouts/skeleton';
 
-const bathingspot = (props: IBathingspotProps) => {
+const Styles = () => (
+  <React.Fragment>
+    <link rel='stylesheet' type='text/css' href='/assets/css/map.css' />
+  </React.Fragment>
+);
 
+const Scripts = () => (
+  <React.Fragment>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.2.0-beta.1/mapbox-gl.js'></script>
+    <script src='/assets/js/map.js'></script>
+  </React.Fragment>
+);
+
+const bathingspot = (props: IBathingspotProps) => {
   const {
     nameLong,
     water,
@@ -38,16 +51,27 @@ const bathingspot = (props: IBathingspotProps) => {
     bathroomsMobile,
     dogban,
     hasPrediction,
-
   } = props.spot;
 
   return (
-    <Skeleton title={nameLong}
+    <Skeleton
+    title={nameLong}
     isLoggedin={props.isLoggedin}
+    styles={<Styles />}
+    scripts={<Scripts />}
     >
+
+      {(() => {
+        // if (props.isLoggedin === true) {
+
+          return <BathingspotEditor
+          spot={props.spot}
+          />;
+        // }
+      })()}
       <Map str='Maps' />
       <SpotHeader nameLong={nameLong} water={water} district={district} />
-      <div className='bathingspot__body section'>
+      <section className='bathingspot__body section'>
         <SpotBodyFigure
           image={image}
           nameLong={nameLong}
@@ -58,33 +82,38 @@ const bathingspot = (props: IBathingspotProps) => {
         <SpotBodyLocation
           nameLong={nameLong}
           street={street}
-          postalCode={postalCode}
+          postalCode={postalCode.toString()}
           city={city}
           website={website}
           longitude={longitude}
           latitude={latitude}
         />
 
-        <Measurement
-          measurements={measurements}
-          hasPrediction={hasPrediction}
-        >
+        <Measurement measurements={measurements} hasPrediction={hasPrediction}>
           <MeasurementTable measurements={measurements} />
           {(() => {
             if (hasPrediction === true) {
               return (
                 <div className='bathingspot__body-prediction'>
                   <p>
-                    <img src='https://via.placeholder.com/32' alt='prediction icon' />
+                    <img
+                      src='https://via.placeholder.com/32'
+                      alt='prediction icon'
+                    />
                     {/*tslint:disable-next-line: max-line-length*/}
-                    <span className='asteriks'>*</span> Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href={`/${RouteNames.info}`}>Erfahren Sie mehr&nbsp;&raquo;</a>
+                    <span className='asteriks'>*</span> Die hier angezeigte
+                    Bewertung wird unterstützt durch eine neuartige
+                    tagesaktuelle Vorhersagemethode.{' '}
+                    <a href={`/${RouteNames.info}`}>
+                      Erfahren Sie mehr&nbsp;&raquo;
+                    </a>
                   </p>
                 </div>
               );
             }
             return null;
           })()}
-          <div className='bathingspot__body-addon section'>
+          <section className='bathingspot__body-addon section'>
             <h3>Weitere Angaben zur Badesstelle</h3>
             <SpotBodyAddonList
               cyanoPossible={cyanoPossible}
@@ -99,9 +128,9 @@ const bathingspot = (props: IBathingspotProps) => {
               bathroomsMobile={bathroomsMobile}
               dogban={dogban}
             />
-          </div>
+          </section>
         </Measurement>
-      </div>
+      </section>
 
       <script
         dangerouslySetInnerHTML={{
@@ -113,7 +142,7 @@ const bathingspot = (props: IBathingspotProps) => {
         `,
         }}
       />
-    </Skeleton >
+    </Skeleton>
   );
 };
 

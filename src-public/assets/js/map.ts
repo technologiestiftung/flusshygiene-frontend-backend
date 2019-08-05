@@ -2,19 +2,18 @@ import { Deck } from '@deck.gl/core';
 import { ScatterplotLayer } from '@deck.gl/layers';
 // const mapboxgl =  require('mapbox-gl');
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
   const INITIAL_VIEW_STATE = {
+    bearing: 0,
     latitude: 52,
     longitude: 13,
+    pitch: 0,
     zoom: 4,
-    bearing: 0,
-    pitch: 0
   };
 
   mapboxgl.accessToken = process.env.MapboxAccessToken; // eslint-disable-line
 
-  const data = window.mapData;// [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
+  const data = window.mapData; // [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
 
   const map = new mapboxgl.Map({
     container: 'map',
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
     zoom: INITIAL_VIEW_STATE.zoom,
     bearing: INITIAL_VIEW_STATE.bearing,
-    pitch: INITIAL_VIEW_STATE.pitch
+    pitch: INITIAL_VIEW_STATE.pitch,
   });
 
   const layer = new ScatterplotLayer({
@@ -61,10 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
         center: [viewState.longitude, viewState.latitude],
         zoom: viewState.zoom,
         bearing: viewState.bearing,
-        pitch: viewState.pitch
+        pitch: viewState.pitch,
       });
     },
-    layers: [layer,
+    layers: [
+      layer,
 
       // new GeoJsonLayer({
       //   id: 'airports',
@@ -95,6 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
       //   getTargetColor: [200, 0, 80],
       //   getWidth: 1
       // })
-    ]
+    ],
   });
 });

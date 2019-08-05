@@ -1,8 +1,8 @@
 import React from 'react';
-import { IUserProps } from '../../common/interfaces';
+import { IUserProps } from '../../common/interfaces/iviews';
+import { Card } from '../components/bathingspot/card';
 import { Button } from '../components/button';
 import { Skeleton } from '../layouts/skeleton';
-import { Card } from '../components/bathingspot/card';
 
 const user = (props: IUserProps) => {
   console.log(props);

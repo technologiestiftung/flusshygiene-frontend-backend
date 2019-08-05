@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMeasurement } from '../../../common/interfaces';
+import { IMeasurement } from '../../../common/interfaces/iviews';
 import { measurementSort } from '../../../utils';
 
 export const Measurement = (props: IMeasurement) => {

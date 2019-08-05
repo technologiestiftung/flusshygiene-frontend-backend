@@ -1,4 +1,7 @@
-export const routeErrorHandler: (route: string, error: Error) => void = (route, error) => {
+export const routeErrorHandler: (route: string, error: Error) => void = (
+  route,
+  error,
+) => {
   if (process.env.NODE_ENV === 'development') {
     console.trace(error);
     console.error('Error on route: ', route);

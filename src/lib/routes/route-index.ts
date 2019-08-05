@@ -1,7 +1,7 @@
 import got = require('got');
-import { IIndexProps } from '../common/interfaces';
-import { AsyncRoute } from '../common/types';
+import { IIndexProps } from '../common/interfaces/iviews';
 import { gotOpts, isUserLoggedIn } from '../common/routes-commons';
+import { AsyncRoute } from '../common/types';
 import { routeErrorHandler } from './routes-error-handler';
 
 export const index: AsyncRoute = async (request, response) => {

@@ -8,7 +8,8 @@
 import React from 'react';
 
 import { RouteNames, TrafficLightColorNames } from '../../common/enums';
-import { IAnswer, IAnswerFormData, IQuestion } from '../../common/interfaces';
+import { IAnswerFormData } from '../../common/interfaces';
+import { IAnswer, IQuestion } from '../../common/interfaces/iviews';
 import { Button } from '../components/button';
 import { QuestFormPagination } from '../components/questionnaire/quest-pagination';
 import { Skeleton } from '../layouts/skeleton';

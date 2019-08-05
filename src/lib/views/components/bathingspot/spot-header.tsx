@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISpotHeader } from '../../../common/interfaces';
+import { ISpotHeader } from '../../../common/interfaces/iviews';
 
 export const SpotHeader = (props: ISpotHeader) => (
   <div className='bathingspot__header'>

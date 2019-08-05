@@ -1,14 +1,14 @@
-import {ITokenRetrieveOptions } from './../common/interfaces';
-import {readToken} from './read-token';
-import {checkFileExists} from './check-if-file-exists';
-import {requestToken} from './request-token';
-import {writeToken} from './write-token';
+import { ITokenRetrieveOptions } from './../common/interfaces/iauth';
+import { checkFileExists } from './check-if-file-exists';
+import { readToken } from './read-token';
+import { requestToken } from './request-token';
+import { writeToken } from './write-token';
 
-
-
-export const retrieveToken: (opts: ITokenRetrieveOptions) => Promise<string> = async (opts) => {
+export const retrieveToken: (
+  opts: ITokenRetrieveOptions,
+) => Promise<string> = async opts => {
   try {
-    let tokenJson = undefined;
+    let tokenJson;
     if (checkFileExists(opts.tokenPath) === true) {
       console.log('We have a token on disk');
       tokenJson = await readToken(opts.tokenPath);
@@ -17,7 +17,7 @@ export const retrieveToken: (opts: ITokenRetrieveOptions) => Promise<string> = a
       console.log('token file does not exists');
       console.log('requesting new token');
       // get new one
-      let tokenJson = await requestToken(opts.optsGetToken);
+      tokenJson = await requestToken(opts.optsGetToken);
       console.log('writing new token to disk');
       await writeToken(opts.tokenPath, tokenJson);
       if (checkFileExists(opts.tokenPath) === true) {
@@ -31,6 +31,4 @@ export const retrieveToken: (opts: ITokenRetrieveOptions) => Promise<string> = a
   } catch (error) {
     throw error;
   }
-
-}
-
+};

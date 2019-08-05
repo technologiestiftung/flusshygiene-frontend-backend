@@ -61233,11 +61233,11 @@ var layers_1 = require("@deck.gl/layers"); // const mapboxgl =  require('mapbox-
 
 document.addEventListener('DOMContentLoaded', function () {
   var INITIAL_VIEW_STATE = {
+    bearing: 0,
     latitude: 52,
     longitude: 13,
-    zoom: 4,
-    bearing: 0,
-    pitch: 0
+    pitch: 0,
+    zoom: 4
   };
   mapboxgl.accessToken = "pk.eyJ1IjoiZm1vcm9uemlyZmFzIiwiYSI6ImNqeXBvZnl4ODE5dmkzbXFmZnNmdGx3ODIifQ.vIP1Xf2Nsso9j1LdrpMt7g"; // eslint-disable-line
 
@@ -61321,7 +61321,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53783" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

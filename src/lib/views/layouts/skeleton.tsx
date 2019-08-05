@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISkeleton } from '../../common/interfaces';
+import { ISkeleton } from '../../common/interfaces/iviews';
 import {Footer} from '../components/footer';
 import {Head} from '../components/head';
 import {Header} from '../components/header';

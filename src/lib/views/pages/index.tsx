@@ -7,7 +7,7 @@
 
 import React from 'react';
 
-import { IIndexProps } from '../../common/interfaces';
+import { IIndexProps } from '../../common/interfaces/iviews';
 import { Card } from '../components/bathingspot/card';
 import { Map } from '../components/map';
 import { Skeleton } from '../layouts/skeleton';

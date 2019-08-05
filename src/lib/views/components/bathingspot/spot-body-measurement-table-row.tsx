@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMeasurementableRow } from '../../../common/interfaces';
+import { IMeasurementableRow } from '../../../common/interfaces/iviews';
 
 export const MeasurementTableRow = (props: IMeasurementableRow) => (
   <tr>

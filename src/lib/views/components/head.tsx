@@ -1,5 +1,5 @@
 import React from 'react';
-import { IHead } from '../../common/interfaces';
+import { IHead } from '../../common/interfaces/iviews';
 import { DefaultHeaderScripts } from './default-scripts';
 import { DefaultStyles } from './default-styles';
 

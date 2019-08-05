@@ -1,0 +1,10 @@
+node_modules
+dist
+.cache
+coverage
+.vscode
+tsconfig.json
+tslint.json
+data
+token.json
+design-files

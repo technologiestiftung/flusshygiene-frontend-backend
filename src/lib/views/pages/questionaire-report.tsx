@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { RouteNames } from '../../common/enums';
-import { IQuestionFile, IReport } from '../../common/interfaces';
+import { IQuestionFile } from '../../common/interfaces/isetup';
+import { IReport } from '../../common/interfaces/iviews';
 import { sessionAnswerGet } from '../../sessions';
 import { Skeleton } from '../layouts/skeleton';
 

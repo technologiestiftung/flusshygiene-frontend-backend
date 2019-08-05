@@ -1,6 +1,6 @@
-import { AsyncRoute } from '../common/types';
-import { IViewProps } from './../common/interfaces';
+import { IViewProps } from '../common/interfaces/iviews';
 import { isUserLoggedIn } from '../common/routes-commons';
+import { AsyncRoute } from '../common/types';
 import { routeErrorHandler } from './routes-error-handler';
 
 export const questionnaire: AsyncRoute = async (request, response) => {

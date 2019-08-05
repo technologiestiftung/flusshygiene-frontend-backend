@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISpotBodyLocation } from '../../../common/interfaces';
+import { ISpotBodyLocation } from '../../../common/interfaces/iviews';
 
 export const SpotBodyLocation = (props: ISpotBodyLocation) => {
   return (

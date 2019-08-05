@@ -1,8 +1,10 @@
 import url from 'url';
-import { IAnswerFormData, IQuestion, IQuestionFile } from '../common/interfaces';
+import { IAnswerFormData } from '../common/interfaces';
+import { IQuestionFile } from '../common/interfaces/isetup';
+import { IQuestion } from '../common/interfaces/iviews';
+import { isUserLoggedIn } from '../common/routes-commons';
 import { AsyncRoute } from '../common/types';
 import { sessionAnswerGet, sessionAnswerSet } from '../sessions';
-import { isUserLoggedIn } from '../common/routes-commons';
 import { routeErrorHandler } from './routes-error-handler';
 
 /**
@@ -14,21 +16,22 @@ import { routeErrorHandler } from './routes-error-handler';
  * @param response  the default express response object
  */
 export const question: AsyncRoute = async (request, response) => {
-  const q: IQuestionFile[] = request
-    .app
-    .locals
-    .questions
-    .filter((ele: IQuestionFile) => ele.qId === parseInt(request.params.qId, 10));
+  const q: IQuestionFile[] = request.app.locals.questions.filter(
+    (ele: IQuestionFile) => ele.qId === parseInt(request.params.qId, 10),
+  );
   try {
     if (q[0].qId === undefined) {
       throw new Error('there is no question for this route');
     }
     let answer: IAnswerFormData | undefined;
     if (request.session !== undefined) {
-      answer = sessionAnswerGet(parseInt(request.params.qId, 10), request.session.answers);
+      answer = sessionAnswerGet(
+        parseInt(request.params.qId, 10),
+        request.session.answers,
+      );
     }
     const data: IQuestion = {
-      data: (q[0].data !== undefined) ? q[0].data : [],
+      data: q[0].data !== undefined ? q[0].data : [],
       isLoggedin: isUserLoggedIn(request.app.locals.user),
       lastId: request.app.locals.questions.length - 1,
       previousAnswer: answer,
@@ -38,7 +41,6 @@ export const question: AsyncRoute = async (request, response) => {
     response.render('question', data);
   } catch (error) {
     routeErrorHandler(`question/${request.params.qId}`, error);
-
   }
 };
 
@@ -52,7 +54,10 @@ export const questionPostHandle: AsyncRoute = async (request, response) => {
   if (request.body.answer !== undefined) {
     const answerData: IAnswerFormData = JSON.parse(request.body.answer);
     if (request.session !== undefined) {
-      request.session.answers = sessionAnswerSet(answerData, request.session.answers);
+      request.session.answers = sessionAnswerSet(
+        answerData,
+        request.session.answers,
+      );
     }
   }
   const targeturl = url.parse(request.body.targeturl);
@@ -60,7 +65,5 @@ export const questionPostHandle: AsyncRoute = async (request, response) => {
     response.redirect(targeturl.href!);
   } else {
     response.redirect(request.url);
-
   }
 };
-

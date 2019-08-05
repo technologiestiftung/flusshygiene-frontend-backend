@@ -1,5 +1,6 @@
 import React from 'react';
-import { IObject, ISpotBodyAddonList } from '../../../common/interfaces';
+import { IObject } from '../../../common/interfaces';
+import { ISpotBodyAddonList } from '../../../common/interfaces/iviews';
 import { SpotBodyAddonListItem } from './spot-body-addon-list-item';
 
 /*

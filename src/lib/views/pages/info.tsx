@@ -1,5 +1,5 @@
 import React from 'react';
-import { IViewProps } from '../../common/interfaces';
+import { IViewProps } from '../../common/interfaces/iviews';
 import { Skeleton } from '../layouts/skeleton';
 
 // interface IInfo {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IViewProps } from '../../common/interfaces';
+import { IViewProps } from '../../common/interfaces/iviews';
 import { Navigation } from './navigation';
 
 export const Header = (props: IViewProps) => (
@@ -11,7 +11,6 @@ export const Header = (props: IViewProps) => (
       if (props.isLoggedin === true) {
         return (
         <div>
-
 
         </div>
         );

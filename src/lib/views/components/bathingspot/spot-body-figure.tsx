@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISpotBodyFigure } from '../../../common/interfaces';
+import { ISpotBodyFigure } from '../../../common/interfaces/iviews';
 
 export const SpotBodyFigure = (props: ISpotBodyFigure) => (
   <figure className='image is-16by9'>

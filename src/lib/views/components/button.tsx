@@ -1,5 +1,5 @@
 import React from 'react';
-import { IButtonProps } from '../../common/interfaces';
+import { IButtonProps } from '../../common/interfaces/iviews';
 
 /**
  * A simple button for all occasions

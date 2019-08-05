@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteNames } from '../../../common/enums';
-import { ISpotCard } from '../../../common/interfaces';
+import { ISpotCard } from '../../../common/interfaces/iviews';
 
 export const Card = (props: ISpotCard) => (
   <li
@@ -32,7 +32,7 @@ export const Card = (props: ISpotCard) => (
       <a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}`}>Detail</a>
       {(() => {
         if (props.isUserLoggedIn !== undefined && props.isUserLoggedIn === true) {
-          return (<a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}/${RouteNames.editor}`}>Edit</a>)
+          return (<a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}/${RouteNames.editor}`}>Edit</a>);
         }
       })()}
     </div>

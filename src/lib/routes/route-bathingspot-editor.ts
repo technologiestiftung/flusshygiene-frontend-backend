@@ -1,8 +1,9 @@
-import { AsyncRoute } from './../common/types';
-import got = require('got');
+import got from 'got';
+import { IBathingspotProps } from '../common/interfaces/iviews';
 import { gotOpts, isUserLoggedIn } from '../common/routes-commons';
-import { IBathingspotProps } from '../common/interfaces';
+import { AsyncRoute } from './../common/types';
 import { routeErrorHandler } from './routes-error-handler';
+
 export const bathingspotEditor: AsyncRoute = async (request, response) => {
   // console.log(request.params);
   try {
@@ -20,5 +21,4 @@ export const bathingspotEditor: AsyncRoute = async (request, response) => {
   } catch (error) {
     routeErrorHandler(`bathingspot/${request.params.spotId}`, error);
   }
-
 };
