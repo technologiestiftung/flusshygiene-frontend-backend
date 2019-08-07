@@ -58,7 +58,7 @@ router.get('/callback', (req, res, next) => {
     if (!puser) {
       return res.redirect('/login');
     }
-    req.logIn(puser, error => {
+    req.logIn(puser, (error) => {
       if (error) {
         return next(error);
       }

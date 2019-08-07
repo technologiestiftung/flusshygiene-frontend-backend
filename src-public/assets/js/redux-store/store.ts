@@ -1,5 +1,5 @@
 import throttle from 'lodash.throttle';
-import {applyMiddleware, compose, createStore} from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { loadState, saveState } from './lib/local-storage';
 import middleware from './lib/middleware';
 import reducers from './lib/root-reducer';
@@ -14,8 +14,10 @@ const store = createStore(
   composeEnhancers(applyMiddleware(middleware)),
 );
 
-store.subscribe(throttle(() => {
-  saveState(store.getState());
-}, 1000));
+store.subscribe(
+  throttle(() => {
+    saveState(store.getState());
+  }, 1000),
+);
 
 export default store;

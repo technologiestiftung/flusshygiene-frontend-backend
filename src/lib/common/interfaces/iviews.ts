@@ -154,14 +154,14 @@ export interface IFormInputProps {
   label: string;
 }
 export interface IGenericFormInputProps {
-  name?: string;
+  name?: string | number | boolean | IObject;
   placeholder: string;
   label: string;
-  type: 'email' | 'number' | 'text';
+  type: 'email' | 'number' | 'text' | 'checkbox';
 }
 export interface ISpotEditor {
   foo?: string;
-  spot?: IBathingspot;
+  spot: IBathingspot;
 }
 /**
  * @property {IBathingspot} spot

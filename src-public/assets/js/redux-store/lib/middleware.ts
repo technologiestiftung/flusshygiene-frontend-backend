@@ -23,7 +23,7 @@ const middleware: IMiddleware = (store) => (next) => (action) => {
       });
       break;
     default:
-    break;
+      break;
   }
 };
 

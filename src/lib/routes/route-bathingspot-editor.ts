@@ -1,4 +1,5 @@
 import got from 'got';
+import { IApiResponseBody } from '../common/interfaces/iapi';
 import { IBathingspotProps } from '../common/interfaces/iviews';
 import { gotOpts, isUserLoggedIn } from '../common/routes-commons';
 import { AsyncRoute } from './../common/types';
@@ -8,6 +9,8 @@ export const bathingspotEditor: AsyncRoute = async (request, response) => {
   // console.log(request.params);
   try {
     const result = await got(`bathingspots/${request.params.spotId}`, gotOpts);
+    const body: IApiResponseBody = JSON.parse(result.body);
+    const spot = body.data[0];
     // console.log(JSON.parse(result.body));
     // if (request.session !== undefined) {
     //   console.log(request.session.name);
@@ -15,7 +18,7 @@ export const bathingspotEditor: AsyncRoute = async (request, response) => {
     // }
     const data: IBathingspotProps = {
       isLoggedin: isUserLoggedIn(request.app.locals.user),
-      spot: JSON.parse(result.body)[0],
+      spot,
     };
     response.render('bathingspot', data);
   } catch (error) {

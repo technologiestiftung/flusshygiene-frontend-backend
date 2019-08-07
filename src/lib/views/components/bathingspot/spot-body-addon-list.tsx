@@ -71,20 +71,21 @@ const data: IObject = {
 };
 export const SpotBodyAddonList = (props: ISpotBodyAddonList) => (
   <ul>
-    {
-      Object.keys(props).map((key: string, i: number) => {
-
-        if (props.hasOwnProperty(key) === true) {
-          return (
-            <SpotBodyAddonListItem
-              key={i}
-              image={props[key] === true ? data[key].yes.image : data[key].no.image}
-              text={`${key} === ${(props[key] === true ? data[key].yes.text : data[key].no.text)}`}
-            />);
-
-        }
-        return null;
-      })
+    {Object.keys(props).map((key: string, i: number) => {
+      if (props.hasOwnProperty(key) === true) {
+        return (
+          <SpotBodyAddonListItem
+            key={i}
+            image={
+              props[key] === true ? data[key].yes.image : data[key].no.image
+            }
+            text={`${key} === ${
+              props[key] === true ? data[key].yes.text : data[key].no.text
+            }`}
+          />
+        );
       }
+      return null;
+    })}
   </ul>
 );

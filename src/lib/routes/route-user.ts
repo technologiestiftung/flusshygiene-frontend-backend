@@ -31,14 +31,12 @@ export const user: AsyncRoute = async (request, response) => {
       );
       // console.log(responseUserReq);
       const json = JSON.parse(responseUserReq.body);
-      // console.log('---------------');
-      // console.log(userProfile.id);
-      // console.log(responseUserReq.body);
+
       if (json.data.length > 0) {
-        const user = json.data[0];
+        const userData = json.data[0];
         // console.log(user);
         const responseSpotReq = await got(
-          `${API_HOST}/${API_MOUNT}/users/${user.id}/bathingspots`,
+          `${API_HOST}/${API_MOUNT}/users/${userData.id}/bathingspots`,
           { headers },
         );
         // console.log(responseSpotReq);
@@ -49,9 +47,9 @@ export const user: AsyncRoute = async (request, response) => {
     }
     const data: IUserProps = {
       isLoggedin: isUserLoggedIn(request.app.locals.user),
+      spots,
       title: 'User Profile Page',
       userProfile,
-      spots,
     };
     response.render('user', data);
   } catch (error) {

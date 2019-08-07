@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ws.onopen = () => {
       ws.send('connection open');
     };
-    ws.onmessage = message => {
+    ws.onmessage = (message) => {
       // tslint:disable-next-line:no-console
       console.log(message);
       const target = document.querySelector('.message-foo');

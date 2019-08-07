@@ -12,10 +12,10 @@ import { startup } from './utils';
 const CronJob = cron.CronJob;
 // const cronExpression = '0 0 12 * * 1';
 startup()
-  .then(token => {
+  .then((token) => {
     app.locals.token = token;
   })
-  .catch(err => {
+  .catch((err) => {
     throw err;
   })
   .finally(() => {

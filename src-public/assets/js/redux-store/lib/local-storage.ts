@@ -18,5 +18,4 @@ export const saveState = (state: any) => {
     // tslint:disable-next-line:no-console
     console.error(err);
   }
-
 };

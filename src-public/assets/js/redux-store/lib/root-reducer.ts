@@ -8,6 +8,5 @@ const reducers = combineReducers({
   def,
   errors,
   responses,
-
 });
 export default reducers;

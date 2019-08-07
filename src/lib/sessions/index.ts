@@ -31,7 +31,10 @@ export const sessionAnswerSet = (
   return sessionAnswerSorter(updatedAnswers);
 };
 
-type SessionAnswerGetFunc = (qId: number, answers: IAnswerFormData[]) => IAnswerFormData | undefined;
+type SessionAnswerGetFunc = (
+  qId: number,
+  answers: IAnswerFormData[],
+) => IAnswerFormData | undefined;
 
 /**
  * @param qId The qId to get

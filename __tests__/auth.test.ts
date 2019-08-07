@@ -20,7 +20,7 @@ import { writeToken } from './../src/lib/auth/write-token';
 afterAll(nock.restore);
 afterEach(nock.cleanAll);
 describe('Testing auth util functions', () => {
-  it('Should return an object with specific values', async done => {
+  it('Should return an object with specific values', async (done) => {
     const tokenObj: IToken = {
       access_token: 'xyz',
       expires_in: 0,
@@ -32,7 +32,7 @@ describe('Testing auth util functions', () => {
     done();
   });
 
-  it('Should check if files exists or not', async done => {
+  it('Should check if files exists or not', async (done) => {
     expect(checkFileExists(path.resolve(__dirname, './auth.test.ts'))).toBe(
       true,
     );
@@ -43,7 +43,7 @@ describe('Testing auth util functions', () => {
     done();
   });
 
-  it('should make a test request and get a response from it', async done => {
+  it('should make a test request and get a response from it', async (done) => {
     const opts: ITokenTestRequestOpts = {
       headers: { authorization: '' },
       url: 'http://mock.test/api/v1/',
@@ -56,7 +56,7 @@ describe('Testing auth util functions', () => {
     done();
   });
 
-  it('should make a token request and get a response from it', async done => {
+  it('should make a token request and get a response from it', async (done) => {
     const url = 'http://mock.token';
     const resBody = {
       access_token: 'xyz',
@@ -84,7 +84,7 @@ describe('Testing auth util functions', () => {
     done();
   });
 
-  it('should make a token request and throw an error', async done => {
+  it('should make a token request and throw an error', async (done) => {
     const url = 'http://mock.token';
     nock(url)
       .post('/')
@@ -102,7 +102,7 @@ describe('Testing auth util functions', () => {
 
     done();
   });
-  it.skip('Should retrieve a token', async done => {
+  it.skip('Should retrieve a token', async (done) => {
     const url = 'http://mock.token';
     const resBody = {
       access_token: 'xyz',
@@ -131,7 +131,7 @@ describe('Testing auth util functions', () => {
     expect(typeof res).toBe('string');
     done();
   });
-  it('Should read a file and return its content', async done => {
+  it('Should read a file and return its content', async (done) => {
     const fp = path.resolve(__dirname, 'foo.txt');
     // await writeFileAsync(fp,'foo');
     await writeToken(fp, 'foo');
@@ -141,7 +141,7 @@ describe('Testing auth util functions', () => {
     done();
   });
 
-  it('Should create a file', async done => {
+  it('Should create a file', async (done) => {
     const fp = path.resolve(__dirname, 'foo.txt');
     await writeToken(fp, '');
     expect(checkFileExists(fp)).toBe(true);

@@ -85,7 +85,7 @@ pQuestions
     app.locals.questions = files;
     process.stdout.write('\nQuestion file import ready\n');
   })
-  .catch(error => {
+  .catch((error) => {
     if (error) {
       console.error(error);
     }

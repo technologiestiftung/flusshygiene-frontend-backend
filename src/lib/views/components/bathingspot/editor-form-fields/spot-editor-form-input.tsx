@@ -10,12 +10,40 @@ export const FormInput = (props: IGenericFormInputProps) => {
       <div className='field-body'>
         <div className='field'>
           <div className='control'>
-            <input
-              className='input'
-              type={props.type}
-              placeholder={props.placeholder}
-              defaultValue={props.name}
-            />
+            {(() => {
+              if (props.type === 'checkbox') {
+                return (
+                  <label className='checkbox'>
+                    <input
+                      type={props.type}
+                      checked={
+                        typeof props.name === 'boolean' ? props.name : false
+                      }
+                    />
+                    {/* {props.placeholder} */}
+                  </label>
+                );
+              } else {
+                return (
+                  <input
+                    className='input'
+                    type={props.type}
+                    placeholder={props.placeholder}
+                    defaultValue={(() => {
+                      if (props.name === undefined || props.name === null) {
+                        return '';
+                      } else if (typeof props.name === 'number') {
+                        return props.name.toString();
+                      } else if (typeof props.name === 'string') {
+                        return props.name;
+                      } else {
+                        return '';
+                      }
+                    })()}
+                  />
+                );
+              }
+            })()}
           </div>
         </div>
       </div>

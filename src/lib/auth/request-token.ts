@@ -3,7 +3,7 @@ import { ITokenRequestOpts } from '../common/interfaces/iauth';
 
 export const requestToken: (
   opts: ITokenRequestOpts,
-) => Promise<string> = async opts => {
+) => Promise<string> = async (opts) => {
   try {
     const response = await got.post(opts.url, {
       body: opts.body,

@@ -6,7 +6,7 @@ import { writeToken } from './write-token';
 
 export const retrieveToken: (
   opts: ITokenRetrieveOptions,
-) => Promise<string> = async opts => {
+) => Promise<string> = async (opts) => {
   try {
     let tokenJson;
     if (checkFileExists(opts.tokenPath) === true) {

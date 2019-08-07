@@ -4,9 +4,9 @@ import { ISpotCard } from '../../../common/interfaces/iviews';
 
 export const Card = (props: ISpotCard) => (
   <li
-  data-spot-id={props.id}
-  id={props.id.toString()}
-  className='index__bathingspot-list-item'
+    data-spot-id={props.id}
+    id={props.id.toString()}
+    className='index__bathingspot-list-item'
   >
     <div>
       <img src='' alt='' className='spot-image' />
@@ -27,12 +27,26 @@ export const Card = (props: ISpotCard) => (
           }
         }
         return null;
-      })()
-      }
-      <a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}`}>Detail</a>
+      })()}
+      <a
+        className='is-small button index__bathingspot-list-item-button'
+        href={`/${RouteNames.bathingspot}/${props.id}`}
+      >
+        Detail
+      </a>
       {(() => {
-        if (props.isUserLoggedIn !== undefined && props.isUserLoggedIn === true) {
-          return (<a className='is-small button index__bathingspot-list-item-button' href={`/${RouteNames.bathingspot}/${props.id}/${RouteNames.editor}`}>Edit</a>);
+        if (
+          props.isUserLoggedIn !== undefined &&
+          props.isUserLoggedIn === true
+        ) {
+          return (
+            <a
+              className='is-small button index__bathingspot-list-item-button'
+              href={`/${RouteNames.bathingspot}/${props.id}/${RouteNames.editor}`}
+            >
+              Edit
+            </a>
+          );
         }
       })()}
     </div>

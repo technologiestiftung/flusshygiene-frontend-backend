@@ -18,7 +18,7 @@
     "build": "tsc -p .",
     "start": "node dist/index.js",
     "docs": "typedoc --mode modules --out docs ./src",
-    "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|mdx|graphql|vue)\"",
+    "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|scss|ts|tsx)\"",
     "format": "npm run prettier -- --write",
     "lint": "tslint './src*/**/*.ts?(x)'",
     "validate": "npm run prettier -- --list-different",

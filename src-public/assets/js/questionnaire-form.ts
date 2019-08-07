@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   if (form !== undefined) {
     Array.from(pagiantionLinks).forEach((ele: HTMLAnchorElement) => {
-      ele.addEventListener('click', _event => {
+      ele.addEventListener('click', (_event) => {
         event.preventDefault();
         form.targeturl.value = ele.href;
         form.submit();

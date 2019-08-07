@@ -16,7 +16,7 @@ export const setupQuestions: () => Promise<
     const dataPath = path.resolve(__dirname, '../../data/dist-json');
     const dataFiles = await readDirAsync(dataPath, 'utf8');
     const filteredFileNames = dataFiles.filter(
-      file => path.extname(file) === '.json',
+      (file) => path.extname(file) === '.json',
     );
     // need to pad the names with only one digit in numbering
     // const emptyelement: IQuestionFile = {

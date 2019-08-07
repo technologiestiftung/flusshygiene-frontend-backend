@@ -55,18 +55,15 @@ const bathingspot = (props: IBathingspotProps) => {
 
   return (
     <Skeleton
-    title={nameLong}
-    isLoggedin={props.isLoggedin}
-    styles={<Styles />}
-    scripts={<Scripts />}
+      title={nameLong}
+      isLoggedin={props.isLoggedin}
+      styles={<Styles />}
+      scripts={<Scripts />}
     >
-
       {(() => {
         // if (props.isLoggedin === true) {
 
-          return <BathingspotEditor
-          spot={props.spot}
-          />;
+        return <BathingspotEditor spot={props.spot} />;
         // }
       })()}
       <Map str='Maps' />
@@ -82,7 +79,7 @@ const bathingspot = (props: IBathingspotProps) => {
         <SpotBodyLocation
           nameLong={nameLong}
           street={street}
-          postalCode={postalCode.toString()}
+          postalCode={postalCode !== null ? postalCode.toString() : ''}
           city={city}
           website={website}
           longitude={longitude}

@@ -8,13 +8,13 @@ interface IPostAction extends IAction {
   body: object;
 }
 export const triggerDefault = (): IAction => {
-  return {type: DEFAULT};
+  return { type: DEFAULT };
 };
 
 export const getData = (): IAction => {
-  return {type: GET_DATA};
+  return { type: GET_DATA };
 };
 
 export const postData = (body: object): IPostAction => {
-  return {type: POST_DATA, body};
+  return { type: POST_DATA, body };
 };

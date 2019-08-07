@@ -46,7 +46,7 @@ export class WS {
         });
 
         //  -----------------------
-        WS.emitter.on('send', message => {
+        WS.emitter.on('send', (message) => {
           broadcast(WS.server, message);
         });
       });

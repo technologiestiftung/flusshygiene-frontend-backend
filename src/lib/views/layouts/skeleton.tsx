@@ -1,35 +1,30 @@
 import React from 'react';
 import { ISkeleton } from '../../common/interfaces/iviews';
-import {Footer} from '../components/footer';
-import {Head} from '../components/head';
-import {Header} from '../components/header';
+import { Footer } from '../components/footer';
+import { Head } from '../components/head';
+import { Header } from '../components/header';
 
 export const Skeleton = (props: ISkeleton) => (
   <html lang='de'>
-    <Head
-    title={props.title}
-    />
-  <body>
-    <Header
-      isLoggedin={props.isLoggedin}
-    />
-    <main  className='section'>{props.children}</main>
-    {props.styles}
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
+    <Head title={props.title} />
+    <body>
+      <Header isLoggedin={props.isLoggedin} />
+      <main className='section'>{props.children}</main>
+      {props.styles}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
         // some script
         document.addEventListener('DOMContentLoaded',function() {
           console.log('skeleton view')
         });
         `,
-      }}
-    />
-    {props.scripts}
-    <Footer />
-  </body>
-</html >
-
+        }}
+      />
+      {props.scripts}
+      <Footer />
+    </body>
+  </html>
 );
 /*
 // class Skeleton extends React.Component<ISkeleton> {

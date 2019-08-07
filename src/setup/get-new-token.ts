@@ -19,9 +19,9 @@ const main = async () => {
 };
 
 main()
-  .then(token => {
+  .then((token) => {
     console.log(token);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
