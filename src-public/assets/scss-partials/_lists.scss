@@ -5,7 +5,6 @@ ul {
         color: $foreground-color;
       }
 
-
       .report__list-item-question,
       .report__list-item-answer {
         padding-left: 1em;
@@ -70,9 +69,12 @@ ul {
       &:nth-child(odd) {
         background-color: rgba(0, 0, 0, 0.05);
       }
+
+      a.index__bathingspot-list-item-button {
+        display: inline;
+      }
     }
   }
-
 }
 
 .bathingspot__body-addon {

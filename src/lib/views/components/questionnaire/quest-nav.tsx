@@ -9,21 +9,26 @@ export const QuestNav = (props: IQuestNavProps) => (
   <div className='questions__navigation container is-fullwidth is-mobile'>
     <Button
       text={'Vorherige Frage'}
-      additionalClassNames={'is-pulled-left questions_navigation-button--backward'}
-      url={props.previous !== undefined ? `/${RouteNames.questionnaire}/${props.previous}` : ''}
-
-      disabled={
-        (() => {
-          if (props.previous === undefined) {
-            return true;
-          } else {
-            return false;
-          }
-        })()
-
+      additionalClassNames={
+        'is-pulled-left questions_navigation-button--backward'
       }
-    /><Button
-      additionalClassNames={'is-pulled-right questions_navigation-button--forward'}
+      url={
+        props.previous !== undefined
+          ? `/${RouteNames.questionnaire}/${props.previous}`
+          : ''
+      }
+      disabled={(() => {
+        if (props.previous === undefined) {
+          return true;
+        } else {
+          return false;
+        }
+      })()}
+    />
+    <Button
+      additionalClassNames={
+        'is-pulled-right questions_navigation-button--forward'
+      }
       text={props.next !== undefined ? 'Nächste Frage' : 'Zur Auswertung'}
       url={(() => {
         if (props.next === undefined) {

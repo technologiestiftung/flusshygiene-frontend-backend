@@ -7,7 +7,7 @@
 
 import React from 'react';
 
-import { IIndexProps } from '../../common/interfaces';
+import { IIndexProps } from '../../common/interfaces/iviews';
 import { Card } from '../components/bathingspot/card';
 import { Map } from '../components/map';
 import { Skeleton } from '../layouts/skeleton';
@@ -38,7 +38,8 @@ const index = (props: IIndexProps) => (
     title={props.title}
     isLoggedin={props.isLoggedin}
     styles={<Styles />}
-    scripts={<Scripts />}>
+    scripts={<Scripts />}
+  >
     <script
       dangerouslySetInnerHTML={{
         __html: `
@@ -52,21 +53,24 @@ const index = (props: IIndexProps) => (
     <Map str={'This is the map component'} />
     <div className='index section'>
       <h1>Übersicht Badegewässer</h1>
-      <p>Bei den mit <span className='asteriks'>*</span> ausgezeichneten
-    Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.</p>
-    {/* {console.log(props.spots)} */}
+      <p>
+        Bei den mit <span className='asteriks'>*</span> ausgezeichneten
+        Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.
+      </p>
       <ul className='index__bathingspot-list'>
-        {
-          props.spots.map((obj, i) => {
-            return <Card
+        {props.spots.map((obj, i) => {
+          return (
+            <Card
               title={obj.name}
               water={obj.water}
               id={obj.id}
               image={obj.image}
               hasPrediction={obj.hasPrediction}
-              key={i} />;
-          })
-        }
+              isUserLoggedIn={props.isLoggedin}
+              key={i}
+            />
+          );
+        })}
       </ul>
     </div>
     {/* <div className='message'></div> */}

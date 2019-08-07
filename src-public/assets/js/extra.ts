@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-// tslint:disable-next-line: no-console
-   console.log('extra js');
-
-
+document.addEventListener('DOMContentLoaded', () => {
+  // tslint:disable-next-line: no-console
+  console.log('extra js');
 });

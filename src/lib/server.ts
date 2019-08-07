@@ -11,27 +11,36 @@ import { startup } from './utils';
 // import {WS} from './websocket';
 const CronJob = cron.CronJob;
 // const cronExpression = '0 0 12 * * 1';
-startup().then((token) => {
-  app.locals.token = token;
-}).catch(err => {
-  throw err;
-}).finally(()=>{
-  console.log('startup done');
-})
-const job = new CronJob(TOKEN_CRON_EXPRESSION, async () => {
-  try {
-    const token = await auth();
+startup()
+  .then((token) => {
     app.locals.token = token;
-  } catch (error) {
-    console.error('Cronjob faild to get a token inform ADMIN');
-    console.error(error);
-  }
-  console.log(`cronjob ${new Date().toISOString()}`);
-}, () => {
-  console.log('cronjob was stopped');
-}, true);
+  })
+  .catch((err) => {
+    throw err;
+  })
+  .finally(() => {
+    console.log('startup done');
+  });
+const job = new CronJob(
+  TOKEN_CRON_EXPRESSION,
+  async () => {
+    try {
+      const token = await auth();
+      app.locals.token = token;
+    } catch (error) {
+      console.error('Cronjob faild to get a token inform ADMIN');
+      console.error(error);
+    }
+    console.log(`cronjob ${new Date().toISOString()}`);
+  },
+  () => {
+    console.log('cronjob was stopped');
+  },
+  true,
+);
 job.start();
 
+console.log(`Next token update is scheduled for ${job.nextDate()}`);
 
 const ENV_SUFFIX = process.env.NODE_ENV === 'production' ? 'PROD' : 'DEV';
 const PORT = process.env[`FRONTEND_EXPRESS_PORT_${ENV_SUFFIX}`] || 3004;
@@ -67,7 +76,6 @@ server.listen(PORT);
 
 server.on('listening', () => {
   if (process.env.NODE_ENV === 'development') {
-
     browserSync({
       files: ['../../public/assets/css/**/*.{css}'],
       open: false,

@@ -10,7 +10,7 @@ interface IParseError {
   raw: string;
   err: Error;
 }
-const defaultOptions = {method: 'GET', url: '', async: true, type: 'DEFAULT'};
+const defaultOptions = { method: 'GET', url: '', async: true, type: 'DEFAULT' };
 const request = (next: any) => (opts?: IOption) => {
   const option = Object.assign({}, defaultOptions, opts);
   const xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -18,13 +18,13 @@ const request = (next: any) => (opts?: IOption) => {
   xhr.setRequestHeader('Content-type', 'application/json');
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
-      let responseText: object|IParseError;
+      let responseText: object | IParseError;
       try {
         responseText = JSON.parse(xhr.responseText);
       } catch (err) {
         // tslint:disable-next-line:no-console
         console.log(err);
-        responseText = {raw: xhr.responseText, err};
+        responseText = { raw: xhr.responseText, err };
       }
       if (xhr.status === 200) {
         // success we got an answer with status 200

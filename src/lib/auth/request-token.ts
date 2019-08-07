@@ -1,9 +1,14 @@
 import got from 'got';
-import { ITokenRequestOpts } from '../common/interfaces';
+import { ITokenRequestOpts } from '../common/interfaces/iauth';
 
-export const requestToken: (opts: ITokenRequestOpts) => Promise<string> = async (opts) => {
+export const requestToken: (
+  opts: ITokenRequestOpts,
+) => Promise<string> = async (opts) => {
   try {
-    const response = await got.post(opts.url, { body: opts.body, headers: opts.headers });
+    const response = await got.post(opts.url, {
+      body: opts.body,
+      headers: opts.headers,
+    });
     if (response.statusCode !== 200) {
       const msg = 'Could not get a token';
       throw new Error(msg);
@@ -13,4 +18,4 @@ export const requestToken: (opts: ITokenRequestOpts) => Promise<string> = async 
   } catch (error) {
     throw error;
   }
-}
+};

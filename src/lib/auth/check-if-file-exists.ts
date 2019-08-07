@@ -1,8 +1,11 @@
-const fs = require('fs');
+import fs from 'fs';
 export const checkFileExists: (tokenPath: string) => boolean = (tokenPath) => {
-  if (fs.existsSync(tokenPath) === true && fs.lstatSync(tokenPath).isDirectory() === false) {
+  if (
+    fs.existsSync(tokenPath) === true &&
+    fs.lstatSync(tokenPath).isDirectory() === false
+  ) {
     return true;
   } else {
     return false;
   }
-}
+};

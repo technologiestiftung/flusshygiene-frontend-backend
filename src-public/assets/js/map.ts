@@ -2,69 +2,64 @@ import { Deck } from '@deck.gl/core';
 import { ScatterplotLayer } from '@deck.gl/layers';
 // const mapboxgl =  require('mapbox-gl');
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
   const INITIAL_VIEW_STATE = {
+    bearing: 0,
     latitude: 52,
     longitude: 13,
+    pitch: 0,
     zoom: 4,
-    bearing: 0,
-    pitch: 0
   };
 
   mapboxgl.accessToken = process.env.MapboxAccessToken; // eslint-disable-line
 
-  const data = window.mapData;// [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
+  const data = window.mapData;
+  console.log('The map data', data);
+  // [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street,
+  // Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
 
   const map = new mapboxgl.Map({
+    bearing: INITIAL_VIEW_STATE.bearing,
+    center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
     container: 'map',
+    interactive: false,
+    pitch: INITIAL_VIEW_STATE.pitch,
     style: 'mapbox://styles/mapbox/light-v9',
     // Note: deck.gl will be in charge of interaction and event handling
-    interactive: false,
-    center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
     zoom: INITIAL_VIEW_STATE.zoom,
-    bearing: INITIAL_VIEW_STATE.bearing,
-    pitch: INITIAL_VIEW_STATE.pitch
   });
 
   const layer = new ScatterplotLayer({
-    id: 'scatterplot-layer',
     data,
-    pickable: true,
-    opacity: 0.8,
-    stroked: true,
     filled: true,
-    radiusScale: 6,
-    radiusMinPixels: 1,
-    radiusMaxPixels: 100,
-    lineWidthMinPixels: 1,
-    getPosition: d => [d.latitude, d.longitude],
+    getFillColor: (_d: any) => [255, 140, 0],
+    getLineColor: (_d: any) => [0, 0, 0],
+    getPosition: (d: any) => [d.latitude, d.longitude],
     getRadius: 100,
-    getFillColor: d => [255, 140, 0],
-    getLineColor: d => [0, 0, 0],
+    id: 'scatterplot-layer',
+    lineWidthMinPixels: 1,
+    opacity: 0.8,
+    pickable: true,
+    radiusMaxPixels: 100,
+    radiusMinPixels: 1,
+    radiusScale: 6,
+    stroked: true,
     // onHover: ({ object, x, y }) => {
-    //   const tooltip = `${object.name}`;
-    //   /* Update tooltip
-    //      http://deck.gl/#/documentation/developer-guide/adding-interactivity?section=example-display-a-tooltip-for-hovered-object
+    //  const tooltip = `${object.name}`;
+    // /* Update tooltip
+    // tslint:disable-next-line: max-line-length
+    // http://deck.gl/#/documentation/developer-guide/adding-interactivity?section=example-display-a-tooltip-for-hovered-object
     //   */
     // }
   });
 
   const deck = new Deck({
     canvas: 'deck-canvas',
-    width: '100%',
+    controller: true,
     height: '100%',
     initialViewState: INITIAL_VIEW_STATE,
-    controller: true,
-    onViewStateChange: ({ viewState }) => {
-      map.jumpTo({
-        center: [viewState.longitude, viewState.latitude],
-        zoom: viewState.zoom,
-        bearing: viewState.bearing,
-        pitch: viewState.pitch
-      });
-    },
-    layers: [layer,
+    layers: [
+      layer,
 
       // new GeoJsonLayer({
       //   id: 'airports',
@@ -95,6 +90,15 @@ document.addEventListener('DOMContentLoaded', function () {
       //   getTargetColor: [200, 0, 80],
       //   getWidth: 1
       // })
-    ]
+    ],
+    onViewStateChange: ({ viewState }) => {
+      map.jumpTo({
+        bearing: viewState.bearing,
+        center: [viewState.longitude, viewState.latitude],
+        pitch: viewState.pitch,
+        zoom: viewState.zoom,
+      });
+    },
+    width: '100%',
   });
 });

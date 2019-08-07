@@ -8,7 +8,8 @@
 import React from 'react';
 
 import { RouteNames, TrafficLightColorNames } from '../../common/enums';
-import { IAnswer, IAnswerFormData, IQuestion } from '../../common/interfaces';
+import { IAnswerFormData } from '../../common/interfaces';
+import { IAnswer, IQuestion } from '../../common/interfaces/iviews';
 import { Button } from '../components/button';
 import { QuestFormPagination } from '../components/questionnaire/quest-pagination';
 import { Skeleton } from '../layouts/skeleton';
@@ -51,7 +52,6 @@ const questionnaire = (props: IQuestion) => {
   );
 
   return (
-
     <Skeleton
       title={`Standortbewertung Frage ${props.qId} von ${props.lastId + 1}`}
       isLoggedin={props.isLoggedin}
@@ -59,9 +59,7 @@ const questionnaire = (props: IQuestion) => {
     >
       <div className='questions__body section'>
         <h1>{data[1][1]}</h1>
-        <p className='questions__body-general-info'>
-          {data[1][3]}
-        </p>
+        <p className='questions__body-general-info'>{data[1][3]}</p>
         <div className='questions__body-nav columns'>
           <div className='column'>
             {/* <QuestNav
@@ -71,15 +69,16 @@ const questionnaire = (props: IQuestion) => {
           </div>
         </div>
         <div className='questions__body-progress'>
-        <div className='column questions__body-button-toreport-container'>
-          <Button
-          url={`/${RouteNames.report}`}
-          text='Zur Auswertung'
-          additionalClassNames='is-pulled-right is-small questions__body-button-toreport'
-          />
+          <div className='column questions__body-button-toreport-container'>
+            <Button
+              url={`/${RouteNames.report}`}
+              text='Zur Auswertung'
+              additionalClassNames='is-pulled-right is-small questions__body-button-toreport'
+            />
           </div>
           <div className='column'>
-            <progress className='progress'
+            <progress
+              className='progress'
               value={`${props.qId}`}
               max={`${props.lastId}`}
             >{`${props.qId} von ${props.lastId}`}</progress>
@@ -88,28 +87,25 @@ const questionnaire = (props: IQuestion) => {
         <h2 className='questions__body-question-head'>Frage:</h2>
         <div className='questions__body-question'>
           <div className=''>
-            <p>
-              {data[1][4]}
-            </p>
+            <p>{data[1][4]}</p>
           </div>
           <div className='columns'>
-          <div className='column'>
-            <div className='message  is-info is-small'>
-              {/* <div className='message-header'>
+            <div className='column'>
+              <div className='message  is-info is-small'>
+                {/* <div className='message-header'>
                 <p>Zusatz-Informationen zur Frage</p>
               </div> */}
-              <div className='message-body'>
-                <p className='questions__body-additional-info-question'>
-                  {data[1][5]}
-                </p>
+                <div className='message-body'>
+                  <p className='questions__body-additional-info-question'>
+                    {data[1][5]}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
         <hr />
-        <form id='the-form' method='post'
-          className='questions__form'>
+        <form id='the-form' method='post' className='questions__form'>
           <input type='hidden' name='targeturl' value='' />
           <div className='control'>
             {answers.map((answer: IAnswer, i: number) => {
@@ -118,7 +114,6 @@ const questionnaire = (props: IQuestion) => {
                 messageModifier = 'is-danger';
               } else if (answer.colorText === TrafficLightColorNames.orange) {
                 messageModifier = 'is-warning';
-
               } else if (answer.colorText === TrafficLightColorNames.green) {
                 messageModifier = 'is-success';
               } else {
@@ -141,7 +136,6 @@ const questionnaire = (props: IQuestion) => {
                       } else {
                         return false;
                       }
-
                     })()}
                     type='radio'
                     className=''
@@ -149,9 +143,8 @@ const questionnaire = (props: IQuestion) => {
                     name='answer'
                     value={JSON.stringify(value)}
                     required
-
                   />
-                  <label htmlFor={`answer--${i}`} className='radio' key={i} >
+                  <label htmlFor={`answer--${i}`} className='radio' key={i}>
                     {answer.text}
                   </label>
                   {(() => {
@@ -172,15 +165,11 @@ const questionnaire = (props: IQuestion) => {
                 </div>
               );
             })}
-
           </div>
           <hr />
           <div className='columns'>
             <div className='column is-is-fullwidth'>
-              <QuestFormPagination
-                qId={props.qId}
-                lastId={props.lastId}
-              />
+              <QuestFormPagination qId={props.qId} lastId={props.lastId} />
             </div>
           </div>
         </form>
@@ -206,7 +195,6 @@ const questionnaire = (props: IQuestion) => {
         }}
       /> */}
     </Skeleton>
-
   );
 };
 export default questionnaire;

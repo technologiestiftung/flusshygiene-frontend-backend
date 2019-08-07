@@ -28,6 +28,7 @@ export const WaterqualityStateText = {
  */
 export enum RouteNames {
   bathingspot = 'badestellen',
+  editor = 'bearbeiten',
   index = '',
   info = 'info',
   questionnaire = 'standortbewertung',
@@ -63,9 +64,9 @@ export enum ButtonPropsType {
 
 export enum EnvSuffixes {
   dev = 'DEV',
-  prod = 'PROD'
+  prod = 'PROD',
 }
 
 export enum APIMountPoints {
-  v1 = 'api/v1'
+  v1 = 'api/v1',
 }

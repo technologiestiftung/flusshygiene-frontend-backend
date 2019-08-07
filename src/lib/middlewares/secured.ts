@@ -1,6 +1,10 @@
-import express = require('express');
+import express from 'express';
 
-export const secured = () => (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const secured = () => (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+) => {
   if (req.user) {
     return next();
   }

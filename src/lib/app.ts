@@ -8,7 +8,7 @@ import morgan from 'morgan';
 import passport from 'passport';
 import { Strategy as Auth0Strategy } from 'passport-auth0';
 import path from 'path';
-import { IQuestionFile } from './common/interfaces';
+import { IQuestionFile } from './common/interfaces/isetup';
 import { userInViews } from './middlewares/user-in-views';
 import router from './router';
 import { setupQuestions } from './setup';
@@ -80,24 +80,28 @@ app.engine('js', reactViews.createEngine({ beautify: true }));
 app.set('view engine', 'js');
 
 const pQuestions = setupQuestions();
-pQuestions.then((files: IQuestionFile[] | undefined) => {
-  app.locals.questions = files;
-  process.stdout.write('\nQuestion file import ready\n');
-}).catch((error) => {
-  if (error) {
-    console.error(error);
-  }
-});
+pQuestions
+  .then((files: IQuestionFile[] | undefined) => {
+    app.locals.questions = files;
+    process.stdout.write('\nQuestion file import ready\n');
+  })
+  .catch((error) => {
+    if (error) {
+      console.error(error);
+    }
+  });
 // app.get('/*', (request, response) => {
 //   response.send(`${request.url}`);
 // });
 
 app.use(router);
-app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-  // console.log(typeof err);
-  // if (err) {
-  res.status(404).send(`Sorry 404 on ${req.url}`);
-  // } else {
-  // }
-});
+app.use(
+  (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    // console.log(typeof err);
+    // if (err) {
+    res.status(404).send(`Sorry 404 on ${req.url}`);
+    // } else {
+    // }
+  },
+);
 export = app;

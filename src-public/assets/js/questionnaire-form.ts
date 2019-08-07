@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         form.targeturl.value = ele.href;
         form.submit();
-
       });
     });
   }

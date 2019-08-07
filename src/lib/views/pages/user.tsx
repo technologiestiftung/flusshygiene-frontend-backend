@@ -1,16 +1,13 @@
 import React from 'react';
-import { IUserProps } from '../../common/interfaces';
+import { IUserProps } from '../../common/interfaces/iviews';
+import { Card } from '../components/bathingspot/card';
 import { Button } from '../components/button';
 import { Skeleton } from '../layouts/skeleton';
-import { Card } from '../components/bathingspot/card';
 
 const user = (props: IUserProps) => {
   console.log(props);
   return (
-    <Skeleton
-      title={props.title}
-      isLoggedin={props.isLoggedin}
-    >
+    <Skeleton title={props.title} isLoggedin={props.isLoggedin}>
       <section id='user--info'>
         <img src={props.userProfile.picture} alt='The users profile picture' />
         <h1>{props.userProfile.nickname}</h1>
@@ -18,9 +15,7 @@ const user = (props: IUserProps) => {
           <h2>Email:</h2>
           <ul>
             {props.userProfile.emails.map((mail, i) => {
-              return (
-                <li key={i}>{mail.value}</li>
-              );
+              return <li key={i}>{mail.value}</li>;
             })}
           </ul>
           <div>
@@ -34,19 +29,21 @@ const user = (props: IUserProps) => {
         </div>
       </section>
       <section id='user--bathingspots'>
-      <ul className='index__bathingspot-list'>
-        {
-          props.spots.map((obj, i) => {
-            return <Card
-              title={obj.name}
-              water={obj.water}
-              id={obj.id}
-              image={obj.image}
-              hasPrediction={obj.hasPrediction}
-              key={i} />;
-          })
-        }
-      </ul>
+        <ul className='index__bathingspot-list'>
+          {props.spots.map((obj, i) => {
+            return (
+              <Card
+                title={obj.name}
+                water={obj.water}
+                id={obj.id}
+                image={obj.image}
+                hasPrediction={obj.hasPrediction}
+                isUserLoggedIn={props.isLoggedin}
+                key={i}
+              />
+            );
+          })}
+        </ul>
       </section>
     </Skeleton>
   );

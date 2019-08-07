@@ -8,11 +8,11 @@ import { GET_DATA_ERROR, POST_DATA_ERROR } from '../action-types';
  */
 const errors = (state: any[] = [], action: any) => {
   switch (action.type) {
-  case GET_DATA_ERROR:
-  case POST_DATA_ERROR:
-    return [action.error, ...state];
-  default:
-    return state;
+    case GET_DATA_ERROR:
+    case POST_DATA_ERROR:
+      return [action.error, ...state];
+    default:
+      return state;
   }
 };
 export default errors;
