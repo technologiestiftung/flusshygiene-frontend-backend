@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mapboxgl.accessToken = process.env.MapboxAccessToken; // eslint-disable-line
 
   const data = window.mapData;
+  console.log('The map data', data);
   // [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street,
   // Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
 

@@ -1,12 +1,24 @@
 import React from 'react';
 import { ISpotEditor } from '../../../common/interfaces/iviews';
 import { FormInput } from './editor-form-fields/spot-editor-form-input';
+import { FormInputFile } from './editor-form-fields/spot-editor-form-input-file';
 
 export const BathingspotEditor = (props: ISpotEditor) => {
   return (
-    <div>
-      <button className='button is-small'>Editieren</button>
-      <form action='' method='post'>
+    <div className='bathingspot-editor-forms bathingspot-editor-forms--hidden'>
+      <form action='' className='bathingspot-editor-forms__upload-data'>
+        <FormInputFile
+          placeholder='Platzhalter'
+          label='Daten hochladen'
+          name='Datei zur analyse auswählen'
+          type='file'
+        />
+      </form>
+      <form
+        action=''
+        method='post'
+        className='bathingspot-editor-forms__base-data'
+      >
         <FormInput
           label={'Name'}
           placeholder={'Name der Badestelle'}
@@ -63,6 +75,7 @@ export const BathingspotEditor = (props: ISpotEditor) => {
           name={props.spot.apiEndpoints}
         />
         <FormInput
+          readOnly={true}
           label={'Letzte Klassifizierung'}
           placeholder={'Letzte Klassifizierung'}
           type={'text'}
@@ -240,8 +253,6 @@ export const BathingspotEditor = (props: ISpotEditor) => {
           type={'text'}
           name={props.spot.area}
         /> */}
-
-        <button type='submit'>Speichern</button>
       </form>
     </div>
   );

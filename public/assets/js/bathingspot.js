@@ -117,10 +117,40 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"extra.ts":[function(require,module,exports) {
+})({"bathingspot.ts":[function(require,module,exports) {
 document.addEventListener('DOMContentLoaded', function () {
-  // tslint:disable-next-line: no-console
-  console.log('extra js');
+  console.log('bathingspots.js');
+  var editButton = document.querySelector('button#edit-spot');
+  var cancelEditButton = document.querySelector('button#edit-spot-cancel');
+  var saveEditButton = document.querySelector('button#edit-spot-save');
+  var forms = document.querySelector('.bathingspot-editor-forms');
+
+  var hide = function hide(event) {
+    event.preventDefault();
+    editButton.classList.remove('is-hidden');
+    saveEditButton.classList.add('is-hidden');
+    cancelEditButton.classList.add('is-hidden');
+  };
+
+  cancelEditButton.addEventListener('click', hide);
+  saveEditButton.addEventListener('click', hide);
+  cancelEditButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    if (forms.classList.contains('bathingspot-editor-forms--hidden') === false) {
+      forms.classList.add('bathingspot-editor-forms--hidden');
+    }
+  });
+  editButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    saveEditButton.classList.remove('is-hidden');
+    cancelEditButton.classList.remove('is-hidden');
+    editButton.classList.add('is-hidden');
+
+    if (forms.classList.contains('bathingspot-editor-forms--hidden') === true) {
+      forms.classList.remove('bathingspot-editor-forms--hidden');
+    }
+  });
 });
 },{}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -325,5 +355,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","extra.ts"], null)
-//# sourceMappingURL=/assets/js/extra.js.map
+},{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","bathingspot.ts"], null)
+//# sourceMappingURL=/assets/js/bathingspot.js.map

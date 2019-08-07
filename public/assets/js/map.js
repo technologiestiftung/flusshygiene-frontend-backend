@@ -61241,56 +61241,58 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   mapboxgl.accessToken = "pk.eyJ1IjoiZm1vcm9uemlyZmFzIiwiYSI6ImNqeXBvZnl4ODE5dmkzbXFmZnNmdGx3ODIifQ.vIP1Xf2Nsso9j1LdrpMt7g"; // eslint-disable-line
 
-  var data = window.mapData; // [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
+  var data = window.mapData;
+  console.log('The map data', data); // [{ name: 'Colma (COLM)', code: 'CM', address: '365 D Street,
+  // Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] }];
 
   var map = new mapboxgl.Map({
+    bearing: INITIAL_VIEW_STATE.bearing,
+    center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
     container: 'map',
+    interactive: false,
+    pitch: INITIAL_VIEW_STATE.pitch,
     style: 'mapbox://styles/mapbox/light-v9',
     // Note: deck.gl will be in charge of interaction and event handling
-    interactive: false,
-    center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
-    zoom: INITIAL_VIEW_STATE.zoom,
-    bearing: INITIAL_VIEW_STATE.bearing,
-    pitch: INITIAL_VIEW_STATE.pitch
+    zoom: INITIAL_VIEW_STATE.zoom
   });
   var layer = new layers_1.ScatterplotLayer({
-    id: 'scatterplot-layer',
     data: data,
-    pickable: true,
-    opacity: 0.8,
-    stroked: true,
     filled: true,
-    radiusScale: 6,
-    radiusMinPixels: 1,
-    radiusMaxPixels: 100,
-    lineWidthMinPixels: 1,
+    getFillColor: function getFillColor(_d) {
+      return [255, 140, 0];
+    },
+    getLineColor: function getLineColor(_d) {
+      return [0, 0, 0];
+    },
     getPosition: function getPosition(d) {
       return [d.latitude, d.longitude];
     },
     getRadius: 100,
-    getFillColor: function getFillColor(d) {
-      return [255, 140, 0];
-    },
-    getLineColor: function getLineColor(d) {
-      return [0, 0, 0];
-    }
+    id: 'scatterplot-layer',
+    lineWidthMinPixels: 1,
+    opacity: 0.8,
+    pickable: true,
+    radiusMaxPixels: 100,
+    radiusMinPixels: 1,
+    radiusScale: 6,
+    stroked: true
   });
   var deck = new core_1.Deck({
     canvas: 'deck-canvas',
-    width: '100%',
+    controller: true,
     height: '100%',
     initialViewState: INITIAL_VIEW_STATE,
-    controller: true,
+    layers: [layer],
     onViewStateChange: function onViewStateChange(_a) {
       var viewState = _a.viewState;
       map.jumpTo({
-        center: [viewState.longitude, viewState.latitude],
-        zoom: viewState.zoom,
         bearing: viewState.bearing,
-        pitch: viewState.pitch
+        center: [viewState.longitude, viewState.latitude],
+        pitch: viewState.pitch,
+        zoom: viewState.zoom
       });
     },
-    layers: [layer]
+    width: '100%'
   });
 });
 },{"@deck.gl/core":"../../../node_modules/@deck.gl/core/dist/esm/index.js","@deck.gl/layers":"../../../node_modules/@deck.gl/layers/dist/esm/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -61321,7 +61323,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60259" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55035" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

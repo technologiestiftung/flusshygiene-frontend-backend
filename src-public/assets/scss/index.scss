@@ -78,16 +78,15 @@ span.asteriks {
     font-weight: 600;
   }
 
-  @import 'form';
+  @import 'questionnaire';
 }
 
 @import 'report';
 @import 'icons';
 @import 'lists';
-
+@import 'editor';
 // bulma
 // overwrites
-
 .questions__form * .message {
   width: 100%;
   max-width: 100% !important;

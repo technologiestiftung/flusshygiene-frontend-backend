@@ -20,7 +20,7 @@
     "docs": "typedoc --mode modules --out docs ./src",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|scss|ts|tsx)\"",
     "format": "npm run prettier -- --write",
-    "lint": "tslint './src*/**/*.ts?(x)'",
+    "lint": "tslint './src*/**/*.ts?(x)' --project",
     "validate": "npm run prettier -- --list-different",
     "lint-staged": "lint-staged"
   },

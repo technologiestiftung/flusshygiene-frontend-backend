@@ -157,7 +157,8 @@ export interface IGenericFormInputProps {
   name?: string | number | boolean | IObject;
   placeholder: string;
   label: string;
-  type: 'email' | 'number' | 'text' | 'checkbox';
+  type: 'email' | 'number' | 'text' | 'checkbox' | 'file';
+  readOnly?: boolean;
 }
 export interface ISpotEditor {
   foo?: string;

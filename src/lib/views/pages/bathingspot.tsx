@@ -22,6 +22,7 @@ const Scripts = () => (
   <React.Fragment>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.2.0-beta.1/mapbox-gl.js'></script>
     <script src='/assets/js/map.js'></script>
+    <script src='/assets/js/bathingspot.js'></script>
   </React.Fragment>
 );
 
@@ -60,10 +61,38 @@ const bathingspot = (props: IBathingspotProps) => {
       styles={<Styles />}
       scripts={<Scripts />}
     >
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.mapData = [${JSON.stringify(props.spot)}];
+        // document.addEventListener('DOMContentLoaded',function() {
+        //   console.log('index view');
+        // });
+        `,
+        }}
+      />
+
       {(() => {
         // if (props.isLoggedin === true) {
-
-        return <BathingspotEditor spot={props.spot} />;
+        return (
+          <div>
+            <div className='bathingspot__controls'>
+              <button className='button is-small' id='edit-spot'>
+                Basisdaten Editieren
+              </button>
+              <button className='button is-small is-hidden' id='edit-spot-save'>
+                Speichern
+              </button>
+              <button
+                className='button is-small is-hidden'
+                id='edit-spot-cancel'
+              >
+                Abbrechen
+              </button>
+            </div>
+            <BathingspotEditor spot={props.spot} />
+          </div>
+        );
         // }
       })()}
       <Map str='Maps' />

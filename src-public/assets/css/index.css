@@ -7329,6 +7329,9 @@ ul.index__bathingspot-list {
   .bathingspot__body-addon ul li {
     list-style: none; }
 
+.bathingspot-editor-forms--hidden {
+  display: none; }
+
 .questions__form * .message {
   width: 100%;
   max-width: 100% !important; }
